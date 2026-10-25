@@ -1,0 +1,75 @@
+{
+  "scope": "Local diagnostic build; downloaded base weights NOT committed or redistributed",
+  "files": [
+    {
+      "path": ".vite/manifest.json",
+      "bytes": 530,
+      "sha256": "27c3676d87d22f0cc46e7f88f0a414568c2cfe8657efa0ae570e4219465a5c55"
+    },
+    {
+      "path": "assets/diagnostic-BtGB-4kO.js",
+      "bytes": 228,
+      "sha256": "23500cf85a96e458e9524674b7bbdf8773051846475a5d9ccde3c70f0b9d949d"
+    },
+    {
+      "path": "assets/main-CsykvaAy.js",
+      "bytes": 5757,
+      "sha256": "d16bec4b78bece6e37ed2245a614ac9d69d3470d361c4629693f2f5c7fa203c4"
+    },
+    {
+      "path": "assets/main-CvuSE6yH.css",
+      "bytes": 673,
+      "sha256": "5162c818a4ad4cb07d3c69e0c385d40d83645dc8151ba72dc3e629148e8b42d7"
+    },
+    {
+      "path": "assets/store-DYzbFKwA.js",
+      "bytes": 893749,
+      "sha256": "36330cbeebdee1384b982e0041fb99e5703a3214c83fff2bc107dfbbd4461626"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2830,
+      "sha256": "0d9509cde870a63e156ae779155dbf364abd40311523afba1d12ac402c0b3abd"
+    },
+    {
+      "path": "models/base/group1-shard1of2",
+      "bytes": 4194304,
+      "sha256": "79b7ef9d7577b333ee39b0d6e8dfebdb03be559a645bc389307ef84da414a30b"
+    },
+    {
+      "path": "models/base/group1-shard2of2",
+      "bytes": 1680432,
+      "sha256": "129b9a7d501f81e62710d494efcba67ed98b3f3032dd28d7fe20cbc8cd5bee1f"
+    },
+    {
+      "path": "models/base/manifest.json",
+      "bytes": 940,
+      "sha256": "8fd395024978cf05d0ce05196b926ae799533941c99780a0f287f676129a6a15"
+    },
+    {
+      "path": "models/base/metadata.json",
+      "bytes": 203,
+      "sha256": "06f92997a0f6b3e5f11d70251222350f1e0f6717280f7edd151d4001482665ac"
+    },
+    {
+      "path": "models/base/model.json",
+      "bytes": 5466,
+      "sha256": "be053f904fe26d1fab2be824d943e936d9f04c9ea3d238d3c58fa2a6225b1ef7"
+    },
+    {
+      "path": "pcm-worklet.js",
+      "bytes": 428,
+      "sha256": "b68429b0fdb6d9da18e79d7f1b8acd4ef5f3cb4f1f1265a7f23898bdd08b925a"
+    },
+    {
+      "path": "sw.js",
+      "bytes": 3795,
+      "sha256": "7e0afba7fc6cb263d38a21fa439d72f23e6744240e9c667bb5c327494b2b36ab"
+    },
+    {
+      "path": "tests/fixture.html",
+      "bytes": 497,
+      "sha256": "227c54770f81c501643a38dcc66e6c85e7a5a26edfa966a25bf82349324194c5"
+    }
+  ]
+}

@@ -1,0 +1,851 @@
+{
+  "date": "2026-10-25T09:47:22.296Z",
+  "scope": "First actual exploratory fit: 8 source recordings (2/class), train-only; original Unknown is diagnostic negative; independent accuracy NOT measured",
+  "sourceCode": "fd9f00dec9290458304e7c4268cd3693251c3885",
+  "trainingSources": 8,
+  "trainingWindows": 24,
+  "independentHoldoutEvents": 0,
+  "classes": [
+    "clap",
+    "pencil-tap",
+    "paper-rustle",
+    "background"
+  ],
+  "policy": "candidate-1-not-validated, unchanged",
+  "modelStatus": "Object head trained and stored locally: 3a04a3458fa0522bb3e3806206d67f7d5e352db2797ce112f1e532992b5eb624. Accuracy unmeasured until independent evaluation.",
+  "headInfo": {
+    "headHash": "3a04a3458fa0522bb3e3806206d67f7d5e352db2797ce112f1e532992b5eb624",
+    "baseHash": "d3ab6f5622053cd0c1c3461c666d49d67ece63d94755dda6befd9b4547587c77",
+    "manifestHash": "9ff57f43dba2bd4a6b0798064324bafde0125ed104a3d3e85de99ddf2044a1ed",
+    "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1"
+  },
+  "provenance": [
+    {
+      "eventId": "e01",
+      "label": "clap",
+      "parentFilename": "Adult-Clap.m4a",
+      "parentSha256": "a4bf9efd5bb5f50762c9d7750dc826cb6f482387568b7e0a4e5fbdd4400d792f",
+      "derivedWavSha256": "891d779bbc3174299a6bb37fdf19a9157b0ef9d54e2ba20a1a11a98659245b7d",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 2.7717913832199548,
+        "startSeconds": 0,
+        "usedSeconds": 2.7717913832199548,
+        "paddedSeconds": 0.22820861678004536,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "newIndependentSourcesFromWindowing": 0
+    },
+    {
+      "eventId": "e02",
+      "label": "clap",
+      "parentFilename": "Adult-Clap-2.m4a",
+      "parentSha256": "a61cd7cdce02c43e644b6ba2f734457f2e09a6f5932b0a2f17249f322e2b3c35",
+      "derivedWavSha256": "bfcd4a55e4bbf9f8393243387c8436cc81f40f74e266668f489aadc051757370",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 2.87546485260771,
+        "startSeconds": 0,
+        "usedSeconds": 2.87546485260771,
+        "paddedSeconds": 0.12453514739229025,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "newIndependentSourcesFromWindowing": 0
+    },
+    {
+      "eventId": "e03",
+      "label": "pencil-tap",
+      "parentFilename": "Pencil-Tap.m4a",
+      "parentSha256": "e4f7657cfed9b64d5064f48413f118d0aea9bbb702bfdc57075a06cfdaf3dc29",
+      "derivedWavSha256": "5465abe4454791f896fe0d701f48d983f8c1a4a3d240e019bf31d828f6eb484c",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 4.089024943310657,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 1.0890249433106576,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "newIndependentSourcesFromWindowing": 0
+    },
+    {
+      "eventId": "e04",
+      "label": "pencil-tap",
+      "parentFilename": "Pencil-Tap-2.m4a",
+      "parentSha256": "889675280f59a3ea38170e2ece3db96aab4f2a0a887e83fce7226a8238eed30b",
+      "derivedWavSha256": "cfe69d642afc9f2a5a8ef638eca2d98f63d32f8b735c2501edf86f00ee6699b7",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 3.1423809523809525,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0.14238095238095239,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "newIndependentSourcesFromWindowing": 0
+    },
+    {
+      "eventId": "e05",
+      "label": "paper-rustle",
+      "parentFilename": "Paper-Rustle.m4a",
+      "parentSha256": "ade5173f5b1f3ab6d7e1f6e669e46f584684b525234856f5e8486684de72785d",
+      "derivedWavSha256": "ec24b82151deb5b414e9a3c5937f2f3be5430c3615ace4e96337dde4c4bb760f",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 3.69984126984127,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0.6998412698412698,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "newIndependentSourcesFromWindowing": 0
+    },
+    {
+      "eventId": "e06",
+      "label": "paper-rustle",
+      "parentFilename": "Paper-Rustle-2.m4a",
+      "parentSha256": "3dd4c2b1178ca51b3325802860ac34192e792df7bd22e22452977709993d33d9",
+      "derivedWavSha256": "ded690342b56d08328722c569a4f8e4dfbad1662dfa56da62af133207e1f0e30",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 4.527324263038548,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 1.5273242630385488,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "newIndependentSourcesFromWindowing": 0
+    },
+    {
+      "eventId": "e07",
+      "label": "background",
+      "parentFilename": "Random-Unknown-2.m4a",
+      "parentSha256": "6a563fe53ead6d4aef2465343b3e7c1ea01f39d48af71a18d9ee31ee46be68e3",
+      "derivedWavSha256": "363a7f6e5de75e24214640e97fed157ace2fc35d2d06bf397d8abc77d86868d9",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 12.090204081632653,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 9.090204081632653,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "newIndependentSourcesFromWindowing": 0
+    },
+    {
+      "eventId": "e08",
+      "label": "background",
+      "parentFilename": "Random-Unknown-3.m4a",
+      "parentSha256": "eaa471bfd884a4f1860eec2cc96a3b104be616404e5dfab0d7d30def15e7ae7c",
+      "derivedWavSha256": "65ce51a37168ebe01ce1695d5a61bd12c2a3763fb444d2d03f7bee90fd9f6641",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 9.437505668934241,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 6.43750566893424,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "newIndependentSourcesFromWindowing": 0
+    }
+  ],
+  "trainingTrials": [
+    {
+      "eventId": "e01",
+      "expected": "clap",
+      "scope": "training-resubstitution-NOT-independent-test",
+      "source": "file",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 3,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "mode": "actual-local-inference",
+      "label": "clap",
+      "reason": "accepted",
+      "scores": [
+        [
+          0.9501281976699829,
+          0.0111300740391016,
+          0.02422480285167694,
+          0.014516913332045078
+        ],
+        [
+          0.9810123443603516,
+          0.010938995517790318,
+          0.006756398361176252,
+          0.0012922313762828708
+        ],
+        [
+          0.9797157049179077,
+          0.00728934071958065,
+          0.0022881377954035997,
+          0.010706771165132523
+        ]
+      ],
+      "quality": {
+        "rms": 0.006260494982017657,
+        "clipping": 0
+      },
+      "elapsedMs": 116.5,
+      "baseHash": "d3ab6f5622053cd0c1c3461c666d49d67ece63d94755dda6befd9b4547587c77",
+      "headHash": "3a04a3458fa0522bb3e3806206d67f7d5e352db2797ce112f1e532992b5eb624",
+      "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1",
+      "policy": "candidate-1-not-validated"
+    },
+    {
+      "eventId": "e02",
+      "expected": "clap",
+      "scope": "training-resubstitution-NOT-independent-test",
+      "source": "file",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 3,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "mode": "actual-local-inference",
+      "label": "clap",
+      "reason": "accepted",
+      "scores": [
+        [
+          0.9915517568588257,
+          0.0016806977801024914,
+          0.005163671914488077,
+          0.001603848417289555
+        ],
+        [
+          0.9897218346595764,
+          0.00016134705219883472,
+          0.0009192783036269248,
+          0.009197592735290527
+        ],
+        [
+          0.9929441809654236,
+          0.0035131440963596106,
+          0.0009668418206274509,
+          0.0025758794508874416
+        ]
+      ],
+      "quality": {
+        "rms": 0.006267562927174109,
+        "clipping": 0
+      },
+      "elapsedMs": 77.79999999701977,
+      "baseHash": "d3ab6f5622053cd0c1c3461c666d49d67ece63d94755dda6befd9b4547587c77",
+      "headHash": "3a04a3458fa0522bb3e3806206d67f7d5e352db2797ce112f1e532992b5eb624",
+      "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1",
+      "policy": "candidate-1-not-validated"
+    },
+    {
+      "eventId": "e03",
+      "expected": "pencil-tap",
+      "scope": "training-resubstitution-NOT-independent-test",
+      "source": "file",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 3,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "mode": "actual-local-inference",
+      "label": "pencil-tap",
+      "reason": "accepted",
+      "scores": [
+        [
+          0.00263921613804996,
+          0.8900655508041382,
+          0.0018949115183204412,
+          0.10540029406547546
+        ],
+        [
+          5.2702424000017345e-05,
+          0.9996644258499146,
+          4.4705873847306066e-07,
+          0.0002824331750161946
+        ],
+        [
+          6.591571946046315e-06,
+          0.9994444251060486,
+          7.865617135394132e-08,
+          0.0005488356109708548
+        ]
+      ],
+      "quality": {
+        "rms": 0.0019963483878278846,
+        "clipping": 0
+      },
+      "elapsedMs": 89.60000000149012,
+      "baseHash": "d3ab6f5622053cd0c1c3461c666d49d67ece63d94755dda6befd9b4547587c77",
+      "headHash": "3a04a3458fa0522bb3e3806206d67f7d5e352db2797ce112f1e532992b5eb624",
+      "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1",
+      "policy": "candidate-1-not-validated"
+    },
+    {
+      "eventId": "e04",
+      "expected": "pencil-tap",
+      "scope": "training-resubstitution-NOT-independent-test",
+      "source": "file",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 3,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "mode": "actual-local-inference",
+      "label": "pencil-tap",
+      "reason": "accepted",
+      "scores": [
+        [
+          0.007254078518599272,
+          0.9913689494132996,
+          0.00013677380047738552,
+          0.0012401805724948645
+        ],
+        [
+          0.001513004768639803,
+          0.9949525594711304,
+          3.4471559047233313e-06,
+          0.0035310208331793547
+        ],
+        [
+          4.827792145079002e-05,
+          0.9980483055114746,
+          5.911556399951223e-06,
+          0.0018974809208884835
+        ]
+      ],
+      "quality": {
+        "rms": 0.0015917018062904182,
+        "clipping": 0
+      },
+      "elapsedMs": 73.5,
+      "baseHash": "d3ab6f5622053cd0c1c3461c666d49d67ece63d94755dda6befd9b4547587c77",
+      "headHash": "3a04a3458fa0522bb3e3806206d67f7d5e352db2797ce112f1e532992b5eb624",
+      "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1",
+      "policy": "candidate-1-not-validated"
+    },
+    {
+      "eventId": "e05",
+      "expected": "paper-rustle",
+      "scope": "training-resubstitution-NOT-independent-test",
+      "source": "file",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 3,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "mode": "actual-local-inference",
+      "label": "paper-rustle",
+      "reason": "accepted",
+      "scores": [
+        [
+          0.00895081739872694,
+          0.005645842291414738,
+          0.9540033936500549,
+          0.031399935483932495
+        ],
+        [
+          0.0009934862609952688,
+          3.642159572336823e-05,
+          0.9987301230430603,
+          0.00023996108211576939
+        ],
+        [
+          0.0032156696543097496,
+          0.0005612718523479998,
+          0.9888801574707031,
+          0.007342946249991655
+        ]
+      ],
+      "quality": {
+        "rms": 0.011145542705237797,
+        "clipping": 0
+      },
+      "elapsedMs": 75.09999999776483,
+      "baseHash": "d3ab6f5622053cd0c1c3461c666d49d67ece63d94755dda6befd9b4547587c77",
+      "headHash": "3a04a3458fa0522bb3e3806206d67f7d5e352db2797ce112f1e532992b5eb624",
+      "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1",
+      "policy": "candidate-1-not-validated"
+    },
+    {
+      "eventId": "e06",
+      "expected": "paper-rustle",
+      "scope": "training-resubstitution-NOT-independent-test",
+      "source": "file",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 3,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "mode": "actual-local-inference",
+      "label": "paper-rustle",
+      "reason": "accepted",
+      "scores": [
+        [
+          0.015444060787558556,
+          0.0070549375377595425,
+          0.9738813638687134,
+          0.0036196073051542044
+        ],
+        [
+          0.0006345339352265,
+          0.00019833836995530874,
+          0.9988634586334229,
+          0.00030366340070031583
+        ],
+        [
+          0.0036754740867763758,
+          0.0004980170633643866,
+          0.9945164322853088,
+          0.0013100233627483249
+        ]
+      ],
+      "quality": {
+        "rms": 0.010740459978995871,
+        "clipping": 0
+      },
+      "elapsedMs": 75.60000000149012,
+      "baseHash": "d3ab6f5622053cd0c1c3461c666d49d67ece63d94755dda6befd9b4547587c77",
+      "headHash": "3a04a3458fa0522bb3e3806206d67f7d5e352db2797ce112f1e532992b5eb624",
+      "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1",
+      "policy": "candidate-1-not-validated"
+    },
+    {
+      "eventId": "e07",
+      "expected": "background",
+      "scope": "training-resubstitution-NOT-independent-test",
+      "source": "file",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 3,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "mode": "actual-local-inference",
+      "label": "unknown",
+      "reason": "background",
+      "scores": [
+        [
+          0.017088547348976135,
+          0.09801515191793442,
+          0.02390381135046482,
+          0.860992431640625
+        ],
+        [
+          0.0010560167720541358,
+          0.0019327241461724043,
+          6.708425644319504e-05,
+          0.9969441294670105
+        ],
+        [
+          0.010927003808319569,
+          0.006519637070596218,
+          0.00173281691968441,
+          0.9808205366134644
+        ]
+      ],
+      "quality": {
+        "rms": 0.0033403314721125576,
+        "clipping": 0
+      },
+      "elapsedMs": 76.5,
+      "baseHash": "d3ab6f5622053cd0c1c3461c666d49d67ece63d94755dda6befd9b4547587c77",
+      "headHash": "3a04a3458fa0522bb3e3806206d67f7d5e352db2797ce112f1e532992b5eb624",
+      "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1",
+      "policy": "candidate-1-not-validated"
+    },
+    {
+      "eventId": "e08",
+      "expected": "background",
+      "scope": "training-resubstitution-NOT-independent-test",
+      "source": "file",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 3,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "mode": "actual-local-inference",
+      "label": "unknown",
+      "reason": "background",
+      "scores": [
+        [
+          0.0001343482144875452,
+          0.0031959747429937124,
+          0.005504603497684002,
+          0.9911651015281677
+        ],
+        [
+          0.0003701738314703107,
+          0.005286280065774918,
+          0.0007079659262672067,
+          0.9936355352401733
+        ],
+        [
+          0.001395274419337511,
+          0.004872526973485947,
+          0.003558027558028698,
+          0.9901741743087769
+        ]
+      ],
+      "quality": {
+        "rms": 0.004134306913503426,
+        "clipping": 0
+      },
+      "elapsedMs": 93.80000000074506,
+      "baseHash": "d3ab6f5622053cd0c1c3461c666d49d67ece63d94755dda6befd9b4547587c77",
+      "headHash": "3a04a3458fa0522bb3e3806206d67f7d5e352db2797ce112f1e532992b5eb624",
+      "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1",
+      "policy": "candidate-1-not-validated"
+    }
+  ],
+  "negativeProbe": {
+    "expected": "unknown",
+    "scope": "initial same-condition development negative, not locked holdout",
+    "source": "file",
+    "selection": {
+      "kind": "file-excerpt",
+      "sourceSeconds": 8.306643990929706,
+      "startSeconds": 0,
+      "usedSeconds": 3,
+      "paddedSeconds": 0,
+      "omittedBeforeSeconds": 0,
+      "omittedAfterSeconds": 5.306643990929706,
+      "outputSeconds": 3,
+      "independentSourceEventsAdded": 0
+    },
+    "mode": "actual-local-inference",
+    "label": "unknown",
+    "reason": "low-score-or-margin",
+    "scores": [
+      [
+        0.41297242045402527,
+        0.27297601103782654,
+        0.14557355642318726,
+        0.1684780716896057
+      ],
+      [
+        0.29540273547172546,
+        0.1368357241153717,
+        0.08900430053472519,
+        0.47875723242759705
+      ],
+      [
+        0.48658040165901184,
+        0.24544672667980194,
+        0.031126907095313072,
+        0.2368459403514862
+      ]
+    ],
+    "quality": {
+      "rms": 0.015466549094165316,
+      "clipping": 0
+    },
+    "elapsedMs": 78.60000000149012,
+    "baseHash": "d3ab6f5622053cd0c1c3461c666d49d67ece63d94755dda6befd9b4547587c77",
+    "headHash": "3a04a3458fa0522bb3e3806206d67f7d5e352db2797ce112f1e532992b5eb624",
+    "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1",
+    "policy": "candidate-1-not-validated"
+  },
+  "lockedTestRefused": true,
+  "offlineBrowserRestart": true,
+  "offlineRestoredPrediction": {
+    "source": "file",
+    "selection": {
+      "kind": "file-excerpt",
+      "sourceSeconds": 3,
+      "startSeconds": 0,
+      "usedSeconds": 3,
+      "paddedSeconds": 0,
+      "omittedBeforeSeconds": 0,
+      "omittedAfterSeconds": 0,
+      "outputSeconds": 3,
+      "independentSourceEventsAdded": 0
+    },
+    "mode": "actual-local-inference",
+    "label": "clap",
+    "reason": "accepted",
+    "scores": [
+      [
+        0.9501281976699829,
+        0.0111300740391016,
+        0.02422480285167694,
+        0.014516913332045078
+      ],
+      [
+        0.9810123443603516,
+        0.010938995517790318,
+        0.006756398361176252,
+        0.0012922313762828708
+      ],
+      [
+        0.9797157049179077,
+        0.00728934071958065,
+        0.0022881377954035997,
+        0.010706771165132523
+      ]
+    ],
+    "quality": {
+      "rms": 0.006260494982017657,
+      "clipping": 0
+    },
+    "elapsedMs": 153.80000000074506,
+    "baseHash": "d3ab6f5622053cd0c1c3461c666d49d67ece63d94755dda6befd9b4547587c77",
+    "headHash": "3a04a3458fa0522bb3e3806206d67f7d5e352db2797ce112f1e532992b5eb624",
+    "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1",
+    "policy": "candidate-1-not-validated"
+  },
+  "performanceProbe": {
+    "n": 20,
+    "warmMs": [
+      139.39999999850988,
+      97.20000000298023,
+      91.39999999850988,
+      96.60000000149012,
+      113.90000000223517,
+      103.39999999850988,
+      103.69999999925494,
+      91.90000000223517,
+      105.09999999776483,
+      93,
+      100.5,
+      102.89999999850988,
+      103.60000000149012,
+      102.39999999850988,
+      105.39999999850988,
+      103.40000000223517,
+      93.69999999925494,
+      94.59999999776483,
+      92.60000000149012,
+      93
+    ],
+    "p95": 113.90000000223517,
+    "scope": "real trained-head inference on reused training clap, headless single-device, excludes decode/capture/render; not G3 two-device end-to-end"
+  },
+  "errors": [],
+  "allRequestsLocalGet": true,
+  "requests": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/tests/fixture.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/diagnostic-Cg1Vvx2P.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/excerpt-C_fBXC4d.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/main-CxhLuyXd.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/excerpt-C_fBXC4d.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/main-CvuSE6yH.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/main-CxhLuyXd.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/excerpt-C_fBXC4d.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/main-CvuSE6yH.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/tests/fixture.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/diagnostic-Cg1Vvx2P.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/excerpt-C_fBXC4d.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    }
+  ],
+  "provenanceContext": "Owner-supplied in adult-only POC. New batch contributor/device/room/session not separately reconfirmed; all grouped as unconfirmed. No independent holdout claim.",
+  "backgroundInterpretation": "Owner confirms second new unknown contains fan/footsteps/talking; third contains shower. Used only as two different non-target-noise training sources. First 3s only, not guaranteed to cover every listed sound."
+}

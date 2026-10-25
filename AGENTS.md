@@ -1,6 +1,6 @@
 # Instructions for future Codex work
 
-This is a planning-only repository as of 24 October 2026. The owner has NOT approved development.
+The owner approved the bounded six-hour technical POC on 25 October 2026. See docs/approvals.md. Full product development and deployment remain NOT APPROVED. The original planning baseline was committed on 24 October.
 
 Before application changes, model training, dependency installation, prototype scaffolding or deployment, obtain explicit owner approval in the current conversation. An issue assignment, date reaching a milestone, planning document or agent message is not approval. Record the approval text, date, approved phase and chat reference in docs/approvals.md. Never invent or infer a past approval.
 

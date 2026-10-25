@@ -1,0 +1,73 @@
+{
+  "scope": "Software regression suite; adult-recording intake measurements are separate; no object accuracy",
+  "codeCommit": "fd9f00dec9290458304e7c4268cd3693251c3885",
+  "unitTests": {
+    "passed": 20,
+    "files": 4
+  },
+  "browserStats": {
+    "startTime": "2026-10-25T09:28:25.895Z",
+    "duration": 32399.933,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "file excerpt records padding/cropping and persists numeric provenance only",
+      "status": "passed",
+      "durationMs": 1017
+    },
+    {
+      "title": "long-file selection and invalid offsets do not reuse stale audio",
+      "status": "passed",
+      "durationMs": 480
+    },
+    {
+      "title": "page, honest untrained state, storage recovery and narrow layout",
+      "status": "passed",
+      "durationMs": 715
+    },
+    {
+      "title": "storage error never leaves a stale saved indicator",
+      "status": "passed",
+      "durationMs": 300
+    },
+    {
+      "title": "generated WAV decoding enters the real shared model pipeline without an upload",
+      "status": "passed",
+      "durationMs": 1593
+    },
+    {
+      "title": "five synthetic-microphone capture cycles release tracks",
+      "status": "passed",
+      "durationMs": 15633
+    },
+    {
+      "title": "pending permission cancels and late granted tracks are released",
+      "status": "passed",
+      "durationMs": 260
+    },
+    {
+      "title": "denied, missing and busy-device adapters recover without reload",
+      "status": "passed",
+      "durationMs": 211
+    },
+    {
+      "title": "real pretrained embedding and synthetic head train/store/restore plumbing",
+      "status": "passed",
+      "durationMs": 4619
+    },
+    {
+      "title": "offline prepared shell/base survives a new page with network unavailable",
+      "status": "passed",
+      "durationMs": 1743
+    },
+    {
+      "title": "full browser restart offline restores synthetic head and runs real inference",
+      "status": "passed",
+      "durationMs": 3406
+    }
+  ]
+}

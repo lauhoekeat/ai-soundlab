@@ -1,0 +1,13 @@
+node_modules/
+poc/dist/
+poc/test-results/
+poc/playwright-report/
+poc/public/models/
+poc/data/
+*.wav
+*.mp3
+*.webm
+*.ogg
+*.m4a
+*.flac
+.env*

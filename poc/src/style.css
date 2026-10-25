@@ -1,0 +1,8 @@
+:root {font: 16px/1.5 system-ui, sans-serif; color: #172b4d; background: #f7f8fa;}
+body {margin: 0;} main {max-width: 1000px; margin: auto; padding: 24px;}
+h1 {font-size: 28px;} h2 {font-size: 20px;} section {background: white; padding: 16px; margin: 16px 0; border: 1px solid #bcc5ce;}
+button {min-height: 44px; margin: 4px; padding: 8px 14px; font: inherit; cursor: pointer;}
+label {display: block; padding: 8px 0;} input {max-width: 100%; font: inherit;}
+pre {white-space: pre-wrap; overflow-wrap: anywhere; background: #eef1f5; padding: 12px; max-height: 400px; overflow: auto;}
+:focus-visible {outline: 3px solid #006b68; outline-offset: 2px;}
+@media(max-width: 500px) {main {padding: 12px;} button {display: block; width: 100%; margin: 8px 0;} section {padding: 12px;}}

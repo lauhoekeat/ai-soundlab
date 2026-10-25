@@ -1,5 +1,11 @@
 # Codex-ready handoff
 
+Update 25 October 2026: the owner has now explicitly approved the bounded technical POC only. See docs/approvals.md and docs/evidence/poc-2026-10-25.md. Statements below about no POC approval describe the original 24 October handoff, not the updated approval state. Product implementation, visual selection and deployment remain unapproved.
+
+Later 25 October: four actual M4A recordings ingested, file/base-embedding path checked online and offline, 20 unit/11 browser tests passed. See docs/evidence/adult-intake-2026-10-25.md for source counts, missing background/independent test data and next batch. No adult object head is trained and no accuracy gate has passed.
+
+Latest 25 October: five further recordings supplied; owner clarified mixed fan/feet/talking and shower as two non-target-noise sources. Eight total sources trained an exploratory actual head; original Unknown excluded from fitting. Fit replay and actual-head offline restart passed, independent G2 unrun. See docs/evidence/first-fit-2026-10-25.md for current state; the no-head statements above/below are historical. Model lives in an isolated local profile, not the user's open tab; source audio and model binaries are not in Git. Product/deployment unapproved.
+
 ## Current state
 
 Planning delivered on 24 October 2026. Private repository: https://github.com/lauhoekeat/ai-soundlab. Authenticated connector and local GitHub CLI identity were verified as lauhoekeat. The connector exposed no repository-create tool in this session; an already-authenticated GitHub CLI created the repository. No additional sign-in or one-time setup was required. Planning documents and scoped issues are the deliverable; there is no application, trained model, tested UI, hosted site or measured performance.

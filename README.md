@@ -1,10 +1,10 @@
 # AI SoundLab — Misi Detektif Bunyi
 
-**Status: PLANNING ONLY · 24 October 2026 · Asia/Kuala_Lumpur**
+**Status: bounded technical POC approved · 25 October 2026 · Asia/Kuala_Lumpur**
 
 A proposed Year 4 science experience in which pupils investigate a school's mysterious sounds, test explanations, and design a quieter learning space. The competition category is Bahan Interaktif PdP Berbantukan AI, Selangor 2026.
 
-**No application, prototype, model training, installation, deployment or runtime tests have been performed.** This repository contains the reviewable plan. Repository setup and planning issue creation are authorized. Implementation requires the owner's explicit approval.
+The 24 October planning baseline is preserved in Git history. The owner approved only the six-hour technical POC on 25 October; see [approval ledger](docs/approvals.md). A developer diagnostic harness is implemented and tested in `poc/`. Full product development, student UI and deployment remain unapproved. See [POC instructions](poc/README.md), [initial software checkpoint](docs/evidence/poc-2026-10-25.md), [first intake](docs/evidence/adult-intake-2026-10-25.md) and [latest actual first-fit report](docs/evidence/first-fit-2026-10-25.md). Nine M4A sources are ingested; eight trained the first exploratory head. Independent object accuracy remains unmeasured.
 
 ## Read in this order
 

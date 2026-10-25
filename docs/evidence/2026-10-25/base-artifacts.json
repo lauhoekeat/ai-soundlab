@@ -1,0 +1,27 @@
+{
+  "source": "https://storage.googleapis.com/tfjs-models/tfjs/speech-commands/v0.4/browser_fft/18w/",
+  "retrievedAt": "2026-10-25T09:14:44.600Z",
+  "licenseStatus": "Base-weight redistribution terms require owner review; local diagnostic use only; not committed.",
+  "artifacts": [
+    {
+      "path": "/models/base/model.json",
+      "bytes": 5466,
+      "sha256": "be053f904fe26d1fab2be824d943e936d9f04c9ea3d238d3c58fa2a6225b1ef7"
+    },
+    {
+      "path": "/models/base/group1-shard1of2",
+      "bytes": 4194304,
+      "sha256": "79b7ef9d7577b333ee39b0d6e8dfebdb03be559a645bc389307ef84da414a30b"
+    },
+    {
+      "path": "/models/base/group1-shard2of2",
+      "bytes": 1680432,
+      "sha256": "129b9a7d501f81e62710d494efcba67ed98b3f3032dd28d7fe20cbc8cd5bee1f"
+    },
+    {
+      "path": "/models/base/metadata.json",
+      "bytes": 203,
+      "sha256": "06f92997a0f6b3e5f11d70251222350f1e0f6717280f7edd151d4001482665ac"
+    }
+  ]
+}

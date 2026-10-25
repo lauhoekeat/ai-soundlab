@@ -1,0 +1,502 @@
+{
+  "date": "2026-10-25T09:29:07.642Z",
+  "scope": "Actual adult recordings: decode/excerpt/base-embedding only; no trained head, predictions, holdout or accuracy",
+  "provenance": {
+    "adultProvided": true,
+    "sameDevice": true,
+    "sameRoom": true,
+    "sessionAndExactDeviceUnconfirmed": true,
+    "unknownContains": "bed taps, head taps and intentional adult random voice; no transcription or identity inference"
+  },
+  "environment": {
+    "browser": "145.0.7632.6",
+    "mode": "headless Chromium, local files only"
+  },
+  "sources": [
+    {
+      "sourceId": "source-01",
+      "label": "clap",
+      "sha256": "a4bf9efd5bb5f50762c9d7750dc826cb6f482387568b7e0a4e5fbdd4400d792f",
+      "bytes": 72304,
+      "sourceSeconds": 2.7717913832199548,
+      "decodedSampleRate": 44100,
+      "decodedChannels": 2,
+      "kind": "file-intake",
+      "source": "file",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 2.7717913832199548,
+        "startSeconds": 0,
+        "usedSeconds": 2.7717913832199548,
+        "paddedSeconds": 0.22820861678004536,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "rms": 0.006260494982017657,
+      "clipping": 0,
+      "features": {
+        "embeddingWindows": 3,
+        "dimensions": [
+          2000,
+          2000,
+          2000
+        ],
+        "finite": true,
+        "embeddingNorms": [
+          23.136622786234412,
+          35.495270554808926,
+          18.993452100620132
+        ],
+        "warmEmbeddingMs": [
+          148.80000000074506,
+          138,
+          131.19999999925494,
+          129.59999999776483,
+          127.5
+        ],
+        "headTrained": false,
+        "classPredictionsProduced": false,
+        "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1"
+      },
+      "parentRecordingCount": 1
+    },
+    {
+      "sourceId": "source-02",
+      "label": "pencil-tap",
+      "sha256": "e4f7657cfed9b64d5064f48413f118d0aea9bbb702bfdc57075a06cfdaf3dc29",
+      "bytes": 106227,
+      "sourceSeconds": 4.089024943310657,
+      "decodedSampleRate": 44100,
+      "decodedChannels": 2,
+      "kind": "file-intake",
+      "source": "file",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 4.089024943310657,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 1.0890249433106576,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "rms": 0.0019963483878278846,
+      "clipping": 0,
+      "features": {
+        "embeddingWindows": 3,
+        "dimensions": [
+          2000,
+          2000,
+          2000
+        ],
+        "finite": true,
+        "embeddingNorms": [
+          20.8200276763597,
+          89.41098694649227,
+          95.93760843645337
+        ],
+        "warmEmbeddingMs": [
+          141.30000000074506,
+          135,
+          128.90000000223517,
+          128.29999999701977,
+          139.80000000074506
+        ],
+        "headTrained": false,
+        "classPredictionsProduced": false,
+        "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1"
+      },
+      "parentRecordingCount": 1
+    },
+    {
+      "sourceId": "source-03",
+      "label": "paper-rustle",
+      "sha256": "ade5173f5b1f3ab6d7e1f6e669e46f584684b525234856f5e8486684de72785d",
+      "bytes": 96261,
+      "sourceSeconds": 3.69984126984127,
+      "decodedSampleRate": 44100,
+      "decodedChannels": 2,
+      "kind": "file-intake",
+      "source": "file",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 3.69984126984127,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0.6998412698412698,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "rms": 0.011145542705237797,
+      "clipping": 0,
+      "features": {
+        "embeddingWindows": 3,
+        "dimensions": [
+          2000,
+          2000,
+          2000
+        ],
+        "finite": true,
+        "embeddingNorms": [
+          18.110722061665644,
+          37.51114424461797,
+          28.227303061838633
+        ],
+        "warmEmbeddingMs": [
+          151.19999999925494,
+          124.20000000298023,
+          129.29999999701977,
+          145.40000000223517,
+          141.09999999776483
+        ],
+        "headTrained": false,
+        "classPredictionsProduced": false,
+        "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1"
+      },
+      "parentRecordingCount": 1
+    },
+    {
+      "sourceId": "source-04",
+      "label": "unknown",
+      "sha256": "c55343829bb2057de20d649d8c90477a231525a7120798ad40cab0cf18d23ee0",
+      "bytes": 213823,
+      "sourceSeconds": 8.306643990929706,
+      "decodedSampleRate": 44100,
+      "decodedChannels": 2,
+      "kind": "file-intake",
+      "source": "file",
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 8.306643990929706,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 5.306643990929706,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "rms": 0.015466549094165316,
+      "clipping": 0,
+      "features": {
+        "embeddingWindows": 3,
+        "dimensions": [
+          2000,
+          2000,
+          2000
+        ],
+        "finite": true,
+        "embeddingNorms": [
+          25.746819859930337,
+          28.359812701820886,
+          32.284910272834296
+        ],
+        "warmEmbeddingMs": [
+          156.10000000149012,
+          122.29999999701977,
+          140.20000000298023,
+          128.29999999701977,
+          141.20000000298023
+        ],
+        "headTrained": false,
+        "classPredictionsProduced": false,
+        "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1"
+      },
+      "parentRecordingCount": 1
+    }
+  ],
+  "independentHoldoutEvents": 0,
+  "backgroundTrainingSources": 0,
+  "explicitCrop": {
+    "kind": "file-intake",
+    "source": "file",
+    "selection": {
+      "kind": "file-excerpt",
+      "sourceSeconds": 3.69984126984127,
+      "startSeconds": 0.5,
+      "usedSeconds": 3,
+      "paddedSeconds": 0,
+      "omittedBeforeSeconds": 0.5,
+      "omittedAfterSeconds": 0.19984126984126985,
+      "outputSeconds": 3,
+      "independentSourceEventsAdded": 0
+    },
+    "rms": 0.011142233361995834,
+    "clipping": 0
+  },
+  "invalidOffsetRejected": true,
+  "errors": [],
+  "horizontalOverflow": false,
+  "warmEmbeddingMs": {
+    "n": 20,
+    "p95": 151.19999999925494,
+    "definition": "5 base embedding passes per source, 20 total; excludes decode, head and policy; not G3 end-to-end inference"
+  },
+  "allRequestsLocalGet": true,
+  "requests": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/main-CxhLuyXd.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/excerpt-C_fBXC4d.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/main-CvuSE6yH.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/tests/fixture.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/diagnostic-Cg1Vvx2P.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/excerpt-C_fBXC4d.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/main-CxhLuyXd.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/excerpt-C_fBXC4d.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/main-CvuSE6yH.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/tests/fixture.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/diagnostic-Cg1Vvx2P.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/excerpt-C_fBXC4d.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/main-CxhLuyXd.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/excerpt-C_fBXC4d.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/main-CvuSE6yH.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/tests/fixture.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/diagnostic-Cg1Vvx2P.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/excerpt-C_fBXC4d.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/main-CxhLuyXd.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/excerpt-C_fBXC4d.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/main-CvuSE6yH.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/tests/fixture.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/diagnostic-Cg1Vvx2P.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/excerpt-C_fBXC4d.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/main-CxhLuyXd.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/excerpt-C_fBXC4d.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/main-CvuSE6yH.css"
+    }
+  ],
+  "codeCommit": "fd9f00dec9290458304e7c4268cd3693251c3885",
+  "distinctParentRecordings": 4,
+  "sourceIndependenceConfirmed": false
+}
