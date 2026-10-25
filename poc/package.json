@@ -1,0 +1,16 @@
+{
+  "name": "ai-soundlab-technical-poc",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "assets": "node scripts/fetch-model.mjs",
+    "test": "vitest run",
+    "test:browser": "playwright test"
+  },
+  "dependencies": {"@tensorflow/tfjs": "4.22.0", "fft.js": "4.0.4"},
+  "devDependencies": {"vite": "8.3.5", "typescript": "5.9.3", "vitest": "4.1.12", "@playwright/test": "1.58.2"}
+}

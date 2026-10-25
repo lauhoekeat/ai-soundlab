@@ -1,5 +1,7 @@
 # Codex-ready handoff
 
+Update 25 October 2026: the owner has now explicitly approved the bounded technical POC only. See docs/approvals.md and docs/evidence/poc-2026-10-25.md. Statements below about no POC approval describe the original 24 October handoff, not the updated approval state. Product implementation, visual selection and deployment remain unapproved.
+
 ## Current state
 
 Planning delivered on 24 October 2026. Private repository: https://github.com/lauhoekeat/ai-soundlab. Authenticated connector and local GitHub CLI identity were verified as lauhoekeat. The connector exposed no repository-create tool in this session; an already-authenticated GitHub CLI created the repository. No additional sign-in or one-time setup was required. Planning documents and scoped issues are the deliverable; there is no application, trained model, tested UI, hosted site or measured performance.

@@ -8,3 +8,4 @@ All records are proposed planning decisions, not implemented facts. Accept or su
 | [0002](0002-ai-boundary.md) | Local trained classifier; separate rules/simulations |
 | [0003](0003-offline-privacy.md) | Versioned offline assets and memory-only capture |
 | [0004](0004-assessment-design.md) | Evidence-first assessment and distinct mission workspaces |
+| [0005](0005-poc-diagnostic-boundary.md) | Approved technical diagnostic scope and candidate preprocessing |
