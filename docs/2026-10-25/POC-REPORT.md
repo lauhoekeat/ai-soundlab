@@ -31,3 +31,10 @@ Expected v4 concept sequence: vibration, vibration, evidence, relative_level, di
 4. Hosted backend requires Cloudflare authentication/setup or an explicitly chosen alternative preserving strict quotas. GitHub Pages hosts only the frontend. See ARCHITECTURE-PLAIN.md and SETUP.md. Owner authorized source-public/Pages publication; no Sites service was created.
 
 No new product permission is needed once the active measured gates pass: owner already authorized conditional continuation. Do not request duplicate phase approval based on historical documents.
+
+## Repository and deployment evidence
+
+- Public source authorized by owner, verified PUBLIC; provider-key history scan passed before visibility change. Local server env remains ignored and untracked.
+- [PR #18](https://github.com/lauhoekeat/ai-soundlab/pull/18) contains planning/POC commits and was merged after both CI runs passed. Merge SHA `0c5c85b2bd4be270ac5f404de08520ffb3a2b7b9`.
+- [Pages workflow](https://github.com/lauhoekeat/ai-soundlab/actions/runs/40201362546) completed successfully on 25 October 2026. Published diagnostic: https://lauhoekeat.github.io/ai-soundlab/ . Browser opened it and confirmed correct title, BM diagnostic sections and AI-selected-guidance disclosure.
+- Public diagnostic is not competition-ready: no hosted proxy URL configured, so production AI requests fail locally with an explicit setup message rather than contacting the visitor's loopback or exposing a key. Local microphone/storage can be tested on HTTPS independently. Product M2/M3, full BM/EN and badges remain gated.

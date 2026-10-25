@@ -17,3 +17,5 @@ Surface is a plain POC diagnostic, not a selected pupil visual design. In-app br
 | Console | No visible framework error overlay; full console instrumentation not obtained |
 
 Recorded screenshot: parent workspace outputs/poc-diagnostic-evidence.png, contains only synthetic adult data. No key, class access code or pupil data. The open diagnostic tab is retained for owner testing. Do not confuse this with pupil usability research or final design verification.
+
+Production verification: GitHub Pages deployment run 40201362546 succeeded; opened https://lauhoekeat.github.io/ai-soundlab/ in a new in-app tab. Correct page title, styled BM sections and v4 AI-selection disclosure confirmed. Screenshot saved to parent workspace outputs/published-diagnostic.png. No hosted AI endpoint configured; only local proxy AI has been verified. Public microphone physical-device checks requested from owner, not assumed passed.

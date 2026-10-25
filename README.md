@@ -2,6 +2,8 @@
 
 **ACTIVE STATUS · 25 October 2026: authorized secured OpenAI feedback POC.**
 
+[Live diagnostic](https://lauhoekeat.github.io/ai-soundlab/) · [POC pull request](https://github.com/lauhoekeat/ai-soundlab/pull/18). The diagnostic supports local recording and text storage; hosted AI proxy setup is still pending. Local live AI and 12 synthetic selection fixtures passed. Full four-mission product remains gated by teacher/device review and visual selection.
+
 Start with [active PRD/plan](docs/2026-10-25/README.md), [UX](docs/2026-10-25/UX.md), [architecture](docs/2026-10-25/ARCHITECTURE.md), [validation](docs/2026-10-25/VALIDATION.md), [science](docs/2026-10-25/SCIENCE.md), [risks](docs/2026-10-25/RISKS.md), [setup](SETUP.md) and [measured POC report](docs/2026-10-25/POC-REPORT.md). These supersede conflicting historical requirements below. Full pupil product is gated, not complete. No automatic sound identification; AI receives student text only.
 
 Node 22+: `npm ci`, `npm run dev`, `npm run proxy:dev`. Run `npm run check` before commits. Owner authorized public source and free Pages on 25 October. Never put an OpenAI key in Vite or GitHub. Hosted AI backend remains separate from Pages and requires deployment setup; local live AI has been verified.
