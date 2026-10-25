@@ -24,3 +24,7 @@ Chat reference: this AISoundLab continuation (original referenced planning chat 
 > 5. Document actual measurements, failures, limitations, model/data provenance and licensing.
 
 Owner also requires adult-created object sounds only, confirmation of target device, a dedicated branch/PR, honest measured evidence and a stop for product approval. On 25 October the owner replied: “Windows computer. Yes, i can provide adult-created clap, pencil-tap and paper rustle samples. Second device is also possible.” Exact browser and second-device hardware are not yet specified; no recording files have been supplied. Independent technical harness work may proceed; target-hardware and data-dependent gates remain pending.
+
+## 25 October 2026 — recording intake update
+
+Owner supplied four local files labelled clap, pencil tap, paper rustle and random unknown, and requested continued processing in this chat. Owner confirmed: “Yes. all four made by an adult on same device in same room. The random unknown is tapping the bed, tapping head, make adult random voice”. This permits local POC intake under the existing approval; it is not permission to publish recordings or begin product work. Browser/exact device and separate test provenance remain unconfirmed. Original files stay outside Git. See docs/evidence/adult-intake-2026-10-25.md for measured results.

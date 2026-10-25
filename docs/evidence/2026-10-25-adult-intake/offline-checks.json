@@ -1,0 +1,245 @@
+{
+  "scope": "Actual M4A file decoding and base embedding offline after full browser process restart; no trained object head or object prediction",
+  "date": "2026-10-25T09:29:11.923Z",
+  "browser": "145.0.7632.6",
+  "offline": true,
+  "browserProcessRestart": true,
+  "sources": [
+    {
+      "sourceId": "source-01",
+      "decodedSourceSeconds": 2.7717913832199548,
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 2.7717913832199548,
+        "startSeconds": 0,
+        "usedSeconds": 2.7717913832199548,
+        "paddedSeconds": 0.22820861678004536,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "dimensions": [
+        2000,
+        2000,
+        2000
+      ],
+      "finite": true,
+      "objectHeadPresent": false,
+      "objectInferencePerformed": false
+    },
+    {
+      "sourceId": "source-02",
+      "decodedSourceSeconds": 4.089024943310657,
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 4.089024943310657,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 1.0890249433106576,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "dimensions": [
+        2000,
+        2000,
+        2000
+      ],
+      "finite": true,
+      "objectHeadPresent": false,
+      "objectInferencePerformed": false
+    },
+    {
+      "sourceId": "source-03",
+      "decodedSourceSeconds": 3.69984126984127,
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 3.69984126984127,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0.6998412698412698,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "dimensions": [
+        2000,
+        2000,
+        2000
+      ],
+      "finite": true,
+      "objectHeadPresent": false,
+      "objectInferencePerformed": false
+    },
+    {
+      "sourceId": "source-04",
+      "decodedSourceSeconds": 8.306643990929706,
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 8.306643990929706,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 5.306643990929706,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "dimensions": [
+        2000,
+        2000,
+        2000
+      ],
+      "finite": true,
+      "objectHeadPresent": false,
+      "objectInferencePerformed": false
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/tests/fixture.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/diagnostic-Cg1Vvx2P.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/excerpt-C_fBXC4d.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    }
+  ],
+  "allRequestsLocalGet": true,
+  "codeCommit": "fd9f00dec9290458304e7c4268cd3693251c3885"
+}

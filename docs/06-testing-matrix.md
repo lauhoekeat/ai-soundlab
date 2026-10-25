@@ -1,6 +1,6 @@
 # QA matrix and release criteria
 
-This is the original product QA plan. Current POC software checks and still-unrun physical-device/model/teaching criteria are distinguished in the [25 October checkpoint](evidence/poc-2026-10-25.md). Product feature QA remains NOT RUN. Tests trace to features F01–F09 and gates G1–G5. Evidence belongs in docs/evidence/ after implementation with date, build SHA, model/content versions and environment. Never commit real pupil data or audio. Use fixtures only for repeatable UI logic; real-device tests establish actual acoustic behavior.
+This is the original product QA plan. Current POC software/actual-file checks and still-unrun physical-device/model/teaching criteria are distinguished in the [25 October recording checkpoint](evidence/adult-intake-2026-10-25.md). Product feature QA remains NOT RUN. Tests trace to features F01–F09 and gates G1–G5. Evidence belongs in docs/evidence/ after implementation with date, build SHA, model/content versions and environment. Never commit real pupil data or audio. Use fixtures only for repeatable UI logic; real-device tests establish actual acoustic behavior.
 
 | ID | Area / trace | Method and representative cases | Pass criteria | Owner / stage |
 |---|---|---|---|---|
