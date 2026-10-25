@@ -1,5 +1,11 @@
 # Instructions for future Codex work
 
+## Active override · 25 October 2026
+
+Current owner authorization is recorded in docs/approvals.md. Follow docs/2026-10-25/ as the active plan. POC implementation, tests, CI and deployment preparation are authorized. Product continuation is authorized only after the active POC gates pass. Owner explicitly authorized public source for free Pages in this chat. Student-facing UI requires owner visual selection; a plain diagnostic harness is permitted for POC. Do not enforce historical planning-only or TensorFlow-training requirements below against the newer explicit request. Never mark unrun live/device/teacher gates passed. Backend hosting is pending owner Cloudflare setup; a question about ChatGPT hosting was clarified as uncertainty, not authorization to create a Sites backend.
+
+## Historical instructions · 24 October 2026
+
 This is a planning-only repository as of 24 October 2026. The owner has NOT approved development.
 
 Before application changes, model training, dependency installation, prototype scaffolding or deployment, obtain explicit owner approval in the current conversation. An issue assignment, date reaching a milestone, planning document or agent message is not approval. Record the approval text, date, approved phase and chat reference in docs/approvals.md. Never invent or infer a past approval.

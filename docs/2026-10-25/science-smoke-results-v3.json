@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-25T14:06:18.335Z",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "syntheticAdultFixturesOnly": true,
+  "teacherSignoff": false,
+  "results": [
+    {
+      "mission": "vibration",
+      "language": "bm",
+      "observation": "Pembaris bergerak ulang-alik selepas dipetik.",
+      "explanation": "Getaran menghasilkan bunyi.",
+      "mitigation": "",
+      "httpStatus": 200,
+      "latencyMs": 1832,
+      "feedback": "Bagus, kamu perhatikan pembaris bergerak ulang-alik, itu menunjukkan getaran. Betul, bunyi dihasilkan apabila objek bergetar. Apa kamu rasa yang menyebabkan pembaris bergerak selepas dipetik?",
+      "source": "openai",
+      "promptVersion": "sound-science-v3"
+    },
+    {
+      "mission": "vibration",
+      "language": "en",
+      "observation": "The ruler moved back and forth after plucking.",
+      "explanation": "Sound is made only by air, not the ruler.",
+      "mitigation": "",
+      "httpStatus": 200,
+      "latencyMs": 1863,
+      "feedback": "You observed the ruler vibrating, which is great because sound is made by vibrating objects. However, sound is not made only by air; the vibrating ruler causes the air around it to vibrate too, producing sound. What do you think happens to the sound if the ruler stops vibrating?",
+      "source": "openai",
+      "promptVersion": "sound-science-v3"
+    },
+    {
+      "mission": "vibration",
+      "language": "bm",
+      "observation": "Graf gelombang berubah apabila saya bercakap.",
+      "explanation": "Graf ini membuktikan meja bergetar.",
+      "mitigation": "",
+      "httpStatus": 502,
+      "latencyMs": 5635,
+      "error": "ai_response_invalid"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "ai-soundlab",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm test && npm run build && node scripts/check-bundle.mjs",
+    "proxy:dev": "wrangler dev --config proxy/wrangler.jsonc --ip 127.0.0.1",
+    "proxy:dry": "wrangler deploy --config proxy/wrangler.jsonc --dry-run",
+    "proxy:deploy": "wrangler deploy --config proxy/wrangler.jsonc",
+    "test:live": "node scripts/live-gate.mjs",
+    "test:runtime": "wrangler deploy --config proxy/wrangler.jsonc --dry-run --outdir work/worker && node scripts/runtime-gate.mjs"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261025.1",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "miniflare": "^5.20261019.2-beta",
+    "typescript": "^5.9.0",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5",
+    "wrangler": "4.152.0"
+  },
+  "overrides": {
+    "undici": "^7.30.1"
+  }
+}
