@@ -2,6 +2,38 @@ import {test, expect, chromium} from '@playwright/test';
 import {mkdtemp} from 'node:fs/promises';
 import {join} from 'node:path';
 import {tmpdir} from 'node:os';
+function generatedWave(seconds: number) {
+  const samples = Math.round(seconds * 44100), bytes = Buffer.alloc(44 + samples * 4);
+  bytes.write('RIFF',0); bytes.writeUInt32LE(bytes.length-8,4); bytes.write('WAVEfmt ',8);bytes.writeUInt32LE(16,16);
+  bytes.writeUInt16LE(3,20);bytes.writeUInt16LE(1,22);bytes.writeUInt32LE(44100,24);bytes.writeUInt32LE(44100*4,28);bytes.writeUInt16LE(4,32);bytes.writeUInt16LE(32,34);bytes.write('data',36);bytes.writeUInt32LE(samples*4,40);
+  for(let i=0;i<samples;i++)bytes.writeFloatLE(.2*Math.sin(2*Math.PI*440*i/44100),44+i*4);
+  return bytes;
+}
+test('file excerpt records padding/cropping and persists numeric provenance only', async ({page}) => {
+  await page.goto('/');
+  await page.locator('#file').setInputFiles({name:'synthetic-short.wav',mimeType:'audio/wav',buffer:generatedWave(2.77)});
+  await expect(page.locator('#excerpt-status')).toContainText('zero-padded 0.230s');
+  await page.getByRole('button',{name:'Run trained object classifier'}).click();
+  await expect(page.locator('#log')).toContainText('No object classifier is trained');
+  await page.locator('#excerpt-start').fill('0.5');await page.getByRole('button',{name:'Apply 3-second file excerpt'}).click();
+  await expect(page.locator('#excerpt-status')).toContainText('start 0.500s');
+  await page.getByRole('button',{name:'Save numeric probe evidence'}).click();await expect(page.locator('#save-status')).toContainText('Saved numeric');
+  await page.reload();await page.getByRole('button',{name:'Reload evidence'}).click();
+  await expect(page.locator('#result')).toContainText('file-intake');
+  const record=JSON.parse(await page.locator('#result').textContent() ?? '{}');
+  expect(record.evidence.some((e:any)=>e.selection?.startSeconds===.5 && e.selection.independentSourceEventsAdded===0)).toBe(true);
+  expect(JSON.stringify(record)).not.toContain('synthetic-short.wav');
+  expect(JSON.stringify(record)).not.toContain('base64');
+});
+test('long-file selection and invalid offsets do not reuse stale audio', async ({page}) => {
+  await page.goto('/');
+  await page.locator('#file').setInputFiles({name:'synthetic-long.wav',mimeType:'audio/wav',buffer:generatedWave(4.1)});
+  await expect(page.locator('#excerpt-status')).toContainText('omitted after 1.100s');
+  await page.locator('#excerpt-start').fill('100');await page.getByRole('button',{name:'Apply 3-second file excerpt'}).click();
+  await expect(page.locator('#log')).toContainText('beyond the end');
+  await page.getByRole('button',{name:'Run trained object classifier'}).click();
+  await expect(page.locator('#log')).toContainText('Capture or choose a local file first');
+});
 test('page, honest untrained state, storage recovery and narrow layout', async ({page}) => {
   const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
   await page.goto('/'); await expect(page).toHaveTitle('AI SoundLab — technical POC');

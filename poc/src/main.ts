@@ -5,9 +5,12 @@ import {Classifier} from './model';
 import {LABELS, POLICY, summarize, type Label} from './policy';
 import {sha256, testReadiness, validateDataset, type Dataset, type EventRecord} from './dataset';
 import {readRecord, writeRecord} from './store';
+import {selectExcerpt} from './excerpt';
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const classifier = new Classifier(), capture = new Capture();
 let pcm: Float32Array | undefined, source: 'live' | 'file' | undefined, data: Dataset | undefined;
+let originalFilePcm: Float32Array | undefined;
+let selection: ReturnType<typeof selectExcerpt>['selection'] | undefined;
 let lastResult: unknown, manifestHash: string | undefined;
 let busy = false, request = 0;
 const logs: string[] = [], evidence: unknown[] = [];
@@ -19,7 +22,7 @@ function action(id: string, callback: () => Promise<void>) {
     try {await callback();} catch (error) {log(`${(error as Error).name}: ${(error as Error).message}`);} finally {busy = false;}
   });
 }
-function clearAudio() {request++; capture.stop(); pcm = undefined; source = undefined; $('capture-status').textContent = 'Stopped — microphone inactive.';}
+function clearAudio() {request++; capture.stop(); pcm = undefined; originalFilePcm = undefined; selection = undefined; source = undefined; $('capture-status').textContent = 'Stopped — microphone inactive.';}
 $('stop').onclick = clearAudio;
 document.addEventListener('visibilitychange', () => {if (document.hidden) clearAudio();});
 window.addEventListener('pagehide', clearAudio);
@@ -30,12 +33,14 @@ action('restore', async () => {
   await classifier.restoreHead(meta); $('model-status').textContent = 'Stored object head restored; empirical accuracy still requires gate evidence.';
 });
 action('capture', async () => {
-  const id = ++request; pcm = undefined; source = undefined;
+  const id = ++request; pcm = undefined; originalFilePcm = undefined; selection = undefined; source = undefined;
   $('capture-status').textContent = 'Permission pending / capturing for 3 seconds. Stop remains available.';
   try {
     const recording = await capture.record();
     if (id !== request) return;
-    pcm = recording; source = 'live'; $('result').textContent = JSON.stringify({source, seconds: pcm.length / 44100, ...quality(pcm)}, null, 2);
+    pcm = recording; source = 'live';
+    const intake = {kind: 'capture-intake', source, seconds: pcm.length / 44100, ...quality(pcm)};
+    evidence.push(intake); $('result').textContent = JSON.stringify(intake, null, 2);
   } finally {$('capture-status').textContent = 'Stopped — microphone inactive.';}
 });
 $<HTMLInputElement>('file').onchange = async () => {
@@ -43,13 +48,23 @@ $<HTMLInputElement>('file').onchange = async () => {
   clearAudio(); const id = request, file = $<HTMLInputElement>('file').files?.[0];
   if (!file) return;
   busy = true;
-  try {const decoded = await decode(file); if (id !== request) return; pcm = decoded; source = 'file'; $('result').textContent = JSON.stringify({source, seconds: pcm.length / 44100, ...quality(pcm)}, null, 2);} catch (e) {log((e as Error).message);} finally {busy = false;}
+  try {const decoded = await decode(file); if (id !== request) return; originalFilePcm = decoded; $<HTMLInputElement>('excerpt-start').value = '0'; applyFileExcerpt();} catch (e) {log((e as Error).message);} finally {busy = false;}
 };
+function applyFileExcerpt() {
+  if (!originalFilePcm) throw Error('Choose a local audio file first.');
+  request++; pcm = undefined; selection = undefined;
+  const excerpt = selectExcerpt(originalFilePcm, $<HTMLInputElement>('excerpt-start').valueAsNumber);
+  pcm = excerpt.pcm; selection = excerpt.selection; source = 'file';
+  $('excerpt-status').textContent = `Source ${selection.sourceSeconds.toFixed(3)}s; start ${selection.startSeconds.toFixed(3)}s; used ${selection.usedSeconds.toFixed(3)}s; zero-padded ${selection.paddedSeconds.toFixed(3)}s; omitted after ${selection.omittedAfterSeconds.toFixed(3)}s. Same parent recording, not an independent event.`;
+  const intake = {kind: 'file-intake', source, selection, ...quality(pcm)};
+  evidence.push(intake); $('result').textContent = JSON.stringify(intake, null, 2);
+}
+action('excerpt', async () => applyFileExcerpt());
 action('classify', async () => {
   if (!pcm) throw Error('Capture or choose a local file first.');
   const id = request, result = await classifier.predict(pcm);
   if (id !== request) return;
-  lastResult = {source, ...result}; $('result').textContent = JSON.stringify(lastResult, null, 2);
+  lastResult = {source, ...(selection ? {selection} : {}), ...result}; $('result').textContent = JSON.stringify(lastResult, null, 2);
   evidence.push(lastResult);
 });
 $<HTMLInputElement>('manifest').onchange = async () => {

@@ -76,3 +76,11 @@ npm audit
 Browser tests use Chromium headless with synthetic media and injected errors. They verify plumbing, not physical microphones. Browser plugin was not available in this session; regular Playwright is the recorded fallback under the frontend testing skill. Test screenshots and browser profiles are ignored locally; sanitized numeric results are copied to `docs/evidence/` for review.
 
 Known design limitation: `blackman-dB-no-smoothing-radix2-43x232-v1` is not bit-equivalent to pretrained AnalyserNode smoothing. Three temporal windows are correlated and cover repeated actions; they are not independent trials. The transfer candidate may fail single-transient or noise tests. Any preprocessing change reopens model validation. No real object model/accuracy is provided until adult data is trained and independently evaluated.
+
+## M4A probe update — 25 October
+
+The file probe now accepts WAV or M4A supported by the browser decoder. It shows original decoded duration and lets the user choose an explicit three-second excerpt start. Short endings are zero-padded; crop/padding quantities are displayed and stored as numeric evidence. Raw files remain unchanged. M4A decoding was measured on the supplied files in Windows headless Chromium; do not assume every browser/codec combination works.
+
+This is **probe intake only**. The training manifest still requires independent, explicitly prepared three-second WAV events; an excerpt does not become a new independent source or automatically enter train/test. Four initial files (one per class/unknown) do not meet the training/evaluation protocol. See the [adult intake report](../docs/evidence/adult-intake-2026-10-25.md).
+
+If the same freshly rebuilt preview is already running locally, set `$env:POC_REUSE_SERVER='1'` before `npm run test:browser`; otherwise tests start their own server. This reuse is opt-in and should not be used against stale/unrelated pages. Normal test mode still refuses an occupied port.
