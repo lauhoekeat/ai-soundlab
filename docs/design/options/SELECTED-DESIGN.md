@@ -1,6 +1,6 @@
 # Selected pupil interface · Concept 1
 
-Selected by owner response “1”, 25 October 2026, current Codex chat. Exact target [concept-1.png](concept-1.png), native size 1448×1086; generated result `exec-1649a781-a109-447a-b1c1-af4b3a1e3b54.png`. The earlier draft with fictional class percentages is excluded. Image inspected directly at original detail. This document prepares implementation without claiming the product gate is passed.
+Selected by owner response “1”, 25 October 2026, current Codex chat. Exact target [concept-1.png](concept-1.png), native size 1448×1086; generated result `exec-1649a781-a109-447a-b1c1-af4b3a1e3b54.png`. The earlier draft with fictional class percentages is excluded. Image inspected directly at original detail. This specification preceded implementation. Current result: implemented and published; see ../../../design-qa.md and ../../2026-10-25/RELEASE-REPORT.md for verification and limits.
 
 ## Interpretation of the board
 

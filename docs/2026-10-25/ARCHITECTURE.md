@@ -1,6 +1,6 @@
 # Architecture and decision record
 
-**Current refinement:** [ADR-0006](ADR-0006-grounded-feedback.md) replaces free-form model prose with explicitly labelled AI selection of a curriculum fact/question and a verified learner excerpt. Schema is validated server-side; failures never fall back to a pretend AI answer. Owner has now authorized public GitHub source for Pages. Cloudflare hosted setup remains pending; see [plain-language architecture](ARCHITECTURE-PLAIN.md).
+**Current refinement:** [ADR-0006](ADR-0006-grounded-feedback.md) replaces free-form model prose with explicitly labelled AI selection of a curriculum fact/question and a verified learner excerpt. Schema is validated server-side; failures never fall back to a pretend AI answer. Owner has now authorized public GitHub source for Pages. Cloudflare hosted setup is complete and both public-app AI paths passed; see [plain-language architecture](ARCHITECTURE-PLAIN.md).
 
 ## ADR-0005: secured pedagogical feedback replaces local classification
 
@@ -26,7 +26,7 @@ Daily/monthly request limits plus fixed input/output ceilings bound exposure, bu
 
 ## Deployment and CI
 
-GitHub Actions: clean install, types, domain/security tests, build, bundle-secret check, Worker dry run. Pages workflow is manual with production environment and only public `VITE_PROXY_URL` variable; no OpenAI secret in GitHub at all. Worker deployment is separate, via authenticated Cloudflare CLI and Workers secrets. No Cloudflare login was initially available. Private repo retained; free Pages generally needs public repo unless account has an eligible paid plan. Resolve entitlement/visibility without silently publishing source.
+GitHub Actions: clean install, types, domain/security tests, build, bundle-secret check, Worker dry run. Pages workflow is manual with production environment and only public `VITE_PROXY_URL` variable; no OpenAI secret in GitHub at all. Worker deployment is separate, via authenticated Cloudflare CLI and Workers secrets. The owner authorized public source for free Pages and completed Cloudflare login. The repository is public, Pages is deployed, and server-only secrets are held by the Worker. See RELEASE-REPORT.md for deployment evidence.
 
 ## Threat review
 

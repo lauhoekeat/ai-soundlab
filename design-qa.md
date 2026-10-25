@@ -1,6 +1,6 @@
 # Concept 1 implementation QA · 25 October 2026
 
-**final result: passed**
+final result: passed
 
 Scope: fidelity to the selected visual system and main workspace composition, with functional-state extensions explicitly specified in docs/design/options/SELECTED-DESIGN.md. This is a working four-mission app, not a raster reproduction of the multi-screen concept board. No claim of pixel-identical board reproduction or pupil usability research.
 
@@ -46,3 +46,7 @@ Security/logic: 71 automated tests, strict types/build/bundle checks and 50-way 
 ## Remaining verification limits
 
 The owner reported physical POC device checks and Science approval. Exact physical device/browser versions and separate packet traces were not supplied. These browser viewport checks cover the final frontend; no new physical-device or pupil-study outcome is claimed. Organizer eligibility, final submission rules and classroom permission remain teacher actions.
+
+## Public release confirmation · 26 October 2026
+
+Pages deployment 40209220698 succeeded for merge 6f90ce5. Both public-browser AI interactions rendered live v4 guidance (M1 BM, M4 EN), saved evidence, and produced no inspected console errors/warnings. Final screenshot: parent outputs/published-product.png, captured from the live app in fresh BM student M1 state. Browser viewport override reset after capture.
