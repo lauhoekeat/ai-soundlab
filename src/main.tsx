@@ -1,4 +1,14 @@
 import { createRoot } from 'react-dom/client';
-import { Diagnostic } from './poc/Diagnostic';
-import './style.css';
-createRoot(document.getElementById('root')!).render(<Diagnostic />);
+import { lazy, Suspense } from 'react';
+import { Lab } from './lab/Lab';
+import '@fontsource/nunito-sans/latin-400.css';
+import '@fontsource/nunito-sans/latin-600.css';
+import '@fontsource/nunito-sans/latin-700.css';
+import '@fontsource/nunito-sans/latin-800.css';
+import '@fontsource/baloo-2/latin-600.css';
+import '@fontsource/baloo-2/latin-700.css';
+import '@fontsource/baloo-2/latin-800.css';
+const Diagnostic=lazy(()=>import('./poc/Diagnostic').then(m=>({default:m.Diagnostic})));
+const diagnostic=new URLSearchParams(location.search).has('diagnostic');
+if(diagnostic)void import('./style.css');
+createRoot(document.getElementById('root')!).render(diagnostic?<Suspense fallback={<p>AI SoundLab…</p>}><Diagnostic/></Suspense>:<Lab/>);

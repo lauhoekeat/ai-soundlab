@@ -1,5 +1,7 @@
 # Where the app runs
 
+**Current deployment:** GitHub Pages frontend at https://lauhoekeat.github.io/ai-soundlab/ → secured Cloudflare Worker at https://ai-soundlab-proxy.ai-soundlab.workers.dev → OpenAI API. Cloudflare sign-in was completed by owner; server secrets uploaded privately; both hosted learning interactions and eight hosted boundary checks passed. The earlier local-only status below records the initial POC context.
+
 1. **GitHub Pages** serves the app screens, simulations and local microphone functions.
 2. **A small proxy server** receives only bounded student text, checks class access and usage caps, then calls OpenAI.
 3. **OpenAI API** generates the pedagogical feedback. It does not host the app or the proxy. A ChatGPT subscription/chat is separate from this app's API use.

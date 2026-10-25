@@ -1,4 +1,4 @@
-name: Validate POC
+name: Validate AI SoundLab
 on: [push, pull_request]
 permissions:
   contents: read

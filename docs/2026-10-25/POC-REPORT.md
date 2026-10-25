@@ -2,15 +2,17 @@
 
 Technical POC implemented. Product continuation remains gated by human/device review. All evidence uses synthetic adult text; no pupil recordings/data collected.
 
+**Current decision: GO for product development**, 25 October 2026. Owner reported both teacher device and physical phone passed the requested audio checks, and Science-teacher review was approved. These resolve the development gate; final hosted integration and release regression remain open. This report distinguishes owner-reported evidence from checks observed by the agent.
+
 | Gate | Status | Evidence |
 |---|---|---|
 | G0 plan/authorization | PASS | Current user request recorded in docs/approvals.md; active plan and source mapping committed |
 | G1 secure runtime | AUTOMATED PASS | 63 tests, strict types/build/bundle checks, zero npm audit findings; actual local workerd boots; 50 concurrent durable reservations under cap 7 → exactly 7 accepted/43 rejected, fresh stub retains cap |
 | G2 two live AI interactions | LOCAL PASS | Owner configured existing ignored server key. Both M1/M4 real OpenAI calls succeeded. Current v4: 12/12 synthetic BM/EN fixtures HTTP 200, including both learning paths; 0.915–2.093 seconds in this small run |
-| G3 audio/devices/privacy | PARTIAL | Seven synthetic API lifecycle tests pass (five cycles, auto-stop, active abort, denied/pending/late permission, MIME/blob); no audio field accepted by proxy. Actual teacher/mobile browser recording and network trace pending |
-| G4 science | ENGINEERING REVIEW PASS; TEACHER PENDING | Exact BM source checked; initial unconstrained prose failed science expectations; v4 AI-selected bank chose expected concept for all 12 fixtures, including radar/dBFS/unheard audio injection. Bank/relevance requires teacher signoff; no broad accuracy claim |
-| G5 mobile/usability | PARTIAL | In-app narrow browser confirms teacher example/save/reload, M4 fields, preserved answers on AI unavailable; no physical mobile or pupil trial performed |
-| G6 continuation/release | NOT PASSED | Concept 1 selected; Pages diagnostic deployed. Physical-device/privacy checks, teacher review and hosted proxy setup remain pending |
+| G3 audio/devices/privacy | DEVELOPMENT PASS; TRACE FOLLOW-UP | Seven synthetic lifecycle tests pass. Owner reports teacher device and physical phone passed five cycles, playback and leave-page stop. No audio accepted by proxy schema. Device models/versions, denied flow on physical devices and separate network trace remain release follow-up |
+| G4 science | APPROVED BY OWNER-REPORTED TEACHER REVIEW | Exact BM source checked; v4 matched 12 concepts. Owner answered Science review “Reviewed and approved”; no broad accuracy claim or pupil outcome claim |
+| G5 mobile/usability | DEVELOPMENT PASS; PUPIL PILOT NOT RUN | Narrow browser software checks plus owner-reported physical-phone pass. No pupil trial or exact device-version evidence supplied |
+| G6 continuation/release | GO FOR PRODUCT; RELEASE PENDING | Concept 1 selected and development gates cleared by owner reports; hosted proxy/final product regression still required before competition-ready claim |
 
 Do not infer GO from mocks/builds. No environmental sound classification accuracy claim. No pupil data collected. Cloudflare login absent at initial check; GitHub authenticated as lauhoekeat; existing private repository reused, not recreated. Pages not configured at initial check.
 

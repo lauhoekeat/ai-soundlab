@@ -1,4 +1,4 @@
-name: Deploy Pages diagnostic
+name: Deploy AI SoundLab
 on:
   workflow_dispatch:
 permissions:
