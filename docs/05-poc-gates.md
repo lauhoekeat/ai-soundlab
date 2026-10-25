@@ -1,6 +1,6 @@
 # POC and decision gates
 
-All results are NOT RUN. No development is permitted until explicit POC approval. POC is capped at six focused hours; one two-hour recovery pass requires owner agreement if the cap is exhausted. A technical POC may use a minimal diagnostic harness after approval; a student-facing UI prototype additionally requires selected Product Design visuals. No full product scaffolding before POC review.
+Original gate definitions from the planning baseline follow. POC approval was granted on 25 October; see [approval](approvals.md) and [current measured checkpoint](evidence/poc-2026-10-25.md). Software-only partial evidence does not pass real-device or accuracy gates. POC is capped at six focused hours; one two-hour recovery pass requires owner agreement if the cap is exhausted. A technical POC may use a minimal diagnostic harness after approval; a student-facing UI prototype additionally requires selected Product Design visuals. No full product scaffolding before POC review.
 
 ## POC scope and deliverables
 

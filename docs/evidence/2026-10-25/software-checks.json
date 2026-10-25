@@ -1,0 +1,370 @@
+{
+  "scope": "SOFTWARE/SYNTHETIC EVIDENCE ONLY. No adult recordings, object accuracy or real-device mic gate established.",
+  "environment": {
+    "os": "Windows 11 Home Single Language 10.0.26200 x64",
+    "node": "24.14.0",
+    "npm": "11.9.0",
+    "browser": "Playwright Chromium headless 145.0.7632.6",
+    "viewports": [
+      "1366x768",
+      "390x844"
+    ],
+    "browserPlugin": "Absent; regular Playwright fallback per frontend testing skill"
+  },
+  "unitTests": {
+    "passed": 17,
+    "files": 3
+  },
+  "browserStats": {
+    "startTime": "2026-10-25T09:14:49.733Z",
+    "duration": 30657.002999999997,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "page, honest untrained state, storage recovery and narrow layout",
+      "status": "passed",
+      "durationMs": 641,
+      "attachments": []
+    },
+    {
+      "title": "storage error never leaves a stale saved indicator",
+      "status": "passed",
+      "durationMs": 353,
+      "attachments": []
+    },
+    {
+      "title": "generated WAV decoding enters the real shared model pipeline without an upload",
+      "status": "passed",
+      "durationMs": 1261,
+      "attachments": [
+        {
+          "name": "synthetic-wav-pipeline",
+          "data": {
+            "warning": "Generated float WAV only, not adult data",
+            "samples": 132300,
+            "maxEmbeddingDifference": 0,
+            "requests": [
+              {
+                "url": "http://127.0.0.1:4173/tests/fixture.html",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/assets/diagnostic-BtGB-4kO.js",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/assets/store-DYzbFKwA.js",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/manifest.json",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/model.json",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/group1-shard1of2",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/group1-shard2of2",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/metadata.json",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/model.json",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/group1-shard1of2",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/group1-shard2of2",
+                "method": "GET"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "five synthetic-microphone capture cycles release tracks",
+      "status": "passed",
+      "durationMs": 15501,
+      "attachments": [
+        {
+          "name": "synthetic-capture-cycles",
+          "data": {
+            "lengths": [
+              132864,
+              132864,
+              132864,
+              132736,
+              132736
+            ],
+            "ended": true,
+            "state": "stopped"
+          }
+        }
+      ]
+    },
+    {
+      "title": "pending permission cancels and late granted tracks are released",
+      "status": "passed",
+      "durationMs": 283,
+      "attachments": [
+        {
+          "name": "injected-permission-cancellation",
+          "data": {
+            "status": "AbortError",
+            "stops": 1,
+            "elapsed": 25.100000001490116
+          }
+        }
+      ]
+    },
+    {
+      "title": "denied, missing and busy-device adapters recover without reload",
+      "status": "passed",
+      "durationMs": 218,
+      "attachments": []
+    },
+    {
+      "title": "real pretrained embedding and synthetic head train/store/restore plumbing",
+      "status": "passed",
+      "durationMs": 5092,
+      "attachments": [
+        {
+          "name": "synthetic-pipeline-results",
+          "data": {
+            "warning": "Synthetic software plumbing only; no object accuracy evidence",
+            "embedding": [
+              2000,
+              2000,
+              2000
+            ],
+            "finite": true,
+            "baseLoadMs": 499.5,
+            "prediction": {
+              "mode": "actual-local-inference",
+              "label": "unknown",
+              "reason": "background",
+              "scores": [
+                [
+                  0.07765629142522812,
+                  0.37712064385414124,
+                  0.04300284385681152,
+                  0.5022202134132385
+                ],
+                [
+                  0.07765629142522812,
+                  0.37712064385414124,
+                  0.04300284385681152,
+                  0.5022202134132385
+                ],
+                [
+                  0.07765629142522812,
+                  0.37712064385414124,
+                  0.04300284385681152,
+                  0.5022202134132385
+                ]
+              ],
+              "quality": {
+                "rms": 0.14142135608528503,
+                "clipping": 0
+              },
+              "elapsedMs": 137.79999999701977,
+              "baseHash": "d3ab6f5622053cd0c1c3461c666d49d67ece63d94755dda6befd9b4547587c77",
+              "headHash": "58f8c60f855af66c28fc1697cfa7d20dabcf4b7147d8d57dd093ff9fb5442ae2",
+              "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1",
+              "policy": "candidate-1-not-validated"
+            },
+            "metadata": {
+              "headHash": "58f8c60f855af66c28fc1697cfa7d20dabcf4b7147d8d57dd093ff9fb5442ae2",
+              "baseHash": "d3ab6f5622053cd0c1c3461c666d49d67ece63d94755dda6befd9b4547587c77",
+              "manifestHash": "synthetic-software-test-not-adult-data",
+              "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1"
+            },
+            "warmMs": [
+              127.89999999850988,
+              99,
+              106.40000000223517,
+              98.30000000074506,
+              104.90000000223517,
+              99.30000000074506,
+              112.89999999850988,
+              103.69999999925494,
+              116.39999999850988,
+              94.39999999850988,
+              93.89999999850988,
+              106,
+              184.70000000298023,
+              253.60000000149012,
+              245.5,
+              240.90000000223517,
+              250,
+              259.5999999977648,
+              259.69999999925494,
+              252.5
+            ],
+            "p95": 259.5999999977648,
+            "requests": [
+              {
+                "url": "http://127.0.0.1:4173/tests/fixture.html",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/assets/diagnostic-BtGB-4kO.js",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/assets/store-DYzbFKwA.js",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/manifest.json",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/model.json",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/group1-shard1of2",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/group1-shard2of2",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/metadata.json",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/model.json",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/group1-shard1of2",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/group1-shard2of2",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/manifest.json",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/model.json",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/group1-shard1of2",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/group1-shard2of2",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/metadata.json",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/model.json",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/group1-shard1of2",
+                "method": "GET"
+              },
+              {
+                "url": "http://127.0.0.1:4173/models/base/group1-shard2of2",
+                "method": "GET"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "offline prepared shell/base survives a new page with network unavailable",
+      "status": "passed",
+      "durationMs": 1773,
+      "attachments": []
+    },
+    {
+      "title": "full browser restart offline restores synthetic head and runs real inference",
+      "status": "passed",
+      "durationMs": 3079,
+      "attachments": [
+        {
+          "name": "restart-offline-synthetic-inference",
+          "data": {
+            "warning": "Synthetic QA head/signal; not adult object recognition",
+            "result": {
+              "mode": "actual-local-inference",
+              "label": "unknown",
+              "reason": "background",
+              "scores": [
+                [
+                  0.07765629142522812,
+                  0.37712064385414124,
+                  0.04300284385681152,
+                  0.5022202134132385
+                ],
+                [
+                  0.07765629142522812,
+                  0.37712064385414124,
+                  0.04300284385681152,
+                  0.5022202134132385
+                ],
+                [
+                  0.07765629142522812,
+                  0.37712064385414124,
+                  0.04300284385681152,
+                  0.5022202134132385
+                ]
+              ],
+              "quality": {
+                "rms": 0.14142135608528503,
+                "clipping": 0
+              },
+              "elapsedMs": 146.30000000074506,
+              "baseHash": "d3ab6f5622053cd0c1c3461c666d49d67ece63d94755dda6befd9b4547587c77",
+              "headHash": "58f8c60f855af66c28fc1697cfa7d20dabcf4b7147d8d57dd093ff9fb5442ae2",
+              "preprocessing": "blackman-dB-no-smoothing-radix2-43x232-v1",
+              "policy": "candidate-1-not-validated"
+            },
+            "requests": [
+              "http://127.0.0.1:4173/tests/fixture.html",
+              "http://127.0.0.1:4173/assets/diagnostic-BtGB-4kO.js",
+              "http://127.0.0.1:4173/assets/store-DYzbFKwA.js",
+              "http://127.0.0.1:4173/models/base/manifest.json",
+              "http://127.0.0.1:4173/models/base/model.json",
+              "http://127.0.0.1:4173/models/base/group1-shard1of2",
+              "http://127.0.0.1:4173/models/base/group1-shard2of2",
+              "http://127.0.0.1:4173/models/base/metadata.json",
+              "http://127.0.0.1:4173/models/base/model.json",
+              "http://127.0.0.1:4173/models/base/group1-shard1of2",
+              "http://127.0.0.1:4173/models/base/group1-shard2of2"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
