@@ -1,6 +1,6 @@
 # Current concept selection · 25 October 2026
 
-Owner selection is pending. These are image concepts, not implemented screens. The first draft shown in chat was withdrawn because it invented class-wide metrics. The following three final images are the selection set, ordered as displayed after that withdrawal:
+**Concept 1 selected by owner on 25 October 2026**, response “1” in the current Codex chat. Exact target: corrected `concept-1.png`, 1448×1086. See [selected design specification](SELECTED-DESIGN.md). These are image concepts, not implemented screens. The first draft shown in chat was withdrawn because it invented class-wide metrics. The following three final images are the selection set, ordered as displayed after that withdrawal:
 
 1. [Concept 1](concept-1.png) — corrected notebook direction.
 2. [Concept 2](concept-2.png) — studio direction.

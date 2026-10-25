@@ -10,7 +10,7 @@ Technical POC implemented. Product continuation remains gated by human/device re
 | G3 audio/devices/privacy | PARTIAL | Seven synthetic API lifecycle tests pass (five cycles, auto-stop, active abort, denied/pending/late permission, MIME/blob); no audio field accepted by proxy. Actual teacher/mobile browser recording and network trace pending |
 | G4 science | ENGINEERING REVIEW PASS; TEACHER PENDING | Exact BM source checked; initial unconstrained prose failed science expectations; v4 AI-selected bank chose expected concept for all 12 fixtures, including radar/dBFS/unheard audio injection. Bank/relevance requires teacher signoff; no broad accuracy claim |
 | G5 mobile/usability | PARTIAL | In-app narrow browser confirms teacher example/save/reload, M4 fields, preserved answers on AI unavailable; no physical mobile or pupil trial performed |
-| G6 continuation/release | NOT PASSED | Product gated; visual selection and hosted proxy/Pages setup pending |
+| G6 continuation/release | NOT PASSED | Concept 1 selected; Pages diagnostic deployed. Physical-device/privacy checks, teacher review and hosted proxy setup remain pending |
 
 Do not infer GO from mocks/builds. No environmental sound classification accuracy claim. No pupil data collected. Cloudflare login absent at initial check; GitHub authenticated as lauhoekeat; existing private repository reused, not recreated. Pages not configured at initial check.
 
@@ -27,7 +27,7 @@ Expected v4 concept sequence: vibration, vibration, evidence, relative_level, di
 
 1. Teacher checks the bank, the 12 results, age/language suitability and current school DSKP edition.
 2. Owner tests five microphone start/stop cycles on teacher device and physical mobile, denied permission, playback, exit/background release and no audio network upload. Public diagnostic can establish microphone feasibility while hosted AI is pending.
-3. Select one of three pupil-interface concepts before UI implementation.
+3. DONE: owner selected concept 1 (corrected notebook image) on 25 October. Selection and detailed implementation specification are recorded in docs/design/options/. Pupil interface implementation still follows the remaining measured gates.
 4. Hosted backend requires Cloudflare authentication/setup or an explicitly chosen alternative preserving strict quotas. GitHub Pages hosts only the frontend. See ARCHITECTURE-PLAIN.md and SETUP.md. Owner authorized source-public/Pages publication; no Sites service was created.
 
 No new product permission is needed once the active measured gates pass: owner already authorized conditional continuation. Do not request duplicate phase approval based on historical documents.
