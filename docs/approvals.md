@@ -12,6 +12,10 @@ Follow-up, same chat, 25 October 2026: owner answered “Configured locally; run
 
 Visual follow-up, same chat, 25 October 2026: owner answered **“1”** to “Which of the three final concept images should I build: 1, 2, or 3? The earlier withdrawn draft is excluded.” Selected target is the corrected notebook image `docs/design/options/concept-1.png` (1448×1086), ImageGen result `exec-1649a781-a109-447a-b1c1-af4b3a1e3b54.png`. The withdrawn first draft is not selected. This resolves visual selection; it does not invent physical-device test results or teacher signoff. No duplicate product-phase permission is needed once active gates pass.
 
+Gate follow-up, same chat, 25 October 2026: owner answered **“Both devices passed”** to five start/stop cycles, playback and leaving-page recording stop on teacher device and physical phone; owner answered **“Reviewed and approved”** to Science-teacher review of the bank, 12 results, Year 4 suitability and school DSKP edition. These are owner-reported validations, not agent-observed device measurements; exact models/browser versions and separate network-trace evidence were not supplied. Together with technical POC evidence and selected concept, this clears product development under the original conditional authorization. Hosted proxy setup, final release/device regression, competition eligibility and school pupil-pilot permission remain separate outstanding items. No pupil research or network-trace pass is invented.
+
+Hosting follow-up: owner initially chose “Finish the frontend; keep hosted AI pending”, then explicitly reported “npx wrangler login and signed in to cloudflare, authentication completed”. This resumes the previously authorized protected-proxy deployment using the configured local key, server secrets and public endpoint URL. No provider key may be published to GitHub or the frontend.
+
 | Phase | Status | Evidence |
 |---|---|---|
 | Planning, repository setup and scoped issues | Authorized | User request, 24 October 2026, AISoundLab continuation |
