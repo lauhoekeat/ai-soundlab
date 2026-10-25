@@ -2,7 +2,7 @@
 
 ## Active override · 25 October 2026
 
-Current owner authorization is recorded in docs/approvals.md. Follow docs/2026-10-25/ as the active plan. POC implementation, tests, CI and deployment preparation are authorized. Product continuation is authorized only after the active POC gates pass. Preserve private repository visibility. Student-facing UI requires owner visual selection; a plain diagnostic harness is permitted for POC. Do not enforce historical planning-only or TensorFlow-training requirements below against the newer explicit request. Never mark unrun live/device/teacher gates passed.
+Current owner authorization is recorded in docs/approvals.md. Follow docs/2026-10-25/ as the active plan. POC implementation, tests, CI and deployment preparation are authorized. Product continuation is authorized only after the active POC gates pass. Owner explicitly authorized public source for free Pages in this chat. Student-facing UI requires owner visual selection; a plain diagnostic harness is permitted for POC. Do not enforce historical planning-only or TensorFlow-training requirements below against the newer explicit request. Never mark unrun live/device/teacher gates passed. Backend hosting is pending owner Cloudflare setup; a question about ChatGPT hosting was clarified as uncertainty, not authorization to create a Sites backend.
 
 ## Historical instructions · 24 October 2026
 

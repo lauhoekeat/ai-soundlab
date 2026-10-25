@@ -1,5 +1,7 @@
 # Architecture and decision record
 
+**Current refinement:** [ADR-0006](ADR-0006-grounded-feedback.md) replaces free-form model prose with explicitly labelled AI selection of a curriculum fact/question and a verified learner excerpt. Schema is validated server-side; failures never fall back to a pretend AI answer. Owner has now authorized public GitHub source for Pages. Cloudflare hosted setup remains pending; see [plain-language architecture](ARCHITECTURE-PLAIN.md).
+
 ## ADR-0005: secured pedagogical feedback replaces local classification
 
 Accepted by owner request, 25 October 2026. React/TypeScript/Vite frontend is static, suitable for GitHub Pages under `/ai-soundlab/`. Web Audio obtains waveform and relative RMS locally; MediaRecorder capability is detected and its actual supported MIME is used. Audio blobs never cross the network or persist. IndexedDB holds anonymous learning evidence only. No pupil accounts, cloud pupil database or class aggregation.

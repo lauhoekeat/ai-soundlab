@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import { Miniflare, convertV4MiniflareOptions } from 'miniflare';
+const mf = new Miniflare(convertV4MiniflareOptions({
+  workers: [{ name: 'poc', modules: true, scriptPath: 'proxy/work/worker/index.js', compatibilityDate: '2026-10-25',
+  bindings: { AI_ENABLED: 'false', ALLOWED_ORIGINS: 'http://127.0.0.1:5173' },
+  durableObjects: { QUOTA: { className: 'QuotaCoordinator', useSQLite: true } }, }],
+}));
+try {
+  const health = await mf.dispatchFetch('https://proxy.test/api/health', { headers: { Origin: 'http://127.0.0.1:5173' } });
+  assert.equal(health.status, 200); assert.deepEqual(await health.json(), { status: 'ok', aiEnabled: false });
+  assert.equal((await mf.dispatchFetch('https://proxy.test/api/health')).status, 403);
+  assert.equal((await mf.dispatchFetch('https://proxy.test/api/feedback', { method: 'POST', headers: { Origin: 'http://127.0.0.1:5173' } })).status, 503);
+  const { QUOTA } = await mf.getBindings('poc');
+  const stub = QUOTA.get(QUOTA.idFromName('test-atomic'));
+  const statuses = await Promise.all(Array.from({ length: 50 }, (_, i) => stub.fetch('https://quota.internal/reserve', { method: 'POST', body: JSON.stringify({ limits: { classMinute: 60, ipMinute: 120, day: 7, month: 10 }, classId: 'c', ipId: `ip-${i}` }) }).then(r => r.status)));
+  assert.equal(statuses.filter(s => s === 200).length, 7);
+  assert.equal(statuses.filter(s => s === 429).length, 43);
+  // A fresh stub to the same named object must see the persisted reservations.
+  const fresh = QUOTA.get(QUOTA.idFromName('test-atomic'));
+  assert.equal((await fresh.fetch('https://quota.internal/reserve', { method: 'POST', body: JSON.stringify({ limits: { classMinute: 60, ipMinute: 120, day: 7, month: 10 }, classId: 'c', ipId: 'another' }) })).status, 429);
+  console.log('PASS: actual local workerd routes and Durable Object atomic 50-way reservation (7 accepted, 43 rejected); fresh stub retained cap. No provider request/key used.');
+} finally { await mf.dispose(); }

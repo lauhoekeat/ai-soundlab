@@ -10,6 +10,8 @@ Four missions: Discover Vibration; Sound Travels; Echo Challenge; AI Sound Detec
 
 Success: pupils connect sound with vibration, predict propagation in all directions, explain reflection using an everyday example, and justify a context-sensitive sound classification and mitigation. AI gives a short evidence-specific formative response and one next question; it cannot award official mastery or replace teacher judgement.
 
+POC evidence led to [ADR-0006](ADR-0006-grounded-feedback.md): the AI now selects a curriculum fact/question and a verbatim learner excerpt through Structured Outputs. The interface explicitly labels AI-selected guidance. Live v4 fixtures matched all 12 expected concepts once; teacher and physical-device gates remain pending. Source publication for free Pages was explicitly approved in the current chat.
+
 ## Phases and milestones
 
 | Phase | Deliverable | Exit |

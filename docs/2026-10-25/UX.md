@@ -1,5 +1,7 @@
 # Feature-specific UX and design brief
 
+POC refinement: AI semantically selects a curriculum hint/question and a verbatim learner excerpt, rather than generating unconstrained science prose. Label this AI-selected guidance; see ADR-0006. Both provider failure and invalid selection stay explicit. Teacher must review bank accuracy and selection relevance.
+
 ## Shared shell and accessibility
 
 BM-first, optional complete English copy. Large readable sans serif (18px body), 44px minimum controls, visible focus, keyboard alternatives, no color-only states. Responsive 390px, 768px and desktop; 200% zoom; reduced motion. No countdown, streak loss, leaderboard or encouragement to make loud sounds. Navigation names the mission and investigation step. Completed badges require saved learner evidence, not repeated clicks. AI response is visibly distinct from observation, simulation and teacher example.

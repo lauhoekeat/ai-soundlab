@@ -8,6 +8,8 @@ Authorized: update planning, bounded **secured OpenAI feedback POC**, dependency
 
 Active plan: docs/2026-10-25/. Product remains conditional on its gates. Visual selection pending. Cloudflare hosting authentication pending. Earlier ledger below is historical as of 24 October.
 
+Follow-up, same chat, 25 October 2026: owner answered “Configured locally; run the two tests” and “Make source repository public for free Pages”. Existing local key use is authorized; repository public visibility and free Pages are now authorized, superseding the private-visibility preference above. No secrets may enter tracked history.
+
 | Phase | Status | Evidence |
 |---|---|---|
 | Planning, repository setup and scoped issues | Authorized | User request, 24 October 2026, AISoundLab continuation |
