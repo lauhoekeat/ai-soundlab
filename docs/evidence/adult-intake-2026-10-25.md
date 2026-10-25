@@ -1,5 +1,7 @@
 # Adult recording intake — 25 October 2026
 
+Historical first-batch intake checkpoint. Five further sources were later supplied and an exploratory head was fitted; see the [latest first-fit report](first-fit-2026-10-25.md). The no-trained-head statements below describe this earlier checkpoint only.
+
 **Status: actual recordings ingested and feature path verified; CONDITIONAL / HOLD for product development.** This supersedes the initial checkpoint's statement that no recordings were supplied. It does not supersede the accuracy gates or grant product approval.
 
 Code under test: `fd9f00dec9290458304e7c4268cd3693251c3885`, branch `poc/technical-feasibility`, [draft PR #17](https://github.com/lauhoekeat/ai-soundlab/pull/17). This is additional work within the existing bounded technical POC. No extension, product work or deployment was authorized or performed.

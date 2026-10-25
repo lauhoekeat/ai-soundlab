@@ -1,6 +1,6 @@
 # Bounded technical POC
 
-Owner approved this diagnostic scope on 25 October 2026. This is not the pupil-facing application; do not build missions or deploy from this branch. See [approval](../docs/approvals.md), [gate definitions](../docs/05-poc-gates.md) and [measured report](../docs/evidence/poc-2026-10-25.md).
+Owner approved this diagnostic scope on 25 October 2026. This is not the pupil-facing application; do not build missions or deploy from this branch. See [approval](../docs/approvals.md), [gate definitions](../docs/05-poc-gates.md), [initial report](../docs/evidence/poc-2026-10-25.md) and [latest actual first fit](../docs/evidence/first-fit-2026-10-25.md).
 
 ## Local setup
 
@@ -59,7 +59,7 @@ Minimum 2 training events/class is only a software pipeline floor. It is **not**
 
 ## Offline workflow
 
-On the production preview, click Prepare offline shell + base assets. The worker hashes all base artifacts and caches the build dependency graph; a complete cache pointer is committed only after preparation succeeds. The status deliberately does not claim a validated classifier. Train/save a head separately; imported audio is never cached. Restart browser, disable network, load base, restore head and select a local WAV to verify actual inference. No sample files are bundled yet; adult samples are pending.
+On the production preview, click Prepare offline shell + base assets. The worker hashes all base artifacts and caches the build dependency graph; a complete cache pointer is committed only after preparation succeeds. The status deliberately does not claim a validated classifier. Train/save a head separately; imported audio is never cached. Restart browser, disable network, load base, restore head and select a local WAV to verify actual inference. Adult source files and the exploratory head are local only, not bundled in Git.
 
 The separate `/tests/fixture.html` page explicitly exposes software-test helpers. It is labelled synthetic and uses generated waveforms/artificial feature vectors only. It is included solely in this POC, not a future product. Its metrics must never enter the adult recording confusion matrix or competition performance claims.
 
@@ -84,3 +84,9 @@ The file probe now accepts WAV or M4A supported by the browser decoder. It shows
 This is **probe intake only**. The training manifest still requires independent, explicitly prepared three-second WAV events; an excerpt does not become a new independent source or automatically enter train/test. Four initial files (one per class/unknown) do not meet the training/evaluation protocol. See the [adult intake report](../docs/evidence/adult-intake-2026-10-25.md).
 
 If the same freshly rebuilt preview is already running locally, set `$env:POC_REUSE_SERVER='1'` before `npm run test:browser`; otherwise tests start their own server. This reuse is opt-in and should not be used against stale/unrelated pages. Normal test mode still refuses an occupied port.
+
+## First actual head — 25 October
+
+Nine owner-supplied M4As are now ingested. Eight were used for an exploratory train-only head: two sources per target and two different non-target noise sources (mixed fan/feet/talking and shower). Original Unknown stayed outside fitting as a diagnostic negative. No independent accuracy gate passed. The actual head restored and inferred offline after a browser process restart. See [first-fit report and model card](../docs/evidence/first-fit-2026-10-25.md) for source transformations, settings, hashes, fit-only results and next tests.
+
+The trained head currently lives in the isolated local measurement browser profile; it is not automatically loaded in the owner's open in-app tab. To reproduce in that tab, import the local prepared manifest/WAV files and use the existing Train control. Raw data, voice audio and learned binaries are not published in this repository. The synthetic-fixture and real-recording measurement results remain explicitly separate.

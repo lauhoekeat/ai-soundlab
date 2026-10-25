@@ -1,0 +1,326 @@
+{
+  "date": "2026-10-25T09:44:55.327Z",
+  "scope": "Five actual source intake checks; owner subsequently confirmed mixed fan/feet/talking and shower labels. No independent test.",
+  "sources": [
+    {
+      "sourceId": "batch2-source-1",
+      "providedFilename": "Pencil-Tap-2.m4a",
+      "originalSha256": "889675280f59a3ea38170e2ece3db96aab4f2a0a887e83fce7226a8238eed30b",
+      "bytes": 82317,
+      "sourceSeconds": 3.1423809523809525,
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 3.1423809523809525,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0.14238095238095239,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "rms": 0.0015917018062904182,
+      "peak": 0.06776852160692215,
+      "clippingFraction": 0,
+      "finite": true,
+      "dimensions": [
+        2000,
+        2000,
+        2000
+      ],
+      "headTrained": false,
+      "predictionsProduced": false
+    },
+    {
+      "sourceId": "batch2-source-2",
+      "providedFilename": "Paper-Rustle-2.m4a",
+      "originalSha256": "3dd4c2b1178ca51b3325802860ac34192e792df7bd22e22452977709993d33d9",
+      "bytes": 117634,
+      "sourceSeconds": 4.527324263038548,
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 4.527324263038548,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 1.5273242630385488,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "rms": 0.010740459978995871,
+      "peak": 0.19284901022911072,
+      "clippingFraction": 0,
+      "finite": true,
+      "dimensions": [
+        2000,
+        2000,
+        2000
+      ],
+      "headTrained": false,
+      "predictionsProduced": false
+    },
+    {
+      "sourceId": "batch2-source-3",
+      "providedFilename": "Random-Unknown-2.m4a",
+      "originalSha256": "6a563fe53ead6d4aef2465343b3e7c1ea01f39d48af71a18d9ee31ee46be68e3",
+      "bytes": 311428,
+      "sourceSeconds": 12.090204081632653,
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 12.090204081632653,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 9.090204081632653,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "rms": 0.0033403314721125576,
+      "peak": 0.027610808610916138,
+      "clippingFraction": 0,
+      "finite": true,
+      "dimensions": [
+        2000,
+        2000,
+        2000
+      ],
+      "headTrained": false,
+      "predictionsProduced": false
+    },
+    {
+      "sourceId": "batch2-source-4",
+      "providedFilename": "Random-Unknown-3.m4a",
+      "originalSha256": "eaa471bfd884a4f1860eec2cc96a3b104be616404e5dfab0d7d30def15e7ae7c",
+      "bytes": 243576,
+      "sourceSeconds": 9.437505668934241,
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 9.437505668934241,
+        "startSeconds": 0,
+        "usedSeconds": 3,
+        "paddedSeconds": 0,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 6.43750566893424,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "rms": 0.004134306913503426,
+      "peak": 0.020272603258490562,
+      "clippingFraction": 0,
+      "finite": true,
+      "dimensions": [
+        2000,
+        2000,
+        2000
+      ],
+      "headTrained": false,
+      "predictionsProduced": false
+    },
+    {
+      "sourceId": "batch2-source-5",
+      "providedFilename": "Adult-Clap-2.m4a",
+      "originalSha256": "a61cd7cdce02c43e644b6ba2f734457f2e09a6f5932b0a2f17249f322e2b3c35",
+      "bytes": 75102,
+      "sourceSeconds": 2.87546485260771,
+      "selection": {
+        "kind": "file-excerpt",
+        "sourceSeconds": 2.87546485260771,
+        "startSeconds": 0,
+        "usedSeconds": 2.87546485260771,
+        "paddedSeconds": 0.12453514739229025,
+        "omittedBeforeSeconds": 0,
+        "omittedAfterSeconds": 0,
+        "outputSeconds": 3,
+        "independentSourceEventsAdded": 0
+      },
+      "rms": 0.006267562927174109,
+      "peak": 0.21266256272792816,
+      "clippingFraction": 0,
+      "finite": true,
+      "dimensions": [
+        2000,
+        2000,
+        2000
+      ],
+      "headTrained": false,
+      "predictionsProduced": false
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/tests/fixture.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/diagnostic-Cg1Vvx2P.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/excerpt-C_fBXC4d.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/metadata.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/model.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard1of2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/base/group1-shard2of2"
+    }
+  ],
+  "allRequestsLocalGet": true
+}

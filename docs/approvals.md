@@ -28,3 +28,7 @@ Owner also requires adult-created object sounds only, confirmation of target dev
 ## 25 October 2026 — recording intake update
 
 Owner supplied four local files labelled clap, pencil tap, paper rustle and random unknown, and requested continued processing in this chat. Owner confirmed: “Yes. all four made by an adult on same device in same room. The random unknown is tapping the bed, tapping head, make adult random voice”. This permits local POC intake under the existing approval; it is not permission to publish recordings or begin product work. Browser/exact device and separate test provenance remain unconfirmed. Original files stay outside Git. See docs/evidence/adult-intake-2026-10-25.md for measured results.
+
+## 25 October 2026 — second recording batch and first fit
+
+Owner supplied Pencil-Tap-2, Paper-Rustle-2, Adult-Clap-2, Random-Unknown-2 and Random-Unknown-3 M4As in response to the next adult training batch request. Owner clarified: “Unknow-2 is fan background, stomping feet and talking recoding Unknown-3 is a shower sound.” The two new noise recordings are documented as non-target-noise training examples, not quiet-room samples. Original Unknown remains outside fitting. Eight total sources were used for the first exploratory head under the existing POC approval. No new product/deployment approval is inferred; second-batch exact device/contributor/room/session remains unconfirmed. See docs/evidence/first-fit-2026-10-25.md.

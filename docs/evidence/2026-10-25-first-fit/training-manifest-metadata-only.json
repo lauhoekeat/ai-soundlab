@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "source": "adult-object",
+  "attestation": "Adults only; object sounds; no pupil recordings; permission to use locally.",
+  "events": [
+    {
+      "id": "e01",
+      "file": "e01.wav",
+      "label": "clap",
+      "split": "train",
+      "session": "capture-group-unconfirmed",
+      "contributor": "unconfirmed",
+      "device": "unconfirmed",
+      "room": "unconfirmed",
+      "sha256": "891d779bbc3174299a6bb37fdf19a9157b0ef9d54e2ba20a1a11a98659245b7d"
+    },
+    {
+      "id": "e02",
+      "file": "e02.wav",
+      "label": "clap",
+      "split": "train",
+      "session": "capture-group-unconfirmed",
+      "contributor": "unconfirmed",
+      "device": "unconfirmed",
+      "room": "unconfirmed",
+      "sha256": "bfcd4a55e4bbf9f8393243387c8436cc81f40f74e266668f489aadc051757370"
+    },
+    {
+      "id": "e03",
+      "file": "e03.wav",
+      "label": "pencil-tap",
+      "split": "train",
+      "session": "capture-group-unconfirmed",
+      "contributor": "unconfirmed",
+      "device": "unconfirmed",
+      "room": "unconfirmed",
+      "sha256": "5465abe4454791f896fe0d701f48d983f8c1a4a3d240e019bf31d828f6eb484c"
+    },
+    {
+      "id": "e04",
+      "file": "e04.wav",
+      "label": "pencil-tap",
+      "split": "train",
+      "session": "capture-group-unconfirmed",
+      "contributor": "unconfirmed",
+      "device": "unconfirmed",
+      "room": "unconfirmed",
+      "sha256": "cfe69d642afc9f2a5a8ef638eca2d98f63d32f8b735c2501edf86f00ee6699b7"
+    },
+    {
+      "id": "e05",
+      "file": "e05.wav",
+      "label": "paper-rustle",
+      "split": "train",
+      "session": "capture-group-unconfirmed",
+      "contributor": "unconfirmed",
+      "device": "unconfirmed",
+      "room": "unconfirmed",
+      "sha256": "ec24b82151deb5b414e9a3c5937f2f3be5430c3615ace4e96337dde4c4bb760f"
+    },
+    {
+      "id": "e06",
+      "file": "e06.wav",
+      "label": "paper-rustle",
+      "split": "train",
+      "session": "capture-group-unconfirmed",
+      "contributor": "unconfirmed",
+      "device": "unconfirmed",
+      "room": "unconfirmed",
+      "sha256": "ded690342b56d08328722c569a4f8e4dfbad1662dfa56da62af133207e1f0e30"
+    },
+    {
+      "id": "e07",
+      "file": "e07.wav",
+      "label": "background",
+      "split": "train",
+      "session": "capture-group-unconfirmed",
+      "contributor": "unconfirmed",
+      "device": "unconfirmed",
+      "room": "unconfirmed",
+      "sha256": "363a7f6e5de75e24214640e97fed157ace2fc35d2d06bf397d8abc77d86868d9"
+    },
+    {
+      "id": "e08",
+      "file": "e08.wav",
+      "label": "background",
+      "split": "train",
+      "session": "capture-group-unconfirmed",
+      "contributor": "unconfirmed",
+      "device": "unconfirmed",
+      "room": "unconfirmed",
+      "sha256": "65ce51a37168ebe01ce1695d5a61bd12c2a3763fb444d2d03f7bee90fd9f6641"
+    }
+  ]
+}
