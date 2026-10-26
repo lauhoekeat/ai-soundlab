@@ -49,3 +49,9 @@ Owner reported the teacher device and a physical phone passed POC audio checks, 
 ## Clearer pupil questions (0.2.2)
 
 Each mission now has two action steps, specific observation prompts and optional writing starters in BM/EN. Ask pupils to answer from their own investigation; the blanks are writing help, not extra required answers. Starters never fill the answer automatically. In M1, compare the moving ruler with the ruler after its movement stops. In M2, compare equal distances and one farther listener. In M3, keep distance fixed while comparing wall and curtain. In M4, identify who is helped/disturbed before suggesting one change. AI follow-up wording is simplified in feedback v5. See YEAR4-QUESTIONS.md for the changes and verification limits.
+
+## Echo sound and guidance order (0.2.3)
+
+Guidance follows the final explanation and requires the relevant written answers. For Echo, leave Simulation sound checked and press Run simulation, starting with low device volume. The curtain return is softer. Mute allows a silent visual investigation; pause/reset, distance or surface changes, background and mission exit stop playback.
+
+Same-distance reflections through the same air have the same model return time for both surfaces. Materials change reflection strength in this model. Animation and example sound are slowed 30 times, clearly labelled. At 5 m the model value is 29.2 ms, illustrated with a return after about 0.875 seconds. This is not a demonstration of a distinct real-room echo at 5 m. Keep distance fixed when comparing materials.
