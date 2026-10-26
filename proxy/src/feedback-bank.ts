@@ -2,52 +2,52 @@ import type { FeedbackInput } from '../../shared/contract';
 // Authored from the curriculum/science register. Teacher signoff remains a gate.
 export const BANK = {
   vibration: {
-    bm: ['Bunyi dihasilkan oleh getaran. Perhatikan objek yang bergerak ulang-alik semasa menghasilkan bunyi.', 'Apakah yang berlaku pada bunyi apabila getaran objek dihentikan?'],
-    en: ['Sound is produced by vibration. Observe which object moves back and forth while making the sound.', 'What happens to the sound when the object stops vibrating?'],
+    bm: ['Bunyi dihasilkan oleh getaran. Bergetar bermaksud bergerak ulang-alik dengan cepat.', 'Apabila kamu menghentikan pergerakan pembaris, apakah yang berlaku pada bunyinya?'],
+    en: ['Sound is produced by vibration. Vibrating means moving back and forth quickly.', 'What happens to the sound when you stop the ruler moving?'],
   },
   evidence: {
-    bm: ['Perubahan graf mikrofon sahaja tidak membuktikan objek tertentu bergetar. Gabungkan graf dengan pemerhatian langsung pada objek.', 'Apakah pemerhatian pada objek yang boleh menyokong penjelasan anda?'],
-    en: ['A microphone waveform alone does not prove which object vibrated. Combine the graph with a direct observation of the object.', 'What observation of the object could support your explanation?'],
+    bm: ['Graf mikrofon menunjukkan perubahan isyarat bunyi. Kamu juga perlu melihat objek itu sendiri untuk mengetahui apa yang bergerak.', 'Bagaimanakah objek itu bergerak ketika kamu mendengar bunyi?'],
+    en: ['The microphone graph shows changes in the sound signal. Also watch the object itself to find out what moves.', 'How did the object move while you heard the sound?'],
   },
   relative_level: {
-    bm: ['RMS dan dBFS ialah ukuran relatif isyarat peranti. Ukuran ini bukan dB SPL dan tidak menentukan keselamatan pendengaran.', 'Bagaimanakah anda boleh membandingkan dua bunyi menggunakan peranti dan tetapan yang sama?'],
-    en: ['RMS and dBFS describe the relative device signal. They are not calibrated dB SPL and cannot establish hearing safety.', 'How could you compare two sounds using the same device and settings?'],
+    bm: ['Graf bergantung pada bunyi dan cara rakaman dibuat. Gunakan peranti, tetapan dan jarak yang sama untuk membandingkan bunyi. Graf ini tidak menentukan sama ada bunyi selamat untuk telinga.', 'Mengapakah kamu perlu mengekalkan jarak mikrofon yang sama apabila membandingkan dua bunyi?'],
+    en: ['The graph depends on the sound and how it is recorded. Use the same device, settings and distance to compare sounds. This graph cannot tell you whether a sound is safe for your ears.', 'Why should you keep the microphone at the same distance when comparing two sounds?'],
   },
   directions: {
-    bm: ['Dalam model sumber ringkas, bunyi bergerak ke semua arah melalui medium. Lingkaran dalam rajah mewakili muka gelombang, bukan zarah udara yang bergerak keluar bersama bunyi.', 'Di manakah pendengar boleh diletakkan untuk menguji ramalan bunyi bergerak ke semua arah?'],
-    en: ['In a simple source model, sound travels in all directions through a medium. Diagram rings represent wavefronts, not air particles travelling outward with sound.', 'Where could you place listeners to test the prediction that sound travels in all directions?'],
+    bm: ['Dalam model ini, bunyi bergerak ke semua arah melalui udara. Lingkaran menunjukkan sejauh mana bunyi telah sampai, bukan udara yang bergerak keluar.', 'Jika seorang pendengar berada di belakang sumber bunyi, adakah dia juga akan menerima bunyi?'],
+    en: ['In this model, sound travels in every direction through air. The rings show how far the sound has reached, not air moving outward.', 'Will a listener behind the sound source also receive the sound?'],
   },
   equal_distance: {
-    bm: ['Dalam model ideal dengan medium yang sama, bunyi tiba serentak pada pendengar yang sama jarak dari sumber. Pendengar pada jarak berbeza menerima bunyi pada masa berbeza.', 'Apakah ramalan anda jika seorang pendengar diletakkan lebih jauh dari sumber?'],
-    en: ['In an ideal model with the same medium, sound reaches listeners at equal distances together. Different distances give different arrival times.', 'What would you predict if one listener were moved farther from the source?'],
+    bm: ['Dalam model ini, bunyi tiba serentak pada pendengar yang sama jarak dari sumber. Bunyi mengambil masa lebih lama untuk sampai kepada pendengar yang lebih jauh.', 'Jika kamu menjauhkan seorang pendengar, adakah dia menerima bunyi lebih awal atau lebih lewat?'],
+    en: ['In this model, sound reaches listeners at equal distances together. It takes longer to reach a listener farther away.', 'If you move one listener farther away, will they receive the sound earlier or later?'],
   },
   reflection: {
-    bm: ['Bunyi boleh dipantulkan oleh permukaan. Gema ialah bunyi pantulan yang dapat didengar semula secara berasingan apabila kelewatannya mencukupi.', 'Apakah contoh lain dalam kehidupan harian yang menunjukkan bunyi boleh dipantulkan?'],
-    en: ['Sound can reflect from surfaces. An echo is reflected sound heard separately when there is enough delay.', 'What other everyday example shows that sound can be reflected?'],
+    bm: ['Bunyi boleh terkena permukaan dan kembali. Gema ialah bunyi pantulan yang didengar semula secara berasingan selepas bunyi asal.', 'Di manakah kamu mungkin mendengar suara seseorang kembali sebagai gema?'],
+    en: ['Sound can hit a surface and return. An echo is reflected sound heard separately after the original sound.', 'Where might you hear someone’s voice return as an echo?'],
   },
   absorption: {
-    bm: ['Bahan lembut seperti langsir boleh menyerap sebahagian bunyi dan mengurangkan pantulan. Sebahagian bunyi masih boleh dipantulkan; kesannya bergantung pada bahan dan keadaan.', 'Bagaimanakah anda boleh membandingkan pantulan bunyi pada langsir dengan dinding keras?'],
-    en: ['Soft materials such as curtains can absorb some sound and reduce reflections. Some sound can still reflect; the effect depends on the material and conditions.', 'How could you compare sound reflection from a curtain and a hard wall?'],
+    bm: ['Langsir lembut boleh menyerap sebahagian bunyi. Sebahagian bunyi masih dipantulkan, tetapi pantulannya boleh menjadi lebih lemah.', 'Dalam simulasi pada jarak yang sama, adakah pantulan langsir lebih kuat atau lebih lemah daripada pantulan dinding?'],
+    en: ['A soft curtain can absorb some sound. Some sound still reflects, but the reflection can be weaker.', 'At the same distance in the simulation, is the curtain’s reflection stronger or weaker than the wall’s?'],
   },
   radar: {
-    bm: ['Radar menggunakan gelombang elektromagnet, bukan bunyi. Gema dan sonar ialah contoh yang sesuai untuk mengkaji pantulan bunyi.', 'Bagaimanakah gema menunjukkan bahawa bunyi boleh dipantulkan?'],
-    en: ['Radar uses electromagnetic waves, not sound. Echoes and sonar are suitable examples for studying sound reflection.', 'How does an echo show that sound can be reflected?'],
+    bm: ['Radar menggunakan gelombang elektromagnet, bukan bunyi. Sonar menggunakan pantulan bunyi. Gema juga ialah contoh pantulan bunyi.', 'Apabila suara didengar semula sebagai gema, dari manakah bunyi itu kembali?'],
+    en: ['Radar uses electromagnetic waves, not sound. Sonar uses reflected sound. An echo is also an example of reflected sound.', 'When a voice is heard again as an echo, where has the sound returned from?'],
   },
   context: {
-    bm: ['Bunyi boleh berfaedah atau memudaratkan mengikut konteks. Bunyi amaran mempunyai kegunaan, tetapi bunyi berulang atau berpanjangan boleh mengganggu pembelajaran.', 'Apakah perubahan yang boleh mengurangkan gangguan bunyi itu sambil mengekalkan kegunaannya?'],
-    en: ['Whether a sound is useful or harmful depends on its context. A warning sound has a purpose, while repeated or prolonged sound can disrupt learning.', 'What change could reduce the disturbance while keeping the useful purpose of the sound?'],
+    bm: ['Bunyi yang sama boleh membantu atau mengganggu mengikut keadaan. Contohnya, bunyi amaran membantu kita, tetapi bunyi yang berulang boleh mengganggu tumpuan.', 'Apakah satu perubahan supaya bunyi ini kurang mengganggu tetapi masih dapat membantu orang?'],
+    en: ['The same sound can help or disturb people in different situations. A warning sound can help us, but repeated sound can disturb concentration.', 'What is one change that would make this sound less disturbing while keeping its useful purpose?'],
   },
   mitigation: {
-    bm: ['Cadangan mengurangkan pencemaran bunyi perlu dikaitkan dengan punca, laluan atau penerima bunyi. Terangkan bagaimana perubahan itu mengurangkan gangguan dan cara membandingkan kesannya.', 'Apakah bukti yang boleh anda kumpulkan untuk menilai keberkesanan cadangan anda?'],
-    en: ['A noise-reduction proposal should address the source, the path or the listener. Explain how the change reduces disturbance and how you would compare its effect.', 'What evidence could you collect to evaluate whether your proposal works?'],
+    bm: ['Kamu boleh mengurangkan bunyi pada sumbernya, menghalang sebahagian bunyi atau menjauhkan orang daripada bunyi. Pilih cara yang selamat dan terangkan sebabnya.', 'Selepas mencuba cadangan kamu, apakah yang boleh kamu dengar untuk mengetahui sama ada gangguan sudah berkurang?'],
+    en: ['You could reduce sound at its source, block some sound or move people farther away. Choose a safe idea and explain why it helps.', 'After trying your idea, what could you listen for to find out whether the disturbance has reduced?'],
   },
   no_audio: {
-    bm: ['AI tidak menerima atau mendengar audio anda. Label sumber ditentukan oleh murid; AI hanya menyemak teks penjelasan dan cadangan anda.', 'Apakah sumber yang anda perhatikan sendiri dan mengapa bunyi itu berfaedah atau mengganggu?'],
-    en: ['The AI has not received or heard your audio. The student supplies the source label; AI only reviews the written explanation and proposal.', 'What source did you observe yourself, and why is the sound useful or disturbing?'],
+    bm: ['AI tidak mendengar rakaman kamu. Ceritakan apa yang kamu sendiri dengar atau lihat. Jika sumber bunyi belum diketahui, kamu boleh menulis “belum pasti”.', 'Apakah yang kamu sendiri dengar atau lihat tentang bunyi pilihan kamu?'],
+    en: ['The AI has not received or heard your recording. Describe what you heard or saw yourself. If the source is unknown, you can write “not sure yet”.', 'What did you hear or see yourself about your chosen sound?'],
   },
   needs_observation: {
-    bm: ['Gunakan pemerhatian yang selamat sebagai bukti. Nyatakan perkara yang dilihat atau didengar, kemudian bezakan pemerhatian daripada penjelasan anda.', 'Apakah satu pemerhatian yang boleh anda catat untuk menyiasat bunyi ini?'],
-    en: ['Use a safe observation as evidence. State what you saw or heard, then distinguish that observation from your explanation.', 'What is one observation you could record to investigate this sound?'],
+    bm: ['Mulakan dengan apa yang kamu lihat atau dengar semasa aktiviti. Selepas itu, terangkan sebab perkara itu berlaku.', 'Apakah satu perkara yang kamu lihat atau dengar semasa aktiviti tadi?'],
+    en: ['Start with what you saw or heard during the activity. Then explain why you think it happened.', 'What is one thing you saw or heard during the activity?'],
   },
 } as const;
 export type Concept = keyof typeof BANK;
