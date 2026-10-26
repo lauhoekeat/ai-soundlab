@@ -1,3 +1,5 @@
+> Current patch: 0.2.1 adds protected teacher classroom-code generation, classroom copy fixes and local M4 audio import. See [patch QA](BUGFIX-QA-0.2.1.md) and [ADR-0007](ADR-0007-classroom-access.md). The 0.2.0 release evidence below is retained.
+
 # Four-mission release report · 25 October 2026
 
 Version 0.2.0. Concept 1 selected. POC development gates cleared by owner's reported physical audio checks and Science approval; exact device/browser versions and a pupil pilot were not supplied. Those limits are preserved, not converted into invented measurements.

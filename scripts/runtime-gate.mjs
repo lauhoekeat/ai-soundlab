@@ -19,4 +19,15 @@ try {
   const fresh = QUOTA.get(QUOTA.idFromName('test-atomic'));
   assert.equal((await fresh.fetch('https://quota.internal/reserve', { method: 'POST', body: JSON.stringify({ limits: { classMinute: 60, ipMinute: 120, day: 7, month: 10 }, classId: 'c', ipId: 'another' }) })).status, 429);
   console.log('PASS: actual local workerd routes and Durable Object atomic 50-way reservation (7 accepted, 43 rejected); fresh stub retained cap. No provider request/key used.');
+  const classroom = QUOTA.get(QUOTA.idFromName('test-classroom'));
+  const issued = await Promise.all(Array.from({length:30},(_,i)=>classroom.fetch('https://quota.internal/issue-class',{method:'POST',body:JSON.stringify({hash:`hash-${i}`,teacherId:'test-teacher'})}).then(r=>r.status)));
+  assert.equal(issued.filter(s=>s===200).length,10);assert.equal(issued.filter(s=>s===429).length,20);
+  const lesson = QUOTA.get(QUOTA.idFromName('test-one-lesson'));
+  await lesson.fetch('https://quota.internal/issue-class',{method:'POST',body:JSON.stringify({hash:'hash-one',teacherId:'test-teacher'})});
+  const verify=(hash,teacherId='test-teacher')=>lesson.fetch('https://quota.internal/verify-class',{method:'POST',body:JSON.stringify({hash,teacherId,ipId:'test-ip'})});
+  assert.equal((await verify('hash-one')).status,200);
+  assert.equal((await verify('hash-one','rotated')).status,401);
+  await lesson.fetch('https://quota.internal/issue-class',{method:'POST',body:JSON.stringify({hash:'hash-two',teacherId:'test-teacher'})});
+  assert.equal((await verify('hash-one')).status,401);assert.equal((await verify('hash-two')).status,200);
+  console.log('PASS: actual Durable Object 30-way class-code issuance capped at 10, verification, replacement and teacher-credential rotation.');
 } finally { await mf.dispose(); }

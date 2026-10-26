@@ -4,6 +4,8 @@
 
 [Live app](https://lauhoekeat.github.io/ai-soundlab/) · [Teacher guide](docs/2026-10-25/TEACHER-GUIDE.md) · [Release report](docs/2026-10-25/RELEASE-REPORT.md). Four interactive investigations, BM/EN, local evidence book/export, separate teacher examples, and AI-selected curriculum feedback for M1/M4. POC diagnostic retained at `?diagnostic`. Source is public; no provider key or recordings in GitHub. Deployment status and verification limits are explicit in the release report.
 
+0.2.1: protected teacher classroom-code generation, two-hour pupil access, classroom wording and local M4 sound-file support. [Bug-fix QA](docs/2026-10-25/BUGFIX-QA-0.2.1.md).
+
 Start with [active PRD/plan](docs/2026-10-25/README.md), [UX](docs/2026-10-25/UX.md), [architecture](docs/2026-10-25/ARCHITECTURE.md), [validation](docs/2026-10-25/VALIDATION.md), [science](docs/2026-10-25/SCIENCE.md), [risks](docs/2026-10-25/RISKS.md), [setup](SETUP.md) and [measured POC report](docs/2026-10-25/POC-REPORT.md). These supersede conflicting historical requirements below. The four-mission product is implemented and published; see the release report for observed checks and remaining submission follow-ups. No automatic sound identification; AI receives student text only.
 
 Node 22+: `npm ci`, `npm run dev`, `npm run proxy:dev`. Run `npm run check` before commits. Owner authorized public source and free Pages on 25 October. Never put an OpenAI key in Vite or GitHub. The backend is separate from Pages: [architecture](docs/2026-10-25/ARCHITECTURE-PLAIN.md). Read SETUP.md for server-only secrets and the public proxy URL.

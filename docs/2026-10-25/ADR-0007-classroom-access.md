@@ -1,0 +1,11 @@
+# ADR-0007: protected temporary classroom access
+
+Accepted 26 October 2026 after the owner reported missing teacher code generation. Teacher mode is public demonstration UI, so toggling it cannot be treated as authentication. Keep existing CLASS_CODE as the private setup credential. The teacher supplies it to POST /api/class-code; successful verification creates a random 50-bit ten-character code for two hours. Explicit replacement invalidates the previous code. Ten issuances per UTC hour, authenticated endpoint, exact origin/preflight allowlists, empty JSON contract, 128-byte streamed body cap and no-store responses apply. Generation never calls OpenAI.
+
+One Durable Object stores a SHA-256 code hash, expiry and setup-code fingerprint, plus atomic issuance/access counters. There is no learner database or plaintext classroom code at rest. Teacher credential rotation invalidates classroom credentials. Pupil codes cannot generate codes. Existing master-code feedback remains compatible with diagnostics, but new lessons use temporary codes only. All paid feedback still shares the existing global class/IP/day/month budget; generation does not reset it.
+
+Guess checks have a separate atomic throttle: 20/IP/minute, 120 global/minute, 10000/day, 100000/month. This counts invalid codes and bounds credential-storage work. Origin checks are not authentication. Invalid/missing/expired codes fail closed; storage failures never enable provider requests.
+
+The teacher form is separate from student AI consent. Setup input clears on success and teacher exit. Temporary codes live only in tab memory; copying is an explicit teacher action. Codes, keys and audio are excluded from evidence/export/source. Reload does not recover the displayed temporary code; replacement requires setup verification again. Existing school staff need a privately provisioned setup credential. No authentication-free public code generator is provided.
+
+Mission 4 accepts local audio files up to 10 MB/60 seconds after metadata validation; the browser then decodes a waveform and permits local playback. No file bytes are sent to the proxy. File names never determine a claimed sound identity, and Mission 1 has no import path. These supplied general-sound clips cannot establish ruler vibration evidence.
