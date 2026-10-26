@@ -27,7 +27,7 @@ node scripts/upload-proxy-secrets.mjs
 npm run proxy:deploy
 ```
 
-The upload script transports secret values to Wrangler's stdin and redacts output. For manual upload, use `npx wrangler secret put OPENAI_API_KEY --config proxy/wrangler.jsonc` and similarly for `IP_HASH_SECRET`; enter values only at Wrangler's private prompt. The retired `CLASS_CODE` secret is unused and can be deleted after verifying the new release. Do not commit secrets.
+The upload script transports secret values to Wrangler's stdin and redacts output. For manual upload, use `npx wrangler secret put OPENAI_API_KEY --config proxy/wrangler.jsonc` and similarly for `IP_HASH_SECRET`; enter values only at Wrangler's private prompt. The retired hosted `CLASS_CODE` secret was deleted after this release. Do not commit secrets.
 
 The public GitHub Actions variable `VITE_PROXY_URL` points to the Worker. Pages source is GitHub Actions; merging a tested change triggers deployment. Before claiming a release is live, confirm the Actions run and load the published URL. `npm run test:live` makes two paid synthetic requests to the hosted API. `node scripts/hosted-security-gate.mjs` checks the hosted boundary without paid requests.
 
