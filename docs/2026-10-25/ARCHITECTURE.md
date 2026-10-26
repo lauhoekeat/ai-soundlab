@@ -1,3 +1,5 @@
+> 0.2.1 refinement: see [ADR-0007](ADR-0007-classroom-access.md). Durable infrastructure now also holds one hashed temporary classroom credential and issuance/access-attempt counters. The private setup credential remains server-side except when the teacher explicitly enters it in the protected setup form; pupils receive only temporary codes. No pupil database was added.
+
 # Architecture and decision record
 
 **Current refinement:** [ADR-0006](ADR-0006-grounded-feedback.md) replaces free-form model prose with explicitly labelled AI selection of a curriculum fact/question and a verified learner excerpt. Schema is validated server-side; failures never fall back to a pretend AI answer. Owner has now authorized public GitHub source for Pages. Cloudflare hosted setup is complete and both public-app AI paths passed; see [plain-language architecture](ARCHITECTURE-PLAIN.md).

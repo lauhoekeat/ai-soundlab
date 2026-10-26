@@ -27,7 +27,7 @@ npm run proxy:dev
 npm run dev
 ```
 
-Open `http://127.0.0.1:5173/ai-soundlab/`. Privately copy `CLASS_CODE` from the server env into **Kod kelas & persetujuan** in an AI panel, not the OpenAI key. Class code remains in tab memory; do not embed it in source or URL. Tick text-only consent. Test M1 with your own ruler observation, then M4 with a student-labelled safe sound and reason/mitigation. Feedback is live only when returned by the proxy; failures remain explicit. To inspect the original diagnostic, append `?diagnostic`.
+Open `http://127.0.0.1:5173/ai-soundlab/`. Open Teacher mode and **Urus kod kelas**. Privately enter the existing server `CLASS_CODE` as the **teacher setup code**, then generate/copy the temporary classroom code for pupils. Never enter the OpenAI key in the app. Pupils use only the generated code under **Kod kelas & persetujuan**. Class code remains in tab memory; do not embed it in source or URL. Tick text-only consent. Test M1 with your own ruler observation, then M4 with a student-labelled safe sound and reason/mitigation. Feedback is live only when returned by the proxy; failures remain explicit. To inspect the original diagnostic, append `?diagnostic`.
 
 Optional transport check (makes **two paid provider requests**, no automatic retries):
 
@@ -53,7 +53,7 @@ npx wrangler secret put CLASS_CODE --config proxy/wrangler.jsonc
 npx wrangler secret put IP_HASH_SECRET --config proxy/wrangler.jsonc
 ```
 
-Paste values only into Wrangler's private terminal prompt. Provider key minimum privileges and model/project access must be verified. Set `AI_ENABLED=true` in server vars only after testing. Then `npm run proxy:deploy`. Keep the returned HTTPS Worker URL for the public `VITE_PROXY_URL`. Durable storage is for atomic quota counters only; no pupil/audio/answer database. Host logs are disabled by config; do not add request-body logging.
+Paste values only into Wrangler's private terminal prompt. Provider key minimum privileges and model/project access must be verified. Set `AI_ENABLED=true` in server vars only after testing. Then `npm run proxy:deploy`. Keep the returned HTTPS Worker URL for the public `VITE_PROXY_URL`. Durable storage holds atomic quota counters and one hashed, expiring classroom credential plus issuance/access limits; no pupil/audio/answer database. Host logs are disabled by config; do not add request-body logging.
 
 ## 4. GitHub Pages
 
@@ -66,3 +66,7 @@ Release check: open HTTPS site on teacher laptop and physical mobile; verify cla
 ## 5. Trial-data cleanup and fallback
 
 No names/login. Record objects, not people. Audio is memory-only and disappears on reload/exit or Delete audio. IndexedDB keeps anonymous text until Clear all records; exported JSON files must be deleted separately. AI requires internet and a working proxy. If unavailable, retain answers and use a visibly labelled teacher example; never present it as AI feedback. Full offline assets and multi-device class aggregation are outside this POC.
+
+## Teacher-access update (0.2.1)
+
+`CLASS_CODE` is now the private teacher setup credential. Keep the existing value; no new OpenAI secret or migration is required. POST `/api/class-code` accepts only an authenticated teacher and an empty JSON object (128-byte streamed cap). It issues a random ten-character classroom code, valid for two hours, with at most ten replacements per UTC hour. A replacement immediately invalidates the previous code. The worker stores only its SHA-256 hash, expiry and a setup-credential fingerprint; rotating the setup credential invalidates existing classroom access. Pupil credentials cannot issue codes. Classroom-code guessing is limited separately (20/IP/minute, 120 globally/minute, 10000/day and 100000/month); feedback retains the original global/class/IP paid-request caps. No code is put into frontend source or browser storage. Keep the setup value private; use only generated codes for new lessons.
