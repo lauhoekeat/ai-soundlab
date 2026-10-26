@@ -1,5 +1,9 @@
 # Instructions for future Codex work
 
+## Active product scope · 26 October 2026
+
+The owner's latest request supersedes the older teacher/class-code/Evidence Book flows: public session-only app, AI guidance for Predict/Try/Explain in each mission, and a five-question 10-point practice assessment. No teacher mode, class code, Save or persistence. Source of truth: `docs/2026-10-26/PUBLIC-SESSION-RELEASE.md`, `SETUP.md` and current code. Earlier plans and approval rows below are historical. The release may use the previously authorized GitHub Pages and Cloudflare deployment workflow. Do not reuse the previous Science-teacher approval for the revised scoring rubrics.
+
 ## Active override · 25 October 2026
 
 Current owner authorization is recorded in docs/approvals.md. Follow docs/2026-10-25/ as the active plan. POC implementation, tests, CI and deployment preparation are authorized. Product continuation is authorized only after the active POC gates pass. Owner explicitly authorized public source for free Pages in this chat. Student-facing UI requires owner visual selection; a plain diagnostic harness is permitted for POC. Do not enforce historical planning-only or TensorFlow-training requirements below against the newer explicit request. Never mark unrun live/device/teacher gates passed. Backend hosting is complete following owner Cloudflare setup; a question about ChatGPT hosting was clarified as uncertainty, not authorization to create a Sites backend.

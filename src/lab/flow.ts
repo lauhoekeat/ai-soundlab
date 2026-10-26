@@ -1,5 +1,5 @@
 import type { MissionId, Investigation } from './model';
-export type LearningStep=0|1|2|3;
+export type LearningStep=0|1|2;
 export type AnswerField='prediction'|'predictionReason'|'activity'|'observation'|'explanation'|'classification'|'mitigation';
 export function stepIssues(mission:MissionId,work:Investigation,step:LearningStep):AnswerField[]{
   if(step===0)return [...(!work.prediction?['prediction' as const]:[]),...(!work.predictionReason.trim()?['predictionReason' as const]:[])];
@@ -7,8 +7,78 @@ export function stepIssues(mission:MissionId,work:Investigation,step:LearningSte
   if(step===2)return [...(mission==='detective'&&!work.classification?['classification' as const]:[]),...(!work.explanation.trim()?['explanation' as const]:[]),...(mission==='detective'&&!work.mitigation.trim()?['mitigation' as const]:[])];
   return [];
 }
-export function firstIncompleteStep(mission:MissionId,work:Investigation):LearningStep {for(const step of [0,1,2] as const)if(stepIssues(mission,work,step).length)return step;return 3;}
-export const FLOW_TEXT={
- bm:{moreControls:'Kawalan lain',travelSame:'Jarak sama',travelDifferent:'Jauhkan seorang',soundOut:'Bunyi bergerak ke hadapan',soundBack:'Bunyi dipantulkan kembali',forTeachers:'Untuk guru',teacherWorkspace:'Ruang Guru',backToPupils:'Kembali ke mod murid',demoLabel:'Demonstrasi guru',demoMission:'Demonstrasi misi',pupilEvidence:'Lihat buku bukti murid',teacherBook:'Buku contoh guru',missionPicker:'Pilih misi',closeMenu:'Tutup menu',stageNames:['Ramalan','Cuba','Terangkan','Simpan'],next:'Teruskan',back:'Kembali',toExperiment:'Teruskan ke siasatan',toExplain:'Teruskan ke penjelasan',toReview:'Semak dan simpan',writingHelp:'Bantuan menulis (pilihan)',writeHere:'Tulis jawapan kamu di sini…',choosePrediction:'Pilih Ya, Tidak atau Tidak pasti dahulu.',writeReason:'Tulis satu sebab untuk ramalan kamu.',doActivity:'Jalankan aktiviti atau pilih pemerhatian tanpa mikrofon dahulu.',compareBoth:'Uji kedua-dua pilihan sebelum meneruskan.',writeObservation:'Catat satu perkara yang kamu perhatikan.',writeExplanation:'Tulis penjelasan kamu dahulu.',chooseEffect:'Pilih kesan bunyi ini dahulu.',writeProposal:'Cadangkan satu cara mengurangkan gangguan dan berikan sebab.',reviewAnswers:'Semak jawapan kamu',savedHeading:'Bukti disimpan!',nextMission:'Misi seterusnya',startMission:'Mulakan misi',continueMission:'Teruskan misi',reviewMission:'Semak bukti',saveChanges:'Kemas kini bukti',notYet:'Belum diuji',tested:'Sudah diuji',experimentHelp:'Uji kedua-dua permukaan. Kemudian bandingkan pantulannya.',observeHeading:'Apakah yang kamu dengar?',observeShort:'Catat pemerhatian kamu selepas menjalankan simulasi.',listenMethod:'Bagaimanakah kamu mahu menyiasat bunyi?',microphoneMethod:'Rakam bunyi',fileMethod:'Pilih fail',physicalMethod:'Tanpa mikrofon',physicalHint:'Jalankan aktiviti fizikal dengan bantuan guru. Gunakan pemerhatian kamu sendiri.',physicalDone:'Saya sudah menjalankan aktiviti dan membuat pemerhatian.',physicalSoundDone:'Saya sudah mendengar bunyi pilihan saya.',teacherGuide:'Panduan sains untuk guru',modelDetails:'Model dan masa perjalanan',scienceIdea:'Idea sains',yourObservation:'Pemerhatian kamu',teacherNotice:'Sediakan kod kelas untuk panduan AI. Pilih misi untuk menunjukkan aktiviti kepada murid.',emptyBook:'Belum ada bukti. Mulakan satu misi untuk mengisi buku ini.',manageEvidence:'Urus buku bukti',helpOptional:'Buka jika kamu perlukan idea untuk menulis.',stepBlocked:'Lengkapkan langkah sebelumnya dahulu.',reviewIntro:'Baca semula catatan kamu. Simpan apabila kamu berpuas hati.',quietCompare:'Bandingkan rakaman senyap dengan bunyi objek pada peranti yang sama.',echoAudioNote:'Bunyi contoh diperlahankan supaya pantulan mudah didengar. Mulakan dengan kelantangan rendah.',returnToTask:'Kembali ke siasatan',explainTask:'Gunakan pemerhatian kamu untuk menerangkan apa yang berlaku.',teacherTiming:'Dalam model ini, masa bergantung pada jarak melalui udara. Bahan mengubah kekuatan pantulan. Nilai ini bukan fokus perbandingan bahan untuk murid.',stepWord:'Langkah',soundOnly:'Bunyi',soundOn:'Main bunyi',soundOff:'Tanpa bunyi',chooseSurface:'Pilih permukaan',tryAgain:'Uji semula',reviewOwn:'Catatan kamu',completeRecord:'Siasatan ini telah disimpan pada peranti ini.'},
- en:{moreControls:'More controls',travelSame:'Equal distances',travelDifferent:'Move one farther',soundOut:'Sound travels outward',soundBack:'Sound reflects back',forTeachers:'For teachers',teacherWorkspace:'Teacher Space',backToPupils:'Return to student mode',demoLabel:'Teacher demonstration',demoMission:'Demonstrate mission',pupilEvidence:'View student evidence book',teacherBook:'Teacher example book',missionPicker:'Choose mission',closeMenu:'Close menu',stageNames:['Predict','Try','Explain','Save'],next:'Continue',back:'Back',toExperiment:'Continue to investigation',toExplain:'Continue to explanation',toReview:'Review and save',writingHelp:'Writing help (optional)',writeHere:'Write your answer here…',choosePrediction:'Choose Yes, No or Not sure first.',writeReason:'Write one reason for your prediction.',doActivity:'Complete the activity or choose an observation without a microphone first.',compareBoth:'Test both choices before continuing.',writeObservation:'Write one thing you observed.',writeExplanation:'Write your explanation first.',chooseEffect:'Choose the effect of this sound first.',writeProposal:'Suggest one way to reduce disturbance and give a reason.',reviewAnswers:'Review your answers',savedHeading:'Evidence saved!',nextMission:'Next mission',startMission:'Start mission',continueMission:'Continue mission',reviewMission:'Review evidence',saveChanges:'Update evidence',notYet:'Not tested yet',tested:'Tested',experimentHelp:'Test both surfaces. Then compare their reflections.',observeHeading:'What did you hear?',observeShort:'Write your observation after running the simulation.',listenMethod:'How would you like to investigate the sound?',microphoneMethod:'Record sound',fileMethod:'Choose file',physicalMethod:'No microphone',physicalHint:'Do the physical activity with your teacher’s help. Use your own observations.',physicalDone:'I completed the activity and made an observation.',physicalSoundDone:'I listened to my chosen sound.',teacherGuide:'Science guide for teachers',modelDetails:'Model and travel time',scienceIdea:'Science idea',yourObservation:'Your observation',teacherNotice:'Prepare a class code for AI guidance. Choose a mission to demonstrate the activity to pupils.',emptyBook:'No evidence yet. Start a mission to fill this book.',manageEvidence:'Manage evidence book',helpOptional:'Open this if you need an idea for writing.',stepBlocked:'Complete the earlier step first.',reviewIntro:'Read your notes again. Save when you are happy with them.',quietCompare:'Compare quiet and object recordings on the same device.',echoAudioNote:'The example sound is slowed down so the reflection is easy to hear. Start with a low volume.',returnToTask:'Return to investigation',explainTask:'Use your observations to explain what happened.',teacherTiming:'In this model, time depends on distance through air. Material changes reflection strength. This number is not the focus of the pupil material comparison.',stepWord:'Step',soundOnly:'Sound',soundOn:'Play sound',soundOff:'No sound',chooseSurface:'Choose surface',tryAgain:'Test again',reviewOwn:'Your notes',completeRecord:'This investigation is saved on this device.'}
+export function firstIncompleteStep(mission:MissionId,work:Investigation):LearningStep | null {for(const step of [0,1,2] as const)if(stepIssues(mission,work,step).length)return step;return null;}
+export const FLOW_TEXT = {
+  bm: {
+    travelSame: 'Jarak sama',
+    travelDifferent: 'Jauhkan seorang',
+    soundOut: 'Bunyi bergerak ke hadapan',
+    soundBack: 'Bunyi dipantulkan kembali',
+    missionPicker: 'Pilih misi',
+    closeMenu: 'Tutup menu',
+    stageNames: ['Ramalan','Cuba','Terangkan'],
+    back: 'Kembali',
+    toExperiment: 'Teruskan ke siasatan',
+    toExplain: 'Teruskan ke penjelasan',
+    writingHelp: 'Bantuan menulis (pilihan)',
+    writeHere: 'Tulis jawapan kamu di sini…',
+    choosePrediction: 'Pilih Ya, Tidak atau Tidak pasti dahulu.',
+    writeReason: 'Tulis satu sebab untuk ramalan kamu.',
+    doActivity: 'Jalankan aktiviti atau pilih pemerhatian tanpa mikrofon dahulu.',
+    compareBoth: 'Uji kedua-dua pilihan sebelum meneruskan.',
+    writeObservation: 'Catat satu perkara yang kamu perhatikan.',
+    writeExplanation: 'Tulis penjelasan kamu dahulu.',
+    chooseEffect: 'Pilih kesan bunyi ini dahulu.',
+    writeProposal: 'Cadangkan satu cara mengurangkan gangguan dan berikan sebab.',
+    notYet: 'Belum diuji',
+    tested: 'Sudah diuji',
+    experimentHelp: 'Uji kedua-dua permukaan. Kemudian bandingkan pantulannya.',
+    observeHeading: 'Apakah yang kamu dengar?',
+    observeShort: 'Catat pemerhatian kamu selepas menjalankan simulasi.',
+    listenMethod: 'Bagaimanakah kamu mahu menyiasat bunyi?',
+    microphoneMethod: 'Rakam bunyi',
+    fileMethod: 'Pilih fail',
+    physicalMethod: 'Tanpa mikrofon',
+    physicalHint: 'Jalankan aktiviti fizikal dengan bantuan guru. Gunakan pemerhatian kamu sendiri.',
+    physicalDone: 'Saya sudah menjalankan aktiviti dan membuat pemerhatian.',
+    physicalSoundDone: 'Saya sudah mendengar bunyi pilihan saya.',
+    scienceIdea: 'Idea sains',
+    chooseSurface: 'Pilih permukaan',
+  },
+  en: {
+    travelSame: 'Equal distances',
+    travelDifferent: 'Move one farther',
+    soundOut: 'Sound travels outward',
+    soundBack: 'Sound reflects back',
+    missionPicker: 'Choose mission',
+    closeMenu: 'Close menu',
+    stageNames: ['Predict','Try','Explain'],
+    back: 'Back',
+    toExperiment: 'Continue to investigation',
+    toExplain: 'Continue to explanation',
+    writingHelp: 'Writing help (optional)',
+    writeHere: 'Write your answer here…',
+    choosePrediction: 'Choose Yes, No or Not sure first.',
+    writeReason: 'Write one reason for your prediction.',
+    doActivity: 'Complete the activity or choose an observation without a microphone first.',
+    compareBoth: 'Test both choices before continuing.',
+    writeObservation: 'Write one thing you observed.',
+    writeExplanation: 'Write your explanation first.',
+    chooseEffect: 'Choose the effect of this sound first.',
+    writeProposal: 'Suggest one way to reduce disturbance and give a reason.',
+    notYet: 'Not tested yet',
+    tested: 'Tested',
+    experimentHelp: 'Test both surfaces. Then compare their reflections.',
+    observeHeading: 'What did you hear?',
+    observeShort: 'Write your observation after running the simulation.',
+    listenMethod: 'How would you like to investigate the sound?',
+    microphoneMethod: 'Record sound',
+    fileMethod: 'Choose file',
+    physicalMethod: 'No microphone',
+    physicalHint: 'Do the physical activity and use your own observations.',
+    physicalDone: 'I completed the activity and made an observation.',
+    physicalSoundDone: 'I listened to my chosen sound.',
+    scienceIdea: 'Science idea',
+    chooseSurface: 'Choose surface',
+  },
 } as const;

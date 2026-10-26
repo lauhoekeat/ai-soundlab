@@ -1,5 +1,9 @@
 # Approval ledger
 
+## 26 October 2026 · public session product change
+
+Owner requested Sound Travel listener dragging, audible in-app simulation, real-time model clock and simplified controls; Discover Vibration recording purpose and comparison; Echo audible defaults and optional own-recording echo; trial indicators above simulations. Owner then requested AI guidance in each Predict/Try/Explain section and a fixed five-question 10-point assessment, while explicitly removing Save, Evidence Book, teacher mode, class-code generation and teacher examples for public access. This authorizes the current implementation and deployment under the previously approved GitHub Pages/Cloudflare workflow. Use the existing server-side key only. New rubric approval and new physical device regression have not been reported.
+
 ## 25 October 2026 · current authorization
 
 Owner's current Codex request (continuing Music App Proposal, 6adde4c9-cb6c-83ec-9c61-f24455714fd2): “Plan and then implement AI SoundLab”; “Immediately start with planning and repository docs, then implement staged POC”; “then proceed with complete product after gates pass”; “organize commits, tests, CI, deploy Pages.”

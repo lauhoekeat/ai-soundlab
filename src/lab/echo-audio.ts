@@ -1,7 +1,6 @@
 import { echoDelay } from '../../shared/contract';
-// A constant 30x time scale keeps short returns audible and preserves distance comparisons.
-export const ECHO_TIME_SCALE=30;
-export function echoDemoSeconds(distance:number):number { return echoDelay(distance)*ECHO_TIME_SCALE; }
+// Echo surfaces share the same air path. Keep at least half a second between pulses so young learners can hear two sounds.
+export function echoDemoSeconds(distance:number):number { return Math.max(0.55,echoDelay(distance)); }
 export const ECHO_LEVELS={original:0.12,hard:0.08,soft:0.025} as const;
 export async function playEchoDemo(distance:number,surface:'hard'|'soft',progress:number,signal:AbortSignal):Promise<void> {
   if(signal.aborted)return;
@@ -24,4 +23,15 @@ export async function playEchoDemo(distance:number,surface:'hard'|'soft',progres
     timer=setTimeout(stop,(remaining+0.2)*1000);
     await ended;
   } catch(error) {stop();if(!signal.aborted)throw error;}
+}
+export async function playEchoRecording(blob:Blob,distance:number,surface:'hard'|'soft',signal:AbortSignal):Promise<void>{
+ if(signal.aborted)return;const context=new AudioContext();let closed=false,timer:ReturnType<typeof setTimeout>|undefined,finish!:()=>void;
+ const ended=new Promise<void>(resolve=>{finish=resolve;});const stop=()=>{if(closed)return;closed=true;clearTimeout(timer);signal.removeEventListener('abort',stop);void context.close().catch(()=>{});finish();};signal.addEventListener('abort',stop,{once:true});
+ try{await context.resume();const buffer=await context.decodeAudioData(await blob.arrayBuffer());if(signal.aborted){stop();return;}
+  const start=context.currentTime+.03;
+  // The second playback is staged after the recorded phrase so it can be heard distinctly; the chosen distance supplies additional travel delay.
+  const returnAt=start+buffer.duration+echoDemoSeconds(distance);
+  for(const [at,volume] of [[start,.65],[returnAt,surface==='hard'?.43:.15]] as const){const source=context.createBufferSource(),gain=context.createGain();source.buffer=buffer;gain.gain.value=volume;source.connect(gain);gain.connect(context.destination);source.start(at);}
+  timer=setTimeout(stop,(buffer.duration*2+echoDemoSeconds(distance)+.3)*1000);await ended;
+ }catch(error){stop();if(!signal.aborted)throw error;}
 }

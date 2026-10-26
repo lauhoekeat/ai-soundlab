@@ -1,0 +1,36 @@
+import type { Language } from './contract';
+
+export const ASSESSMENT_IDS=['q1','q2','q3','q4','q5'] as const;
+export type AssessmentId=typeof ASSESSMENT_IDS[number];
+export type AssessmentAnswers=Record<AssessmentId,string>;
+export interface AssessmentInput {language:Language;answers:AssessmentAnswers;}
+export interface AssessmentMark {id:AssessmentId;score:0|1|2;met:[boolean,boolean];feedback:string;correctAnswer:string;}
+export interface AssessmentResult {source:'openai';rubricVersion:'sound-6.1-assessment-v1';total:number;marks:AssessmentMark[];}
+export const ASSESSMENT={
+ bm:[
+  {id:'q1',topic:'Getaran',question:'Kamu memetik hujung pembaris yang terjuntai dari meja. Apakah yang menyebabkan bunyi itu? Apakah yang berlaku kepada bunyi apabila pembaris berhenti bergerak?',criteria:['Menyatakan pembaris yang bergetar menghasilkan bunyi.','Menyatakan bunyi berhenti apabila getaran berhenti.'],answer:'Pembaris bergetar apabila dipetik lalu menghasilkan bunyi. Apabila getaran pembaris berhenti, bunyi juga berhenti.'},
+  {id:'q2',topic:'Bunyi bergerak',question:'Empat orang berdiri pada jarak yang sama di hadapan, belakang, kiri dan kanan loceng. Siapakah yang boleh mendengar bunyi? Jika seorang bergerak lebih jauh, adakah bunyi sampai kepadanya lebih awal atau lebih lewat? Terangkan.',criteria:['Menyatakan bunyi bergerak ke semua arah, jadi semua pendengar boleh mendengarnya.','Menyatakan bunyi sampai kemudian kepada pendengar yang lebih jauh; pendengar sama jarak menerima bunyi serentak dalam model.'],answer:'Bunyi bergerak ke semua arah melalui udara, jadi keempat-empat orang boleh mendengar loceng. Dalam model udara yang sama, bunyi sampai serentak pada jarak sama dan lebih lewat kepada orang yang lebih jauh.'},
+  {id:'q3',topic:'Pantulan bunyi',question:'Kamu bertepuk tangan menghadap dinding keras dan kemudian langsir lembut pada jarak yang sama. Apakah yang berlaku kepada bunyi pada permukaan itu? Mengapakah bunyi yang kembali mungkin berbeza?',criteria:['Menyatakan bunyi boleh dipantulkan kembali oleh permukaan; gema ialah pantulan yang didengar berasingan.','Menyatakan bahan lembut menyerap sebahagian bunyi, jadi pantulannya mungkin lebih lemah daripada dinding keras.'],answer:'Sebahagian bunyi dipantulkan kembali oleh kedua-dua permukaan. Dinding keras biasanya memantulkan lebih banyak bunyi; langsir lembut menyerap sebahagian bunyi, jadi pantulannya lebih lemah. Pantulan yang didengar semula secara berasingan dipanggil gema.'},
+  {id:'q4',topic:'Kesan bunyi',question:'Bunyi hon kenderaan boleh berfaedah dan juga memudaratkan. Berikan satu keadaan yang menunjukkan setiap kesan itu.',criteria:['Memberi contoh hon berguna sebagai amaran keselamatan.','Memberi contoh hon yang kuat atau berulang mengganggu tumpuan atau ketenteraman.'],answer:'Hon boleh memberi amaran kepada orang tentang bahaya. Hon yang kuat atau berulang tanpa perlu boleh mengganggu tumpuan dan ketenteraman orang lain.'},
+  {id:'q5',topic:'Kurangkan gangguan',question:'Kelas kamu berdekatan jalan yang bising. Cadangkan satu cara yang selamat untuk mengurangkan gangguan bunyi itu. Terangkan bagaimana cara itu membantu.',criteria:['Mencadangkan satu tindakan selamat yang khusus seperti menutup tingkap, memasang langsir tebal atau mengubah tempat belajar.','Menjelaskan bagaimana tindakan itu menghalang, menyerap atau menjauhkan bunyi daripada murid.'],answer:'Contohnya, tutup tingkap ketika lalu lintas sibuk. Tingkap yang tertutup menghalang sebahagian bunyi jalan daripada masuk ke kelas. Guru juga boleh menggunakan langsir tebal untuk menyerap sebahagian bunyi.'},
+ ],
+ en:[
+  {id:'q1',topic:'Vibration',question:'You pluck the free end of a ruler over a desk edge. What causes the sound? What happens to the sound when the ruler stops moving?',criteria:['States that the vibrating ruler produces sound.','States that the sound stops when the vibration stops.'],answer:'The ruler vibrates when plucked, producing sound. When the ruler stops vibrating, the sound stops too.'},
+  {id:'q2',topic:'Sound travels',question:'Four people stand the same distance in front of, behind, left and right of a bell. Who can hear it? If one person moves farther away, does the sound reach them earlier or later? Explain.',criteria:['States that sound travels in all directions, so all four can hear it.','States sound arrives later at the farther listener; listeners at equal distance receive it together in the model.'],answer:'Sound travels in all directions through air, so all four can hear the bell. In the same-air model, it reaches equally distant listeners together and the farther person later.'},
+  {id:'q3',topic:'Sound reflection',question:'You clap toward a hard wall and then a soft curtain at the same distance. What happens to the sound at those surfaces? Why might the returning sound differ?',criteria:['States that sound can reflect back from a surface; an echo is a separate heard reflection.','States a soft material absorbs some sound, so its reflection may be weaker than a hard wall.'],answer:'Some sound reflects from both surfaces. A hard wall usually reflects more sound, while a soft curtain absorbs some, making its reflection weaker. A reflection heard separately is an echo.'},
+  {id:'q4',topic:'Effects of sound',question:'A vehicle horn can be useful and harmful. Give one situation showing each effect.',criteria:['Gives a safety warning as a useful example.','Gives loud or repeated horns disturbing concentration or peace as a harmful example.'],answer:'A horn can warn people of danger. Loud or repeated unnecessary honking can disturb other people’s concentration and peace.'},
+  {id:'q5',topic:'Reduce noise',question:'Your classroom is beside a noisy road. Suggest one safe way to reduce the disturbance. Explain how it helps.',criteria:['Suggests one specific safe action such as closing windows, using thick curtains or moving the learning area.','Explains how the action blocks, absorbs or increases distance from the noise.'],answer:'For example, close the windows during busy traffic. Closed windows block some road sound from entering the classroom. Thick curtains can also absorb some sound.'},
+ ],
+} as const;
+
+export function blankAssessment():AssessmentAnswers{return {q1:'',q2:'',q3:'',q4:'',q5:''};}
+export function parseAssessmentInput(value:unknown):AssessmentInput{
+ if(!value||typeof value!=='object'||Array.isArray(value))throw new Error('invalid_schema');
+ const v=value as Record<string,unknown>;
+ if(Object.keys(v).sort().join(',')!=='answers,language'||(v.language!=='bm'&&v.language!=='en'))throw new Error('invalid_schema');
+ if(!v.answers||typeof v.answers!=='object'||Array.isArray(v.answers))throw new Error('invalid_schema');
+ const answers=v.answers as Record<string,unknown>;
+ if(Object.keys(answers).sort().join(',')!==[...ASSESSMENT_IDS].sort().join(','))throw new Error('invalid_schema');
+ for(const id of ASSESSMENT_IDS){const answer=answers[id];if(typeof answer!=='string'||answer.trim().length<1||answer.trim().length>500||/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/u.test(answer))throw new Error('invalid_schema');}
+ return {language:v.language,answers:Object.fromEntries(ASSESSMENT_IDS.map(id=>[id,(answers[id] as string).trim()])) as unknown as AssessmentAnswers};
+}

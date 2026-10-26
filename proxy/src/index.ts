@@ -1,12 +1,14 @@
 /// <reference types="@cloudflare/workers-types" />
-import { MAX_BODY_BYTES, parseInput, PROMPT_VERSION } from '../../shared/contract';
-import { buildPrompt } from './prompt';
-import { renderSelection } from './feedback-bank';
+import { MAX_BODY_BYTES } from '../../shared/contract';
+import {parseAssessmentInput,type AssessmentInput} from '../../shared/assessment';
+import {parseStageInput,type StageInput} from '../../shared/stage-guidance';
+import {buildAssessmentPrompt,renderAssessmentMarking} from './assessment';
+import {buildStagePrompt,renderStageMarking} from './stage-guidance';
 import { reserve, type CounterState, type Limits } from './quota';
 export interface Env {
-  OPENAI_API_KEY?: string; CLASS_CODE?: string; IP_HASH_SECRET?: string;
+  OPENAI_API_KEY?: string; IP_HASH_SECRET?: string;
   AI_ENABLED: string; ALLOWED_ORIGINS: string;
-  CLASS_PER_MINUTE: string; IP_PER_MINUTE: string; DAILY_LIMIT: string; MONTHLY_LIMIT: string;
+  PUBLIC_PER_MINUTE: string; IP_PER_MINUTE: string; DAILY_LIMIT: string; MONTHLY_LIMIT: string;
   QUOTA: DurableObjectNamespace;
 }
 const encoder = new TextEncoder();
@@ -19,7 +21,7 @@ function limit(value: string, ceiling: number): number {
   return n;
 }
 function limits(env: Env): Limits {
-  return { classMinute: limit(env.CLASS_PER_MINUTE, 60), ipMinute: limit(env.IP_PER_MINUTE, 120), day: limit(env.DAILY_LIMIT, 1000), month: limit(env.MONTHLY_LIMIT, 10000) };
+  return { classMinute: limit(env.PUBLIC_PER_MINUTE, 60), ipMinute: limit(env.IP_PER_MINUTE, 120), day: limit(env.DAILY_LIMIT, 1000), month: limit(env.MONTHLY_LIMIT, 10000) };
 }
 export async function readCapped(body: ReadableStream<Uint8Array> | null, cap: number): Promise<string> {
   if (!body) throw new Error('invalid_body');
@@ -36,12 +38,6 @@ export async function readCapped(body: ReadableStream<Uint8Array> | null, cap: n
   for (const chunk of chunks) { joined.set(chunk, offset); offset += chunk.length; }
   return new TextDecoder('utf-8', { fatal: true }).decode(joined);
 }
-async function digest(value: string): Promise<Uint8Array> { return new Uint8Array(await crypto.subtle.digest('SHA-256', encoder.encode(value))); }
-async function sameCode(a: string, b: string): Promise<boolean> {
-  const [x, y] = await Promise.all([digest(a), digest(b)]); let different = 0;
-  for (let i = 0; i < x.length; i++) different |= x[i] ^ y[i];
-  return different === 0;
-}
 async function ipHash(ip: string, secret: string): Promise<string> {
   const key = await crypto.subtle.importKey('raw', encoder.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
   const signed = await crypto.subtle.sign('HMAC', key, encoder.encode(`${new Date().toISOString().slice(0, 10)}:${ip}`));
@@ -54,65 +50,40 @@ export async function handle(request: Request, env: Env, upstream: typeof fetch 
   const cors = { 'Access-Control-Allow-Origin': origin, Vary: 'Origin' };
   const reply = (data: unknown, status = 200, extra = {}) => json(data, status, { ...cors, ...extra });
   const path = new URL(request.url).pathname;
-  if (!['/api/health', '/api/feedback', '/api/class-code'].includes(path)) return reply({ error: 'not_found' }, 404);
+  if (!['/api/health', '/api/stage-guidance', '/api/assessment'].includes(path)) return reply({ error: 'not_found' }, 404);
   if (request.method === 'OPTIONS' && path !== '/api/health') {
     const method = request.headers.get('Access-Control-Request-Method');
     const headers = (request.headers.get('Access-Control-Request-Headers') ?? '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
-    if (method !== 'POST' || headers.some(h => !['content-type', 'x-class-code'].includes(h))) return reply({ error: 'preflight_denied' }, 403);
-    return new Response(null, { status: 204, headers: { ...cors, 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Allow-Headers': 'Content-Type, X-Class-Code', 'Access-Control-Max-Age': '600' } });
+    if (method !== 'POST' || headers.some(h => h !== 'content-type')) return reply({ error: 'preflight_denied' }, 403);
+    return new Response(null, { status: 204, headers: { ...cors, 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Allow-Headers': 'Content-Type', 'Access-Control-Max-Age': '600' } });
   }
   if (path === '/api/health') return request.method === 'GET' ? reply({ status: 'ok', aiEnabled: env.AI_ENABLED === 'true' }) : reply({ error: 'method_denied' }, 405);
   if (request.method !== 'POST') return reply({ error: 'method_denied' }, 405);
   if (env.AI_ENABLED !== 'true') return reply({ error: 'ai_disabled' }, 503);
-  if (!env.OPENAI_API_KEY || !env.CLASS_CODE || env.CLASS_CODE.length < 16 || !env.IP_HASH_SECRET || env.IP_HASH_SECRET.length < 32) return reply({ error: 'server_not_configured' }, 503);
-  const code = request.headers.get('X-Class-Code') ?? '';
-  const teacher = code.length <= 128 && await sameCode(code, env.CLASS_CODE);
-  const stub = env.QUOTA.get(env.QUOTA.idFromName('global-v1'));
-  const teacherId = Array.from(await digest(env.CLASS_CODE), b => b.toString(16).padStart(2, '0')).join('');
-  if (!teacher) {
-    if (path === '/api/class-code' || !/^[A-HJ-NP-Z2-9]{10}$/.test(code)) return reply({ error: 'class_code_invalid' }, 401);
-    try {
-      const verified = await stub.fetch('https://quota.internal/verify-class', { method: 'POST', body: JSON.stringify({ hash: Array.from(await digest(code), b => b.toString(16).padStart(2, '0')).join(''), teacherId, ipId: await ipHash(request.headers.get('CF-Connecting-IP') ?? 'local', env.IP_HASH_SECRET) }) });
-      if (!verified.ok) return reply({ error: verified.status === 429 ? 'quota_exceeded' : verified.status === 401 ? 'class_code_invalid' : 'quota_unavailable' }, verified.status);
-    } catch { return reply({ error: 'quota_unavailable' }, 503); }
-  }
+  if (!env.OPENAI_API_KEY || !env.IP_HASH_SECRET || env.IP_HASH_SECRET.length < 32) return reply({ error: 'server_not_configured' }, 503);
   if (request.headers.get('Content-Type')?.split(';')[0].trim().toLowerCase() !== 'application/json') return reply({ error: 'json_required' }, 415);
   if (Number(request.headers.get('Content-Length')) > MAX_BODY_BYTES) return reply({ error: 'too_large' }, 413);
-  if (path === '/api/class-code') {
-    let body;
-    try { body = JSON.parse(await readCapped(request.body, 128)); }
-    catch(e) { return reply({ error: e instanceof Error && e.message === 'too_large' ? 'too_large' : 'invalid_schema' }, e instanceof Error && e.message === 'too_large' ? 413 : 400); }
-    if (!body || Array.isArray(body) || typeof body !== 'object' || Object.keys(body).length) return reply({ error: 'invalid_schema' }, 400);
-    try {
-      const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-      const classroomCode = Array.from(crypto.getRandomValues(new Uint8Array(10)), b => alphabet[b % 32]).join('');
-      const hash = Array.from(await digest(classroomCode), b => b.toString(16).padStart(2, '0')).join('');
-      const issued = await stub.fetch('https://quota.internal/issue-class', { method: 'POST', body: JSON.stringify({ hash, teacherId }) });
-      if (!issued.ok) return reply({ error: issued.status === 429 ? 'code_limit' : 'quota_unavailable' }, issued.status);
-      const { expiresAt } = await issued.json() as { expiresAt: number };
-      return reply({ code: classroomCode, expiresAt });
-    } catch (e) { return reply({ error: e instanceof Error && e.message === 'too_large' ? 'too_large' : 'quota_unavailable' }, e instanceof Error && e.message === 'too_large' ? 413 : 503); }
-  }
-  let input;
-  try { input = parseInput(JSON.parse(await readCapped(request.body, MAX_BODY_BYTES))); }
+  let input:StageInput|AssessmentInput;
+  try { const data:unknown=JSON.parse(await readCapped(request.body, MAX_BODY_BYTES));input=path==='/api/assessment'?parseAssessmentInput(data):parseStageInput(data); }
   catch (error) { return reply({ error: error instanceof Error && error.message === 'too_large' ? 'too_large' : 'invalid_schema' }, error instanceof Error && error.message === 'too_large' ? 413 : 400); }
   try {
     const budget = limits(env); const ip = request.headers.get('CF-Connecting-IP') ?? 'local';
     const stub = env.QUOTA.get(env.QUOTA.idFromName('global-v1'));
-    const quotaResponse = await stub.fetch('https://quota.internal/reserve', { method: 'POST', body: JSON.stringify({ limits: budget, classId: 'current-class', ipId: await ipHash(ip, env.IP_HASH_SECRET) }) });
+    const quotaResponse = await stub.fetch('https://quota.internal/reserve', { method: 'POST', body: JSON.stringify({ limits: budget, classId: 'public-v1', ipId: await ipHash(ip, env.IP_HASH_SECRET) }) });
     if (quotaResponse.status === 429) return reply({ error: 'quota_exceeded', reset: 'minute/day/month UTC limits apply' }, 429, { 'Retry-After': '60' });
     if (!quotaResponse.ok) return reply({ error: 'quota_unavailable' }, 503);
   } catch { return reply({ error: 'quota_unavailable' }, 503); }
   const abort = new AbortController(); const timer = setTimeout(() => abort.abort(), 20000);
   try {
-    const response = await upstream('https://api.openai.com/v1/responses', { method: 'POST', headers: { Authorization: `Bearer ${env.OPENAI_API_KEY}`, 'Content-Type': 'application/json' }, body: JSON.stringify(buildPrompt(input)), signal: abort.signal });
+    const prompt=path==='/api/assessment'?buildAssessmentPrompt(input as AssessmentInput):buildStagePrompt(input as StageInput);
+    const response = await upstream('https://api.openai.com/v1/responses', { method: 'POST', headers: { Authorization: `Bearer ${env.OPENAI_API_KEY}`, 'Content-Type': 'application/json' }, body: JSON.stringify(prompt), signal: abort.signal });
     if (!response.ok) { await response.body?.cancel(); return reply({ error: 'ai_unavailable' }, 502); }
     const data = JSON.parse(await readCapped(response.body, 32768)) as { status?: string; output?: { type?: string; content?: { type?: string; text?: string }[] }[] };
     if (data.status !== 'completed' || !Array.isArray(data.output)) return reply({ error: 'ai_response_invalid' }, 502);
     const selection = data.output.filter(o => o.type === 'message').flatMap(o => o.content ?? []).filter(c => c.type === 'output_text').map(c => c.text ?? '').join('\n').trim();
     let rendered;
-    try { rendered = renderSelection(selection, input); } catch { return reply({ error: 'ai_response_invalid' }, 502); }
-    return reply({ ...rendered, source: 'openai', promptVersion: PROMPT_VERSION, generationMode: 'ai-selected-curriculum-feedback' });
+    try { rendered = path==='/api/assessment'?renderAssessmentMarking(selection,input as AssessmentInput):renderStageMarking(selection,input as StageInput); } catch { return reply({ error: 'ai_response_invalid' }, 502); }
+    return reply(rendered);
   } catch { return reply({ error: abort.signal.aborted ? 'ai_timeout' : 'ai_unavailable' }, 502); }
   finally { clearTimeout(timer); }
 }
@@ -121,31 +92,8 @@ export class QuotaCoordinator implements DurableObject {
   constructor(private readonly state: DurableObjectState) {}
   async fetch(request: Request): Promise<Response> {
     const path = new URL(request.url).pathname;
-    if (request.method !== 'POST' || !['/reserve', '/issue-class', '/verify-class'].includes(path)) return json({ error: 'not_found' }, 404);
+    if (request.method !== 'POST' || path !== '/reserve') return json({ error: 'not_found' }, 404);
     try {
-      if (path === '/issue-class') {
-        const { hash, teacherId } = await request.json() as { hash:string; teacherId:string };
-        const expiresAt = Date.now() + 2 * 60 * 60 * 1000;
-        const issued = await this.state.storage.transaction(async tx => {
-          const hour = Math.floor(Date.now() / 3600000), previous = await tx.get<{hour:number;count:number}>('code-issuance');
-          const count = previous?.hour === hour ? previous.count : 0;
-          if (count >= 10) return false;
-          await tx.put('code-issuance', {hour,count:count+1});
-          await tx.put('class-access', {hash,teacherId,expiresAt}); return true;
-        });
-        return json({ expiresAt }, issued ? 200 : 429);
-      }
-      if (path === '/verify-class') {
-        const {hash, teacherId, ipId} = await request.json() as {hash:string;teacherId:string;ipId:string};
-        const status = await this.state.storage.transaction(async tx => {
-          const next = reserve(await tx.get<CounterState>('access-attempts'), {classMinute:120,ipMinute:20,day:10000,month:100000}, 'access', ipId);
-          if (!next) return 429;
-          await tx.put('access-attempts', next);
-          const access = await tx.get<{hash:string;teacherId:string;expiresAt:number}>('class-access');
-          return access && access.expiresAt > Date.now() && access.teacherId === teacherId && await sameCode(hash, access.hash) ? 200 : 401;
-        });
-        return json({accepted:status===200}, status);
-      }
       const { limits: budget, classId, ipId } = await request.json() as { limits: Limits; classId: string; ipId: string };
       const accepted = await this.state.storage.transaction(async transaction => {
         const next = reserve(await transaction.get<CounterState>('counters'), budget, classId, ipId);

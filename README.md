@@ -1,50 +1,18 @@
-# AI SoundLab — Misi Detektif Bunyi
+# AI SoundLab · Misi Detektif Bunyi
 
-**ACTIVE STATUS · 26 October 2026: four-mission app, selected option 2 workbench, hosted secured AI proxy.**
+[Open the app](https://lauhoekeat.github.io/ai-soundlab/) · [Setup](SETUP.md) · [Current release decision](docs/2026-10-26/PUBLIC-SESSION-RELEASE.md)
 
-[Live app](https://lauhoekeat.github.io/ai-soundlab/) · [Teacher guide](docs/2026-10-25/TEACHER-GUIDE.md) · [Release report](docs/2026-10-25/RELEASE-REPORT.md). Four interactive investigations, BM/EN, local evidence book/export, separate teacher examples, and AI-selected curriculum feedback for M1/M4. POC diagnostic retained at `?diagnostic`. Source is public; no provider key or recordings in GitHub. Deployment status and verification limits are explicit in the release report.
+A BM-first, optional-English Year 4 KSSR Science 6.1 practice app. Pupils investigate vibration, sound travelling in all directions, echoes, and the effects of familiar sounds. Each mission has Predict, Try, and Explain sections with optional AI feedback. A final five-question written assessment scores two science ideas per question and gives a 10-point practice report.
 
-0.3.0: guided four-stage workbench with one task at a time, nearby observation and field errors, dedicated teacher space, and teacher-only Echo timing. [Design decision](docs/design/2026-10-26-organization/README.md) · [flow and checks](docs/design/2026-10-26-organization/IMPLEMENTATION.md) · [comparison QA](design-qa.md).
+The app is public and needs no teacher mode, class code, login, or saved answer. Text and audio remain in the open browser session; only answers submitted for AI feedback are sent to the secured Cloudflare Worker. Recordings are never uploaded. The AI does not identify environmental sounds. Pupils label sounds themselves and reason about their effect.
 
-0.2.3: guidance follows the final answer; Echo Run includes sound and explains material strength versus travel time. [Historical patch checks](docs/2026-10-25/INQUIRY-ORDER-ECHO-0.2.3.md).
+The frontend is React, TypeScript and Vite on GitHub Pages. The Worker calls OpenAI with a server-side key, strict input schemas, exact Origin allowlist and global/IP request quotas. A public Origin is not authentication; caps bound exposure. See [architecture and release limits](docs/2026-10-26/PUBLIC-SESSION-RELEASE.md).
 
-0.2.2: clearer Year 4 questions, numbered activity steps, optional writing starters and simpler bilingual AI follow-ups. [Question revision](docs/2026-10-25/YEAR4-QUESTIONS.md). 0.2.1 added protected teacher classroom-code generation, two-hour pupil access and local M4 sound-file support. [Bug-fix QA](docs/2026-10-25/BUGFIX-QA-0.2.1.md).
+```powershell
+npm ci
+npm run check
+npm run test:runtime
+npm run dev
+```
 
-Start with [active PRD/plan](docs/2026-10-25/README.md), [UX](docs/2026-10-25/UX.md), [architecture](docs/2026-10-25/ARCHITECTURE.md), [validation](docs/2026-10-25/VALIDATION.md), [science](docs/2026-10-25/SCIENCE.md), [risks](docs/2026-10-25/RISKS.md), [setup](SETUP.md) and [measured POC report](docs/2026-10-25/POC-REPORT.md). These supersede conflicting historical requirements below. The four-mission product is implemented and published; see the release report for observed checks and remaining submission follow-ups. No automatic sound identification; AI receives student text only.
-
-Node 22+: `npm ci`, `npm run dev`, `npm run proxy:dev`. Run `npm run check` before commits. Owner authorized public source and free Pages on 25 October. Never put an OpenAI key in Vite or GitHub. The backend is separate from Pages: [architecture](docs/2026-10-25/ARCHITECTURE-PLAIN.md). Read SETUP.md for server-only secrets and the public proxy URL.
-
-## Historical plan · 24 October 2026
-
-**Status: PLANNING ONLY · 24 October 2026 · Asia/Kuala_Lumpur**
-
-A proposed Year 4 science experience in which pupils investigate a school's mysterious sounds, test explanations, and design a quieter learning space. The competition category is Bahan Interaktif PdP Berbantukan AI, Selangor 2026.
-
-**No application, prototype, model training, installation, deployment or runtime tests have been performed.** This repository contains the reviewable plan. Repository setup and planning issue creation are authorized. Implementation requires the owner's explicit approval.
-
-## Read in this order
-
-1. [Executive plan](docs/01-product-plan.md): outcomes, four missions, scope and lesson.
-2. [Evidence and assumptions](docs/02-evidence-assumptions.md): recovered context, sources, unresolved decisions.
-3. [Product Design process](docs/design/00-process.md) and [per-feature briefs](docs/design/01-feature-briefs.md).
-4. [Architecture](docs/03-architecture.md), [AI and data protocol](docs/04-ai-data-plan.md), [ADRs](docs/adr/README.md).
-5. [POC gates](docs/05-poc-gates.md), [QA matrix](docs/06-testing-matrix.md), [curriculum and assessment](docs/07-curriculum-assessment.md).
-6. [Schedule](docs/08-delivery-schedule.md), [competition presentation](docs/09-competition-demo.md).
-7. [Scoped backlog](docs/10-backlog.md), [Codex handoff](docs/11-codex-handoff.md), [risks](docs/12-risk-register.md).
-
-## Dates and decision boundary
-
-| Milestone | Date | Meaning |
-|---|---|---|
-| Registration closes | 26 October 2026 | From supplied announcement; cutoff time and required uploads unverified |
-| Internal registration target | 25 October 2026, 18:00 MYT | Owner submits and retains acknowledgement |
-| Event | 12 November 2026 | Setia City Convention Centre, from supplied announcement |
-| Artifact submission | Unknown | Must verify separately; do not assume event day |
-
-Register without waiting for a finished product if the official form permits it. Never claim registration was submitted by this agent.
-
-## Proposed implementation, after approval
-
-Static browser application; React + TypeScript + Vite; Web Audio; TensorFlow.js transfer audio classifier; local progress; no accounts or cloud audio. These are proposed choices pending POC evidence. The AI task is sound classification, not a general chatbot. Simulations and rule-based teaching feedback will be identified honestly.
-
-Acceptance numbers in this plan are **targets, not measured results**. All issue titles remain prefixed with their planning/approval phase. See [AGENTS.md](AGENTS.md) for the implementation lock.
+The prior PRD, POC evidence, teacher guide and historical designs remain in [docs/2026-10-25](docs/2026-10-25/README.md). Their class-code, teacher-mode and Evidence Book descriptions are historical; the current behavior is documented above and in the current release decision. Competition eligibility for a music teacher and organizer submission requirements still require official confirmation. This app's score is practice feedback, not an official PBD level.
