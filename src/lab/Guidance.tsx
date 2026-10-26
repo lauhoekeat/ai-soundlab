@@ -13,6 +13,7 @@ export function Guidance({mission,language,work,code,setCode,onFeedback}:Props) 
   useEffect(()=>{mounted.current=true;setBusy(false);setMessage('');return()=>{mounted.current=false;abort.current?.abort();};},[key]);
   const supported=mission==='vibration'||mission==='detective';
   const result=work.feedbackLanguage===language?work.feedback:null;
+  const answerReady=Boolean(work.observation.trim()&&work.explanation.trim()&&(mission!=='detective'||work.classification&&work.mitigation.trim()));
   async function ask() {
     if(!supported)return;
     if(!work.observation.trim()||!work.explanation.trim()||mission==='detective'&&(!work.classification||!work.mitigation.trim())){setMessage(mission==='detective'?t.aiNeed:t.aiNeedVibration);return;}
@@ -25,6 +26,6 @@ export function Guidance({mission,language,work,code,setCode,onFeedback}:Props) 
   if(!supported)return null;
   return <section className="guidance"><h3><SparkleIcon/>{t.ai}</h3><div className="guidance-body">{result?<><div className="fact-title"><LightbulbIcon/><strong>{t.ai}</strong></div><p className="ai-result">{result.feedback}</p><p className="reflect">{t.reflect}</p></>:<p>{t.aiEmpty}</p>}</div>
     <p className="small">{t.aiIntro}</p><details className="ai-access"><summary>{t.aiCode} &amp; {language==='bm'?'persetujuan':'consent'}</summary><label>{t.aiCode}<input type="password" autoComplete="off" maxLength={128} value={code} onChange={e=>setCode(e.target.value)}/><small>{t.aiCodeHelp}</small></label><p className="small">{t.privacy}</p><label className="check"><input type="checkbox" checked={consent} onChange={e=>{setConsent(e.target.checked);if(!e.target.checked){abort.current?.abort();setBusy(false);}}}/>{t.consent}</label></details>
-    <button className="button primary" disabled={busy||!consent||!code} onClick={()=>void ask()}><SparkleIcon/>{busy?t.aiBusy:t.aiAsk}</button>{message?<p role="status" className="form-message">{message}</p>:null}
+    <button className="button primary" disabled={busy||!consent||!code||!answerReady} onClick={()=>void ask()}><SparkleIcon/>{busy?t.aiBusy:t.aiAsk}</button>{message?<p role="status" className="form-message">{message}</p>:null}
   </section>;
 }

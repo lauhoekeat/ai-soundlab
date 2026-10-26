@@ -1,4 +1,6 @@
-> Current release: 0.2.2, clearer Year 4 BM/EN questions, activity steps and optional writing help. [Question revision and verification](YEAR4-QUESTIONS.md). [Merged PR #24](https://github.com/lauhoekeat/ai-soundlab/pull/24), deployed source 0c867ee, [successful Pages run 40252252766](https://github.com/lauhoekeat/ai-soundlab/actions/runs/40252252766). The 0.2.1/0.2.0 evidence below is historical.
+> Current patch: 0.2.3 fixes guidance order and Echo sound. See [patch verification](INQUIRY-ORDER-ECHO-0.2.3.md). Earlier release evidence follows.
+
+> Prior release: 0.2.2, clearer Year 4 BM/EN questions, activity steps and optional writing help. [Question revision and verification](YEAR4-QUESTIONS.md). [Merged PR #24](https://github.com/lauhoekeat/ai-soundlab/pull/24), deployed source 0c867ee, [successful Pages run 40252252766](https://github.com/lauhoekeat/ai-soundlab/actions/runs/40252252766). The 0.2.1/0.2.0 evidence below is historical.
 
 > Prior patch: 0.2.1 adds protected teacher classroom-code generation, classroom copy fixes and local M4 audio import. See [patch QA](BUGFIX-QA-0.2.1.md) and [ADR-0007](ADR-0007-classroom-access.md). The 0.2.0 release evidence below is retained.
 
