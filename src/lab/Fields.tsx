@@ -2,36 +2,23 @@ import { useId } from 'react';
 import type { Language } from '../../shared/contract';
 import { MISSION_COPY, text } from './copy';
 import type { Investigation, MissionId } from './model';
-export function StageTitle({number,title}:{number:number;title:string}) {
-  return <h3 className={`stage-title stage-${number}`}><span>{number}</span>{title}</h3>;
+import type { AnswerField } from './flow';
+export function StageTitle({number,title}:{number:number;title:string}) {return <h3 className={`stage-title stage-${number}`}><span>{number}</span>{title}</h3>;}
+export function QuestionField({language,label,hints,starter,value,onChange,field,invalid=false,error,intro,rows=4,maxLength=600}:{language:Language;label:string;hints:readonly string[];starter:string;value:string;onChange:(value:string)=>void;field:AnswerField;invalid?:boolean;error?:string;intro?:string;rows?:number;maxLength?:number}) {
+ const id=useId(),t=text(language);
+ return <div className="question-field"><label htmlFor={id}>{label}</label>{intro?<p className="field-intro">{intro}</p>:null}<textarea id={id} data-field={field} aria-invalid={invalid||undefined} aria-describedby={invalid?`${id}-error`:undefined} rows={rows} maxLength={maxLength} placeholder={t.writeHere} value={value} onChange={e=>onChange(e.target.value)}/>{invalid?<p id={`${id}-error`} className="field-error">{error}</p>:null}<details className="writing-help"><summary>{t.writingHelp}</summary><ul>{hints.map(hint=><li key={hint}>{hint}</li>)}</ul><p>{starter}</p></details></div>;
 }
-function QuestionField({language,label,hints,starter,value,onChange,rows=3,maxLength=600}:{language:Language;label:string;hints:string[];starter:string;value:string;onChange:(value:string)=>void;rows?:number;maxLength?:number}) {
-  const id=useId();
-  return <div className="question-field"><label htmlFor={id}>{label}</label>
-    <ul id={`${id}-help`} className="question-hints">{hints.map(hint=><li key={hint}>{hint}</li>)}</ul>
-    <textarea id={id} aria-describedby={`${id}-help ${id}-starter`} rows={rows} maxLength={maxLength} placeholder={starter} value={value} onChange={e=>onChange(e.target.value)}/>
-    <p id={`${id}-starter`} className="answer-starter"><strong>{text(language).starterLead}</strong> {starter}</p>
-  </div>;
+interface FieldsProps {mission:MissionId;language:Language;work:Investigation;update:(p:Partial<Investigation>)=>void;issues?:readonly AnswerField[];compact?:boolean;}
+export function Prediction({mission,language,work,update,issues=[],compact=false}:FieldsProps) {
+ const t=text(language),q=MISSION_COPY[language][mission],id=useId();
+ return <section className="prediction-panel">{!compact?<StageTitle number={1} title={t.prediction}/>:null}<fieldset data-field="prediction" tabIndex={-1} aria-invalid={issues.includes('prediction')||undefined} aria-describedby={issues.includes('prediction')?id:undefined}><legend>{q.predict}</legend><div className="radio-row">{[['yes',t.yes],['no',t.no],['unsure',t.unsure]].map(([value,label])=><label key={value}><input type="radio" name={`prediction-${mission}`} checked={work.prediction===value} onChange={()=>update({prediction:value})}/>{label}</label>)}</div>{issues.includes('prediction')?<p className="field-error" id={id}>{t.choosePrediction}</p>:null}</fieldset><QuestionField language={language} field="predictionReason" label={t.reason} hints={[q.reasonHelp]} starter={t.predictionPlaceholder} value={work.predictionReason} invalid={issues.includes('predictionReason')} error={t.writeReason} maxLength={400} rows={3} onChange={value=>update({predictionReason:value})}/></section>;
 }
-export function Prediction({mission,language,work,update}:{mission:MissionId;language:Language;work:Investigation;update:(p:Partial<Investigation>)=>void}) {
-  const t=text(language),q=MISSION_COPY[language][mission];
-  return <section className="prediction-panel"><StageTitle number={1} title={t.prediction}/><fieldset><legend>{q.predict}</legend><div className="radio-row">{[['yes',t.yes],['no',t.no],['unsure',t.unsure]].map(([value,label])=><label key={value}><input type="radio" name={`prediction-${mission}`} checked={work.prediction===value} onChange={()=>update({prediction:value})}/>{label}</label>)}</div></fieldset>
-    <QuestionField language={language} label={t.reason} hints={[q.reasonHelp]} starter={t.predictionPlaceholder} value={work.predictionReason} maxLength={400} rows={2} onChange={value=>update({predictionReason:value})}/>
-  </section>;
+export function InvestigationSteps({mission,language}:{mission:MissionId;language:Language}) {const t=text(language);return <div className="investigation-steps"><h4>{t.stepsTitle}</h4><ol>{MISSION_COPY[language][mission].steps.map(step=><li key={step}>{step}</li>)}</ol></div>;}
+export function ObservationField({mission,language,work,update,issues=[]}:FieldsProps) {
+ const t=text(language),q=MISSION_COPY[language][mission];
+ return <QuestionField language={language} field="observation" intro={t.observeShort} label={mission==='echo'?t.observeHeading:q.observe} hints={q.observeHints} starter={q.observeStarter} value={work.observation} invalid={issues.includes('observation')} error={t.writeObservation} rows={7} onChange={value=>update({observation:value})}/>;
 }
-export function InvestigationSteps({mission,language}:{mission:MissionId;language:Language}) {
-  const t=text(language);
-  return <div className="investigation-steps"><h4>{t.stepsTitle}</h4><ol>{MISSION_COPY[language][mission].steps.map(step=><li key={step}>{step}</li>)}</ol></div>;
-}
-export function ObservationField({mission,language,work,update}:{mission:MissionId;language:Language;work:Investigation;update:(p:Partial<Investigation>)=>void}) {
-  const q=MISSION_COPY[language][mission];
-  return <QuestionField language={language} label={q.observe} hints={q.observeHints} starter={q.observeStarter} value={work.observation} onChange={value=>update({observation:value})}/>;
-}
-export function ExplanationFields({mission,language,work,update}:{mission:MissionId;language:Language;work:Investigation;update:(p:Partial<Investigation>)=>void}) {
-  const t=text(language),q=MISSION_COPY[language][mission],help=useId();
-  return <section className="explanation-panel"><StageTitle number={3} title={t.explanation}/>
-    {mission==='detective'?<fieldset className="classification" aria-describedby={help}><legend>{t.classify}</legend><p id={help} className="classification-help">{t.classifyHelp}</p>{[['useful',t.useful],['harmful',t.harmful],['both',t.both]].map(([value,label])=><label key={value}><input type="radio" name="classification" checked={work.classification===value} onChange={()=>update({classification:value})}/>{label}</label>)}</fieldset>:null}
-    <QuestionField language={language} label={q.explain} hints={q.explainHints} starter={q.explainStarter} value={work.explanation} maxLength={mission==='detective'?570:600} rows={4} onChange={value=>update({explanation:value})}/>
-    {mission==='detective'?<QuestionField language={language} label={t.mitigation} hints={[t.mitigationHelp]} starter={t.mitigationStarter} value={work.mitigation} maxLength={400} onChange={value=>update({mitigation:value})}/>:null}
-  </section>;
+export function ExplanationFields({mission,language,work,update,issues=[],compact=false}:FieldsProps) {
+ const t=text(language),q=MISSION_COPY[language][mission],help=useId();
+ return <section className="explanation-panel">{!compact?<StageTitle number={3} title={t.explanation}/>:null}{mission==='detective'?<fieldset className="classification" data-field="classification" tabIndex={-1} aria-invalid={issues.includes('classification')||undefined} aria-describedby={help}><legend>{t.classify}</legend><p id={help} className="classification-help">{t.classifyHelp}</p>{[['useful',t.useful],['harmful',t.harmful],['both',t.both]].map(([value,label])=><label key={value}><input type="radio" name="classification" checked={work.classification===value} onChange={()=>update({classification:value})}/>{label}</label>)}{issues.includes('classification')?<p className="field-error">{t.chooseEffect}</p>:null}</fieldset>:null}<QuestionField language={language} field="explanation" label={q.explain} hints={q.explainHints} starter={q.explainStarter} value={work.explanation} invalid={issues.includes('explanation')} error={t.writeExplanation} maxLength={mission==='detective'?570:600} rows={5} onChange={value=>update({explanation:value})}/>{mission==='detective'?<QuestionField language={language} field="mitigation" label={t.mitigation} hints={[t.mitigationHelp]} starter={t.mitigationStarter} value={work.mitigation} invalid={issues.includes('mitigation')} error={t.writeProposal} maxLength={400} rows={3} onChange={value=>update({mitigation:value})}/>:null}</section>;
 }

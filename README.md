@@ -1,10 +1,12 @@
 # AI SoundLab — Misi Detektif Bunyi
 
-**ACTIVE STATUS · 26 October 2026: four-mission app, selected concept 1, hosted secured AI proxy.**
+**ACTIVE STATUS · 26 October 2026: four-mission app, selected option 2 workbench, hosted secured AI proxy.**
 
 [Live app](https://lauhoekeat.github.io/ai-soundlab/) · [Teacher guide](docs/2026-10-25/TEACHER-GUIDE.md) · [Release report](docs/2026-10-25/RELEASE-REPORT.md). Four interactive investigations, BM/EN, local evidence book/export, separate teacher examples, and AI-selected curriculum feedback for M1/M4. POC diagnostic retained at `?diagnostic`. Source is public; no provider key or recordings in GitHub. Deployment status and verification limits are explicit in the release report.
 
-0.2.3: guidance follows the final answer; Echo Run includes sound and explains material strength versus travel time. [Patch checks](docs/2026-10-25/INQUIRY-ORDER-ECHO-0.2.3.md).
+0.3.0: guided four-stage workbench with one task at a time, nearby observation and field errors, dedicated teacher space, and teacher-only Echo timing. [Design decision](docs/design/2026-10-26-organization/README.md) · [flow and checks](docs/design/2026-10-26-organization/IMPLEMENTATION.md) · [comparison QA](design-qa.md).
+
+0.2.3: guidance follows the final answer; Echo Run includes sound and explains material strength versus travel time. [Historical patch checks](docs/2026-10-25/INQUIRY-ORDER-ECHO-0.2.3.md).
 
 0.2.2: clearer Year 4 questions, numbered activity steps, optional writing starters and simpler bilingual AI follow-ups. [Question revision](docs/2026-10-25/YEAR4-QUESTIONS.md). 0.2.1 added protected teacher classroom-code generation, two-hour pupil access and local M4 sound-file support. [Bug-fix QA](docs/2026-10-25/BUGFIX-QA-0.2.1.md).
 

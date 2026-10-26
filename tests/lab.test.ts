@@ -3,6 +3,7 @@ import { IDBFactory } from 'fake-indexeddb';
 import { arrivalMs, badgeCount, blank, complete, entryId, sameDistances, type Entry, type Investigation } from '../src/lab/model';
 import { readEntries, writeEntry, deleteMode } from '../src/lab/notebook-store';
 import { TEXT, MISSION_COPY } from '../src/lab/copy';
+import { FLOW_TEXT, firstIncompleteStep, stepIssues } from '../src/lab/flow';
 const work:Investigation={...blank(),prediction:'yes',predictionReason:'I will test it.',observation:'The ruler vibrated.',explanation:'Vibration produces sound.',observed:true};
 describe('investigation evidence',()=>{
   it('requires prediction, reason, activity, observation and explanation',()=>{expect(complete('vibration',work)).toBe(true);for(const patch of [{prediction:''},{predictionReason:' '},{observed:false},{observation:' '},{explanation:' '}])expect(complete('vibration',{...work,...patch})).toBe(false);});
@@ -11,6 +12,9 @@ describe('investigation evidence',()=>{
   it('counts unique valid mission evidence separately for teacher/student',()=>{const entry:Entry={id:entryId('student','vibration'),mission:'vibration',mode:'student',language:'en',savedAt:'2026-10-25T00:00:00Z',work};expect(badgeCount([entry,entry,{...entry,mode:'teacher'},{...entry,mission:'echo'}],'student')).toBe(1);});
   it('models equal/unequal travel and round-trip comparisons consistently',()=>{expect(sameDistances([2,2,2,2])).toBe(true);expect(sameDistances([2,2,3,2])).toBe(false);expect(arrivalMs(4)).toBeCloseTo(2*arrivalMs(2));});
   it('has full equivalent UI keys and all four mission descriptions in BM/EN',()=>{expect(Object.keys(TEXT.bm).sort()).toEqual(Object.keys(TEXT.en).sort());for(const lang of ['bm','en'] as const){expect(Object.keys(MISSION_COPY[lang])).toHaveLength(4);for(const value of Object.values(TEXT[lang]))expect(value.trim()).not.toBe('');}});
+  it('keeps the four guided stages consistent with evidence requirements',()=>{expect(firstIncompleteStep('vibration',blank())).toBe(0);expect(stepIssues('vibration',blank(),0)).toEqual(['prediction','predictionReason']);expect(firstIncompleteStep('vibration',{...work,observed:false})).toBe(1);expect(stepIssues('vibration',{...work,explanation:''},2)).toEqual(['explanation']);expect(firstIncompleteStep('vibration',work)).toBe(3);expect(complete('vibration',work)).toBe(true);});
+  it('blocks explanation until both simulation trials and the pupil observation are present',()=>{expect(stepIssues('echo',{...work,experiment:{hardTest:1}},1)).toContain('activity');expect(stepIssues('echo',{...work,experiment:{hardTest:1,softTest:1}},1)).toEqual([]);expect(stepIssues('travel',{...work,experiment:{equalTest:1,differentTest:1},observation:''},1)).toEqual(['observation']);expect(stepIssues('detective',{...work,classification:'',mitigation:''},2)).toEqual(['classification','mitigation']);});
+  it('has equivalent non-empty guided-flow copy in BM and English',()=>{expect(Object.keys(FLOW_TEXT.bm).sort()).toEqual(Object.keys(FLOW_TEXT.en).sort());for(const language of ['bm','en'] as const)for(const value of Object.values(FLOW_TEXT[language])){if(Array.isArray(value)){expect(value).toHaveLength(4);value.forEach(item=>expect(item.trim()).not.toBe(''));}else expect(value.trim()).not.toBe('');}});
 });
 describe('IndexedDB product notebook',()=>{
   beforeEach(()=>vi.stubGlobal('indexedDB',new IDBFactory()));afterEach(()=>vi.unstubAllGlobals());

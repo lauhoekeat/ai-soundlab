@@ -1,5 +1,6 @@
 {
-  "status": "awaiting_user_selection",
+  "status": "option_2_selected_and_implemented",
+  "selected_option": 2,
   "set": "2026-10-26 organization review",
   "order_rule": "actual displayed Image Gen result order; not the earlier 25 October set",
   "options": [

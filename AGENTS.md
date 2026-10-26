@@ -6,6 +6,8 @@ Current owner authorization is recorded in docs/approvals.md. Follow docs/2026-1
 
 Current product update: owner selected concept 1, reported both devices passed, and reported Science review approved. Product development is authorized and merged through PR #19 and published from main. Owner then completed Cloudflare sign-in; secured proxy is deployed at https://ai-soundlab-proxy.ai-soundlab.workers.dev . Follow RELEASE-REPORT.md for final deployment/QA status. Do not re-open already resolved approval questions. Physical device/version details, pupil pilot and organizer eligibility are still not independently verified.
 
+26 October design update: the owner explicitly asked Product Design to review and organize the published app, then selected displayed **option 2** from the new three-image set in `docs/design/2026-10-26-organization/`. This new selection supersedes concept 1 for the current interface while preserving the original product authorization and security constraints. The owner authorized automated Chromium capture when the in-app browser capture could not initialize. See that folder's implementation decision and root `design-qa.md`. Publishing remains part of the original authorized GitHub Pages workflow.
+
 ## Historical instructions · 24 October 2026
 
 This is a planning-only repository as of 24 October 2026. The owner has NOT approved development.

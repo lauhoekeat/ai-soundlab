@@ -1,0 +1,135 @@
+.wb-shell{min-height:100vh;background:#fff;color:#103456}
+.wb-shell .mission-sidebar{position:fixed;inset:0 auto 0 0;width:256px;display:flex;flex-direction:column;padding:27px 14px 24px;background:#fff;border-right:1px solid #dfe9ef;z-index:5}
+.wb-shell .mission-sidebar .brand{justify-content:flex-start;padding:4px 12px 51px;font-size:28px;letter-spacing:-.7px;color:#0c3552}
+.wb-shell .mission-sidebar .brand svg{color:#079da3;flex:none}
+.wb-shell .mission-sidebar nav{display:flex;flex-direction:column;gap:7px;flex:1}
+.wb-shell .mission-link,.wb-shell .teacher-link{display:flex;align-items:center;gap:15px;text-align:left;width:100%;min-height:62px;padding:12px 14px;border:0;border-left:4px solid transparent;border-radius:6px;background:transparent;font-size:17px;font-weight:750;line-height:1.3}
+.wb-shell .mission-link svg,.wb-shell .teacher-link svg{color:#087f8c;flex:none}
+.wb-shell .mission-link:hover,.wb-shell .teacher-link:hover{background:#edf8fa}
+.wb-shell .mission-link.active,.wb-shell .teacher-link.active{background:#e7f7f7;border-left-color:#00999e;color:#006f78}
+.wb-shell .sidebar-divider{height:1px;margin:18px 10px 10px;background:#d9e6ec}
+.wb-shell .teacher-link{margin-top:auto;font-size:16px}
+.wb-shell .mobile-menu-toggle{display:none}
+.wb-shell .workspace{margin-left:256px;max-width:1700px;padding:21px clamp(24px,5vw,78px) 80px}
+.wb-shell .workspace-tools{display:flex;justify-content:flex-end;min-height:64px}
+.wb-shell .language-switch{align-self:flex-start;box-shadow:0 1px 5px #18354f12}
+.wb-shell .workspace-heading{margin:0 0 23px}
+.wb-shell .workspace-heading h1{font-size:clamp(43px,4.3vw,62px);line-height:1.07;letter-spacing:-1.2px;color:#0d3452}
+.wb-shell .workspace-heading h2{font-size:clamp(25px,2.3vw,33px);line-height:1.18;margin-top:13px;color:#0d3554}
+.wb-shell .workspace-heading p{font-size:19px;line-height:1.45;margin:13px 0 0;max-width:1000px;color:#39536e}
+.wb-shell .learning-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;padding:0;margin:26px 0 24px;counter-reset:none}
+.wb-shell .learning-steps li{position:relative;min-width:0}
+.wb-shell .learning-steps li:not(:last-child):after{content:"";position:absolute;left:calc(50% + 29px);right:calc(-50% + 29px);top:20px;height:2px;background:#c5d5df}
+.wb-shell .learning-steps li.past:after{background:#008c92}
+.wb-shell .learning-steps button{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;padding:0 3px;background:transparent;border:0;font-size:16px;line-height:1.25;color:#50667b}
+.wb-shell .learning-steps button span{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;border:2px solid #b7c8d5;background:#fff;font-weight:850;font-size:19px;z-index:1}
+.wb-shell .learning-steps .current button{color:#007a82}
+.wb-shell .learning-steps .current button span{background:#008e98;color:#fff;border-color:#008e98}
+.wb-shell .learning-steps .past button span{background:#d8f4ee;border-color:#008e98;color:#00777d}
+.wb-shell .learning-steps button strong{font-weight:800}
+.wb-shell .workbench-grid,.wb-shell .learning-two-col{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(295px,1fr);align-items:stretch;gap:18px}
+.wb-shell .experiment-panel,.wb-shell .answer-panel,.wb-shell .review-panel{min-width:0;padding:25px 28px 27px;border:1px solid #dae5ec;border-radius:9px;background:#fff;box-shadow:0 1px 4px #1336530a}
+.wb-shell .observation-card,.wb-shell .context-help{min-width:0;padding:24px 25px 26px;border:1px solid #d9edf4;border-radius:9px;background:#edf8fc}
+.wb-shell .observation-card{display:flex;flex-direction:column}
+.wb-shell .observation-card .question-field{display:flex;flex-direction:column;flex:1;margin:0}
+.wb-shell .question-field>label,.wb-shell .prediction-panel legend,.wb-shell .classification legend{font-family:'Baloo 2','Nunito Sans',sans-serif;font-size:24px;font-weight:800;line-height:1.23;margin:0 0 9px;color:#0e3655}
+.wb-shell .observation-card .question-field>label{font-size:26px}
+.wb-shell .field-intro{font-size:16px;line-height:1.4;margin:0 0 13px;color:#36546b}
+.wb-shell .question-field textarea{min-height:128px;margin:0;border-color:#b9ccd8;font-size:17px;line-height:1.48}
+.wb-shell .observation-card textarea{min-height:232px;flex:1}
+.wb-shell .writing-help{margin-top:10px;color:#006c7d;font-size:14px}
+.wb-shell .writing-help summary{cursor:pointer;font-weight:800;min-height:36px}
+.wb-shell .writing-help ul{padding-left:21px;margin:5px 0}
+.wb-shell .writing-help p{margin:6px 0;color:#34566a}
+.wb-shell .field-error{font-weight:800;font-size:14px;color:#aa3030;margin:7px 0}
+.wb-shell [aria-invalid=true]{border-color:#b13b3b!important}
+.wb-shell .phase-actions{display:flex;align-items:center;gap:17px;margin-top:22px}
+.wb-shell .observation-card .phase-actions{margin-top:auto;padding-top:20px}
+.wb-shell .phase-actions .next-action{flex:1;min-height:56px;justify-content:center;font-size:18px}
+.wb-shell .phase-actions .back-action{flex:none}
+.wb-shell .simulation-panel{min-width:0}
+.wb-shell .echo-map{height:285px;margin:0 0 18px;background:linear-gradient(180deg,#f8fcfd,#e6f4f9);border-radius:7px;overflow:hidden}
+.wb-shell .echo-map canvas{width:100%;height:100%}
+.wb-shell .echo-speaker-image,.wb-shell .echo-boundary-image{position:absolute;object-fit:contain;pointer-events:none}
+.wb-shell .echo-speaker-image{left:0;top:18px;width:210px;height:240px}
+.wb-shell .echo-boundary-image.hard{right:2%;top:0;width:116px;height:282px}
+.wb-shell .echo-boundary-image.soft{right:0;top:0;width:171px;height:282px}
+.wb-shell .diagram-label{position:absolute;left:30%;padding:3px 6px;border-radius:4px;background:#f8fcfde8;font-weight:800;font-size:14px;pointer-events:none}
+.wb-shell .outgoing-label{top:23%;color:#007a96}
+.wb-shell .return-label{top:66%;color:#9c5e03}
+.wb-shell .echo-controls-grid{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(140px,.8fr);gap:18px;margin-top:5px}
+.wb-shell .echo-controls-grid legend,.wb-shell .sound-choice{font-weight:800;font-size:16px;margin:0 0 8px}
+.wb-shell .material-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.wb-shell .surface-options .material-choice{display:flex;flex-direction:column;align-items:flex-start;gap:2px;border:2px solid #c9dce4;border-radius:7px;background:#fff;min-height:152px;padding:7px 10px 9px;margin:0;cursor:pointer;font-weight:800}
+.wb-shell .surface-options .material-choice.selected{border-color:#00959c;background:#f1fbfb}
+.wb-shell .material-choice img{width:100%;height:91px;object-fit:contain;pointer-events:none}
+.wb-shell .material-choice input{order:2;display:inline-block}
+.wb-shell .material-choice span{order:3;margin:-27px 0 0 29px;line-height:24px}
+.wb-shell .sound-choice{display:block!important;min-width:0}
+.wb-shell .sound-choice>span{display:flex;align-items:center;border:1px solid #b9cbd8;border-radius:6px;background:white;padding:0 8px;margin-top:8px;color:#007987}
+.wb-shell .sound-choice select{border:0;min-width:0;margin:0;width:100%;padding:9px 3px;background:transparent}
+.wb-shell .sim-buttons{display:flex;margin:19px 0 7px}
+.wb-shell .sim-buttons .primary{min-height:55px;font-size:18px}
+.wb-shell .simulation-more{margin:2px 0 7px;font-size:13px;color:#4b667b}
+.wb-shell .simulation-more summary{cursor:pointer;min-height:29px;font-weight:800}
+.wb-shell .simulation-more>div{display:flex;gap:8px;margin:4px 0}
+.wb-shell .simulation-note{font-size:13px;line-height:1.4;color:#607286;margin:3px 0 11px}
+.wb-shell .trial-checks{margin:9px 0 0}
+.wb-shell .trial-checks>span{font-size:13px}
+.wb-shell .teacher-model{margin-top:14px;padding:10px 12px;background:#f4f7fa;font-size:14px}
+.wb-shell .teacher-model summary{cursor:pointer;font-weight:800;min-height:30px}
+.wb-shell .propagation-map{max-height:335px;aspect-ratio:600/420}
+.wb-shell .distance-presets{display:flex;gap:8px;margin:14px 0}
+.wb-shell .distance-presets button{flex:1}
+.wb-shell .sim-control-grid{margin:7px 0}
+.wb-shell .sim-control-grid label{margin:0}
+.wb-shell .context-help{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.wb-shell .context-help img{max-width:100%;object-fit:contain}
+.wb-shell .ruler-preview{width:100%;max-height:340px}
+.wb-shell .materials-preview{display:flex;width:100%;height:200px;gap:12px}
+.wb-shell .materials-preview img{width:50%;height:100%}
+.wb-shell .context-help p{font-size:16px;line-height:1.5;margin:0}
+.wb-shell .context-help h3{font-size:24px}
+.wb-shell .own-observation{white-space:pre-wrap;overflow-wrap:anywhere}
+.wb-shell .context-help details{width:100%;font-size:15px}
+.wb-shell .context-help summary{cursor:pointer;min-height:44px;font-weight:800}
+.wb-shell .prediction-panel{margin:0}
+.wb-shell .prediction-panel fieldset{margin-bottom:23px}
+.wb-shell .prediction-panel .radio-row{gap:13px}
+.wb-shell .prediction-panel .radio-row label{border:1px solid #cbdde5;border-radius:6px;min-width:100px;padding:10px 12px;font-size:17px;font-weight:800}
+.wb-shell .answer-panel .question-field{margin:22px 0}
+.wb-shell .answer-panel .question-field textarea{min-height:145px}
+.wb-shell .ruler-workbench{display:block;max-width:100%;max-height:220px;margin:auto;object-fit:contain}
+.wb-shell .listening-method{margin:18px 0!important}
+.wb-shell .listening-method legend{font-size:18px}
+.wb-shell .listening-method label{display:inline-flex;align-items:center;gap:7px;border:1px solid #c8dae4;border-radius:6px;padding:10px 11px;margin:3px 7px 3px 0;min-height:48px;cursor:pointer}
+.wb-shell .listening-method label.selected{background:#eaf9f8;border-color:#008e98}
+.wb-shell .physical-activity{padding:12px 14px;border-radius:6px;background:#eff8fb}
+.wb-shell .audio-panel{margin-top:15px}
+.wb-shell .guidance{margin-top:23px}
+.wb-shell .review-panel{max-width:880px}
+.wb-shell .review-panel h2{font-size:32px}
+.wb-shell .review-panel dl{display:grid;grid-template-columns:170px 1fr;gap:13px 20px;margin:25px 0}
+.wb-shell .review-panel dt{font-weight:850}
+.wb-shell .review-panel dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.wb-shell .evidence-summary{display:flex;align-items:center;gap:7px;margin-top:22px;color:#88600a;font-weight:800}
+.wb-shell .evidence-summary svg{width:23px}
+.wb-shell .notebook-view{max-width:100%;margin:10px 0}
+.wb-shell .book-empty{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:19px 22px;background:#edf9fb;border-radius:7px;margin-top:24px}
+.wb-shell .evidence-row{gap:17px}
+.wb-shell .evidence-body h2{font-size:23px}
+.wb-shell .evidence-state .button{min-width:150px}
+.wb-shell .book-management{margin-top:22px}
+.wb-shell .book-management summary{cursor:pointer;min-height:48px;font-weight:800}
+.wb-shell .teacher-space{max-width:960px}
+.wb-shell .teacher-space header>p{font-size:19px;max-width:800px}
+.wb-shell .teacher-actions{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 30px}
+.wb-shell .teacher-guide{margin-top:25px;padding:24px;border:1px solid #dce7ec;border-radius:8px}
+.wb-shell .teacher-guide label{max-width:450px}
+.wb-shell .demo-banner{display:flex;align-items:center;gap:15px;flex-wrap:wrap;padding:8px 14px;background:#fff3d7;border-radius:6px;margin-bottom:17px}
+.wb-shell .demo-banner>span{display:flex;align-items:center;gap:7px;margin-right:auto;font-weight:850}
+.wb-shell .workspace-status{display:flex;align-items:center;gap:8px;padding:12px 15px;background:#e6f7f0;border-left:3px solid #008e98;margin-top:15px}
+.wb-shell .workspace-status.failure{background:#fff0e7;border-color:#b13b3b}
+@media(max-width:1100px){.wb-shell .mission-sidebar{width:218px}.wb-shell .workspace{margin-left:218px;padding-inline:25px}.wb-shell .mission-link{font-size:15px;gap:10px}.wb-shell .workbench-grid,.wb-shell .learning-two-col{grid-template-columns:minmax(0,1.45fr) minmax(260px,1fr)}.wb-shell .experiment-panel,.wb-shell .answer-panel,.wb-shell .observation-card,.wb-shell .context-help{padding:20px}}
+@media(max-width:800px){.wb-shell .mission-sidebar{position:relative;inset:auto;width:100%;padding:8px 16px;min-height:64px;display:flex;flex-direction:row;align-items:center;justify-content:space-between;border-right:0;border-bottom:1px solid #dfe9ef;flex-wrap:wrap}.wb-shell .mission-sidebar .brand{font-size:24px;padding:3px;min-height:44px}.wb-shell .mission-sidebar .brand svg{width:29px}.wb-shell .mobile-menu-toggle{display:flex;align-items:center;gap:8px;min-height:44px;border:1px solid #bfdae0;border-radius:6px;background:#eff9fa;padding:6px 10px;font-weight:800}.wb-shell .mission-sidebar nav,.wb-shell .mission-sidebar .teacher-link{display:none}.wb-shell .mission-sidebar.menu-open nav{display:flex;order:3;flex-basis:100%;padding:11px 0}.wb-shell .mission-sidebar.menu-open .teacher-link{display:flex;order:4;min-height:52px;margin:0}.wb-shell .mission-link{min-height:53px}.wb-shell .sidebar-divider{margin:6px 10px}.wb-shell .workspace{margin:0;padding:11px 16px 45px}.wb-shell .workspace-tools{min-height:52px}.wb-shell .workspace-heading h1{font-size:clamp(36px,7vw,51px)}.wb-shell .workspace-heading h2{font-size:clamp(24px,5vw,31px)}.wb-shell .workspace-heading p{font-size:17px}.wb-shell .workbench-grid,.wb-shell .learning-two-col{grid-template-columns:1fr}.wb-shell .observation-card textarea{min-height:170px}.wb-shell .context-help{min-height:0}.wb-shell .context-help .ruler-preview{max-height:220px}.wb-shell .context-help .materials-preview{height:150px}.wb-shell .learning-steps button{font-size:13px}.wb-shell .learning-steps li:not(:last-child):after{left:calc(50% + 22px);right:calc(-50% + 22px);top:17px}.wb-shell .learning-steps button span{width:36px;height:36px;font-size:16px}}
+@media(max-width:470px){.wb-shell .workspace{padding:10px 13px 40px}.wb-shell .workspace-heading{margin-bottom:14px}.wb-shell .workspace-heading h1{font-size:36px}.wb-shell .workspace-heading h2{font-size:24px;margin-top:9px}.wb-shell .workspace-heading p{font-size:16px}.wb-shell .learning-steps{margin:18px 0 17px}.wb-shell .learning-steps button{font-size:11px}.wb-shell .learning-steps button strong{max-width:76px}.wb-shell .experiment-panel,.wb-shell .answer-panel,.wb-shell .observation-card,.wb-shell .context-help,.wb-shell .review-panel{padding:17px}.wb-shell .echo-map{height:220px}.wb-shell .echo-speaker-image{width:145px;height:180px;top:17px}.wb-shell .echo-boundary-image.hard{width:73px;height:218px}.wb-shell .echo-boundary-image.soft{width:105px;height:218px}.wb-shell .diagram-label{font-size:11px;left:30%}.wb-shell .echo-controls-grid{grid-template-columns:1fr}.wb-shell .material-options{gap:8px}.wb-shell .material-choice img{height:77px}.wb-shell .surface-options .material-choice{min-height:138px}.wb-shell .sim-buttons .secondary,.wb-shell .sim-buttons .icon-button{padding-inline:8px}.wb-shell .distance-presets{flex-direction:column}.wb-shell .sim-control-grid{display:block}.wb-shell .phase-actions{flex-wrap:wrap}.wb-shell .phase-actions .next-action{min-width:100%}.wb-shell .review-panel dl{grid-template-columns:1fr;gap:4px}.wb-shell .review-panel dd{margin-bottom:13px}.wb-shell .view-heading{align-items:flex-start}.wb-shell .view-heading h1{font-size:33px}.wb-shell .view-heading p{font-size:16px!important}.wb-shell .big-badge{font-size:15px;padding:8px}.wb-shell .book-empty{display:block}.wb-shell .book-empty .button{margin-top:12px}.wb-shell .evidence-row{flex-wrap:wrap}.wb-shell .evidence-state{width:100%;max-width:none;justify-content:flex-start;margin-left:48px}.wb-shell .evidence-state .button{width:100%}}

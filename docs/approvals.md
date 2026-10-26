@@ -16,6 +16,8 @@ Gate follow-up, same chat, 25 October 2026: owner answered **“Both devices pas
 
 Hosting follow-up: owner initially chose “Finish the frontend; keep hosted AI pending”, then explicitly reported “npx wrangler login and signed in to cloudflare, authentication completed”. This resumes the previously authorized protected-proxy deployment using the configured local key, server secrets and public endpoint URL. No provider key may be published to GitHub or the frontend.
 
+26 October Product Design follow-up: owner requested “review design and make it more user friendly and organized,” authorized automated Chromium when the in-app capture tool failed, and selected **“2”** from the newly displayed set of three organization concepts. The new selected target is `docs/design/2026-10-26-organization/direction-2.png` (1487×1058), experiment workbench. This is a new visual selection for the same authorized product, superseding the earlier concept 1 layout. It does not authorize changing backend secrets, collecting pupil identities or claiming a new physical-device/pupil validation.
+
 | Phase | Status | Evidence |
 |---|---|---|
 | Planning, repository setup and scoped issues | Authorized | User request, 24 October 2026, AISoundLab continuation |

@@ -1,6 +1,6 @@
 # AI SoundLab organization review - 26 October 2026
 
-Status: audit complete; three visual directions generated; awaiting selection. No app source, live deployment or runtime behavior was changed in this design-review phase. Owner explicitly authorized automated Chromium capture after in-app browser initialization failed. Product Design saved-context preflight found no saved user-context file. Existing approved identity and current published code were the grounding sources.
+Status: option 2 selected by the owner and implemented on `feat/organized-learning-flow`. The three-option audit and generation were completed before implementation. Owner explicitly authorized automated Chromium capture after in-app browser initialization failed. Product Design saved-context preflight found no saved user-context file. Existing approved identity and current published code were the grounding sources.
 
 Read AUDIT.md for eight captured flow steps, findings, accessibility risks and limits. The full report with exact current screenshots is in the task outputs/design-review-2026-10-26/review-with-screenshots.md. Audit screenshots are from this run, not reused earlier QA. No credentials, pupil data, recordings or paid AI calls were used.
 
@@ -22,4 +22,4 @@ Correct necessary illustrative mock details while specifying functional states: 
 
 ## Selection gate
 
-Product Design ideate requires: After generating options, stop for the user's selection before any build work begins. Do not interpret an earlier selection of concept 1 from 25 October as selection from this new set. Once the owner chooses a displayed option, acknowledge it and follow image-to-code with the exact selected file. Review responsive behavior, keyboard/focus, clear stage actions, field error recovery, audio cleanup and saved evidence before release. No accessibility or pupil-comprehension certification is claimed.
+The owner selected displayed option 2 from this set. `direction-2.png` is the implementation reference. The older concept 1 remains historical. Implementation preserves the original mission order, validates each learning step, keeps answers while navigating, and leaves numeric timing in teacher-only details. The root `design-qa.md` records same-input comparison and browser checks. No accessibility or pupil-comprehension certification is claimed.
