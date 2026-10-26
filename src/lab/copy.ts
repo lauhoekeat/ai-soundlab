@@ -1,3 +1,4 @@
+import { FLOW_TEXT } from './flow';
 import type { Language } from '../../shared/contract';
 export const TEXT = {
   bm: {
@@ -79,5 +80,5 @@ export const TEXT = {
     predictionPlaceholder:'I think so because ____.', responsePlaceholder:'Write what you saw or heard yourself…', savedAt:'Saved',
   },
 } as const;
-export function text(language: Language) { return TEXT[language]; }
+export function text(language: Language) { return {...TEXT[language],...FLOW_TEXT[language]}; }
 export { MISSION_COPY } from './questions';

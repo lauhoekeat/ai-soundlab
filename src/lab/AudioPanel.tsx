@@ -4,8 +4,8 @@ import { startCapture, type Capture } from '../poc/audio';
 import { text } from './copy';
 import { MicrophoneIcon, StopIcon, TrashIcon, InfoIcon } from './Icons';
 import { readSoundFile } from './audio-file';
-interface Props {language:Language; ready:boolean; baseline?:boolean; allowFile?:boolean; onComplete:(rms:number,kind:string)=>void;}
-export function AudioPanel({language,ready,baseline=false,allowFile=false,onComplete}:Props) {
+interface Props {language:Language; ready:boolean; baseline?:boolean; allowFile?:boolean; inputMode?:'microphone'|'file'; onComplete:(rms:number,kind:string)=>void;}
+export function AudioPanel({language,ready,baseline=false,allowFile=false,inputMode='microphone',onComplete}:Props) {
   const t=text(language); const [active,setActive]=useState(false),[pending,setPending]=useState(false),[url,setUrl]=useState(''),[error,setError]=useState('');
   const [imported,setImported]=useState(false);
   const player=useRef<HTMLAudioElement>(null);
@@ -27,7 +27,7 @@ export function AudioPanel({language,ready,baseline=false,allowFile=false,onComp
     catch{if(mounted.current&&!abort.signal.aborted){setError(t.importInvalid);URL.revokeObjectURL(localUrl);}}
     finally{if(mounted.current&&controller.current===abort)setPending(false);}
   }
-  return <div className="audio-panel"><div className="audio-actions"><button className="button primary" disabled={!ready||active||pending} onClick={()=>void begin('sound')}><MicrophoneIcon/>{baseline&&url?t.sound:t.record}</button>{active||pending?<button className="button stop" onClick={()=>stop()}><StopIcon/>{t.stop}</button>:null}</div>{allowFile?<><label className="sound-file">{t.importAudio}<input type="file" accept="audio/*,.m4a" disabled={!ready||active||pending} onChange={e=>{const file=e.target.files?.[0];e.target.value='';if(file)void choose(file);}}/></label><p className="small">{t.importHelp}</p></>:null}<div className="signal-heading"><strong>{t.relative}</strong><span role="status">{pending?(imported?t.importBusy:t.waiting):active?t.recording:url?(imported?t.imported:t.last):t.idle}</span></div>
+  return <div className="audio-panel">{inputMode==='microphone'?<div className="audio-actions"><button className="button primary" disabled={!ready||active||pending} onClick={()=>void begin('sound')}><MicrophoneIcon/>{baseline&&url?t.sound:t.record}</button>{active||pending?<button className="button stop" onClick={()=>stop()}><StopIcon/>{t.stop}</button>:null}</div>:null}{allowFile&&inputMode==='file'?<><label className="sound-file">{t.importAudio}<input type="file" accept="audio/*,.m4a" disabled={!ready||active||pending} onChange={e=>{const file=e.target.files?.[0];e.target.value='';if(file)void choose(file);}}/></label><p className="small">{t.importHelp}</p></>:null}<div className="signal-heading"><strong>{t.relative}</strong><span role="status">{pending?(imported?t.importBusy:t.waiting):active?t.recording:url?(imported?t.imported:t.last):t.idle}</span></div>
     <canvas ref={canvas} width={640} height={130} role="img" aria-label={t.waveAlt}/><small className="axis">{t.timeAxis}</small>
     {baseline?<button className="text-button" disabled={!ready||active||pending} onClick={()=>void begin('quiet')}>{t.quiet}</button>:null}
     {url?<div className="audio-playback"><audio ref={player} src={url} controls aria-label={t.localAudio}/><button className="icon-button" aria-label={t.deleteAudio} onClick={()=>{player.current?.pause();URL.revokeObjectURL(blobUrl.current);blobUrl.current='';setUrl('');setImported(false);const c=canvas.current,ctx=c?.getContext('2d');if(c&&ctx){ctx.clearRect(0,0,c.width,c.height);ctx.beginPath();ctx.moveTo(0,65);ctx.lineTo(640,65);ctx.stroke();}}}><TrashIcon/></button></div>:null}
