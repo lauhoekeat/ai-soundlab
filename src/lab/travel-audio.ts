@@ -1,0 +1,5 @@
+export async function playTravelBell(signal:AbortSignal):Promise<void>{
+ if(signal.aborted)return;const context=new AudioContext();let closed=false,timer:ReturnType<typeof setTimeout>|undefined;
+ const stop=()=>{if(closed)return;closed=true;clearTimeout(timer);signal.removeEventListener('abort',stop);void context.close().catch(()=>{});};signal.addEventListener('abort',stop,{once:true});
+ try{await context.resume();if(signal.aborted){stop();return;}const start=context.currentTime+.02;for(const [frequency,gainValue] of [[660,.08],[880,.045]] as const){const oscillator=context.createOscillator(),gain=context.createGain();oscillator.type='sine';oscillator.frequency.value=frequency;oscillator.connect(gain);gain.connect(context.destination);gain.gain.setValueAtTime(0,start);gain.gain.linearRampToValueAtTime(gainValue,start+.01);gain.gain.exponentialRampToValueAtTime(.0001,start+.48);oscillator.start(start);oscillator.stop(start+.5);}timer=setTimeout(stop,650);}catch{stop();throw new Error('audio_unavailable');}
+}

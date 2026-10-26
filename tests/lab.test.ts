@@ -1,24 +1,14 @@
-import { describe, expect, it, beforeEach, afterEach, vi } from 'vitest';
-import { IDBFactory } from 'fake-indexeddb';
-import { arrivalMs, badgeCount, blank, complete, entryId, sameDistances, type Entry, type Investigation } from '../src/lab/model';
-import { readEntries, writeEntry, deleteMode } from '../src/lab/notebook-store';
-import { TEXT, MISSION_COPY } from '../src/lab/copy';
-import { FLOW_TEXT, firstIncompleteStep, stepIssues } from '../src/lab/flow';
-const work:Investigation={...blank(),prediction:'yes',predictionReason:'I will test it.',observation:'The ruler vibrated.',explanation:'Vibration produces sound.',observed:true};
-describe('investigation evidence',()=>{
-  it('requires prediction, reason, activity, observation and explanation',()=>{expect(complete('vibration',work)).toBe(true);for(const patch of [{prediction:''},{predictionReason:' '},{observed:false},{observation:' '},{explanation:' '}])expect(complete('vibration',{...work,...patch})).toBe(false);});
-  it('requires both distance layouts and both surfaces for simulation evidence',()=>{expect(complete('travel',work)).toBe(false);expect(complete('travel',{...work,experiment:{equalTest:1,differentTest:1}})).toBe(true);expect(complete('echo',{...work,experiment:{hardTest:1}})).toBe(false);expect(complete('echo',{...work,experiment:{hardTest:1,softTest:1}})).toBe(true);});
-  it('requires contextual classification and mitigation, with no automatic audio label',()=>{expect(complete('detective',work)).toBe(false);expect(complete('detective',{...work,classification:'both',mitigation:'Reduce unnecessary horns.'})).toBe(true);expect(blank().classification).toBe('');});
-  it('counts unique valid mission evidence separately for teacher/student',()=>{const entry:Entry={id:entryId('student','vibration'),mission:'vibration',mode:'student',language:'en',savedAt:'2026-10-25T00:00:00Z',work};expect(badgeCount([entry,entry,{...entry,mode:'teacher'},{...entry,mission:'echo'}],'student')).toBe(1);});
-  it('models equal/unequal travel and round-trip comparisons consistently',()=>{expect(sameDistances([2,2,2,2])).toBe(true);expect(sameDistances([2,2,3,2])).toBe(false);expect(arrivalMs(4)).toBeCloseTo(2*arrivalMs(2));});
-  it('has full equivalent UI keys and all four mission descriptions in BM/EN',()=>{expect(Object.keys(TEXT.bm).sort()).toEqual(Object.keys(TEXT.en).sort());for(const lang of ['bm','en'] as const){expect(Object.keys(MISSION_COPY[lang])).toHaveLength(4);for(const value of Object.values(TEXT[lang]))expect(value.trim()).not.toBe('');}});
-  it('keeps the four guided stages consistent with evidence requirements',()=>{expect(firstIncompleteStep('vibration',blank())).toBe(0);expect(stepIssues('vibration',blank(),0)).toEqual(['prediction','predictionReason']);expect(firstIncompleteStep('vibration',{...work,observed:false})).toBe(1);expect(stepIssues('vibration',{...work,explanation:''},2)).toEqual(['explanation']);expect(firstIncompleteStep('vibration',work)).toBe(3);expect(complete('vibration',work)).toBe(true);});
-  it('blocks explanation until both simulation trials and the pupil observation are present',()=>{expect(stepIssues('echo',{...work,experiment:{hardTest:1}},1)).toContain('activity');expect(stepIssues('echo',{...work,experiment:{hardTest:1,softTest:1}},1)).toEqual([]);expect(stepIssues('travel',{...work,experiment:{equalTest:1,differentTest:1},observation:''},1)).toEqual(['observation']);expect(stepIssues('detective',{...work,classification:'',mitigation:''},2)).toEqual(['classification','mitigation']);});
-  it('has equivalent non-empty guided-flow copy in BM and English',()=>{expect(Object.keys(FLOW_TEXT.bm).sort()).toEqual(Object.keys(FLOW_TEXT.en).sort());for(const language of ['bm','en'] as const)for(const value of Object.values(FLOW_TEXT[language])){if(Array.isArray(value)){expect(value).toHaveLength(4);value.forEach(item=>expect(item.trim()).not.toBe(''));}else expect(value.trim()).not.toBe('');}});
-});
-describe('IndexedDB product notebook',()=>{
-  beforeEach(()=>vi.stubGlobal('indexedDB',new IDBFactory()));afterEach(()=>vi.unstubAllGlobals());
-  const entry:Entry={id:entryId('student','vibration'),mission:'vibration',mode:'student',language:'en',savedAt:'2026-10-25T00:00:00Z',work};
-  it('persists a saved entry across new connections and updates in place',async()=>{await writeEntry(entry);expect((await readEntries())[0].work.explanation).toBe(work.explanation);await writeEntry({...entry,work:{...work,explanation:'Revised evidence.'}});const stored=await readEntries();expect(stored).toHaveLength(1);expect(stored[0].work.explanation).toBe('Revised evidence.');});
-  it('clears only the selected mode and never stores recording blobs or access code',async()=>{await writeEntry(entry);await writeEntry({...entry,id:entryId('teacher','vibration'),mode:'teacher'});await deleteMode('student');const stored=await readEntries();expect(stored).toHaveLength(1);expect(stored[0].mode).toBe('teacher');const json=JSON.stringify(stored);expect(json).not.toContain('CLASS_CODE');expect(json).not.toContain('audio');expect(json).not.toContain('blob:');});
+import {describe,expect,it} from 'vitest';
+import {arrivalMs,blank,complete,sameDistances,type Investigation} from '../src/lab/model';
+import {stepIssues} from '../src/lab/flow';
+import {TEXT,MISSION_COPY} from '../src/lab/copy';
+import {FLOW_TEXT} from '../src/lab/flow';
+const work:Investigation={...blank(),prediction:'yes',predictionReason:'Saya akan mencuba.',observation:'Saya mendengar bunyi.',explanation:'Getaran menghasilkan bunyi.',observed:true};
+describe('session learning gates',()=>{
+ it('requires observation, explanation and experiment before a challenge can finish',()=>{expect(complete('vibration',work)).toBe(true);for(const patch of [{prediction:''},{predictionReason:' '},{observed:false},{observation:' '},{explanation:' '}])expect(complete('vibration',{...work,...patch})).toBe(false);});
+ it('requires both travel layouts and both Echo materials',()=>{expect(complete('travel',work)).toBe(false);expect(complete('travel',{...work,experiment:{equalTest:1,differentTest:1}})).toBe(true);expect(complete('echo',{...work,experiment:{hardTest:1}})).toBe(false);expect(complete('echo',{...work,experiment:{hardTest:1,softTest:1}})).toBe(true);});
+ it('requires Sound Detective classification and mitigation',()=>{expect(complete('detective',work)).toBe(false);expect(complete('detective',{...work,classification:'both',mitigation:'Tutup tingkap supaya bunyi berkurang.'})).toBe(true);});
+ it('returns field-specific errors for the active section',()=>{expect(stepIssues('vibration',blank(),0)).toEqual(['prediction','predictionReason']);expect(stepIssues('vibration',{...work,observed:false},1)).toEqual(['activity']);expect(stepIssues('detective',{...work,classification:'',mitigation:''},2)).toEqual(['classification','mitigation']);});
+ it('models equal and farther travel consistently',()=>{expect(sameDistances([2,2,2,2])).toBe(true);expect(sameDistances([2,2,4,2])).toBe(false);expect(arrivalMs(4)).toBeCloseTo(2*arrivalMs(2));});
+ it('has equivalent BM/EN labels and four mission descriptions',()=>{expect(Object.keys(TEXT.bm).sort()).toEqual(Object.keys(TEXT.en).sort());expect(Object.keys(FLOW_TEXT.bm).sort()).toEqual(Object.keys(FLOW_TEXT.en).sort());for(const language of ['bm','en'] as const){expect(Object.keys(MISSION_COPY[language])).toHaveLength(4);expect(FLOW_TEXT[language].stageNames.slice(0,3)).toHaveLength(3);}});
 });

@@ -1,33 +1,6 @@
 import assert from 'node:assert/strict';
-import { Miniflare, convertV4MiniflareOptions } from 'miniflare';
-const mf = new Miniflare(convertV4MiniflareOptions({
-  workers: [{ name: 'poc', modules: true, scriptPath: 'proxy/work/worker/index.js', compatibilityDate: '2026-10-25',
-  bindings: { AI_ENABLED: 'false', ALLOWED_ORIGINS: 'http://127.0.0.1:5173' },
-  durableObjects: { QUOTA: { className: 'QuotaCoordinator', useSQLite: true } }, }],
-}));
-try {
-  const health = await mf.dispatchFetch('https://proxy.test/api/health', { headers: { Origin: 'http://127.0.0.1:5173' } });
-  assert.equal(health.status, 200); assert.deepEqual(await health.json(), { status: 'ok', aiEnabled: false });
-  assert.equal((await mf.dispatchFetch('https://proxy.test/api/health')).status, 403);
-  assert.equal((await mf.dispatchFetch('https://proxy.test/api/feedback', { method: 'POST', headers: { Origin: 'http://127.0.0.1:5173' } })).status, 503);
-  const { QUOTA } = await mf.getBindings('poc');
-  const stub = QUOTA.get(QUOTA.idFromName('test-atomic'));
-  const statuses = await Promise.all(Array.from({ length: 50 }, (_, i) => stub.fetch('https://quota.internal/reserve', { method: 'POST', body: JSON.stringify({ limits: { classMinute: 60, ipMinute: 120, day: 7, month: 10 }, classId: 'c', ipId: `ip-${i}` }) }).then(r => r.status)));
-  assert.equal(statuses.filter(s => s === 200).length, 7);
-  assert.equal(statuses.filter(s => s === 429).length, 43);
-  // A fresh stub to the same named object must see the persisted reservations.
-  const fresh = QUOTA.get(QUOTA.idFromName('test-atomic'));
-  assert.equal((await fresh.fetch('https://quota.internal/reserve', { method: 'POST', body: JSON.stringify({ limits: { classMinute: 60, ipMinute: 120, day: 7, month: 10 }, classId: 'c', ipId: 'another' }) })).status, 429);
-  console.log('PASS: actual local workerd routes and Durable Object atomic 50-way reservation (7 accepted, 43 rejected); fresh stub retained cap. No provider request/key used.');
-  const classroom = QUOTA.get(QUOTA.idFromName('test-classroom'));
-  const issued = await Promise.all(Array.from({length:30},(_,i)=>classroom.fetch('https://quota.internal/issue-class',{method:'POST',body:JSON.stringify({hash:`hash-${i}`,teacherId:'test-teacher'})}).then(r=>r.status)));
-  assert.equal(issued.filter(s=>s===200).length,10);assert.equal(issued.filter(s=>s===429).length,20);
-  const lesson = QUOTA.get(QUOTA.idFromName('test-one-lesson'));
-  await lesson.fetch('https://quota.internal/issue-class',{method:'POST',body:JSON.stringify({hash:'hash-one',teacherId:'test-teacher'})});
-  const verify=(hash,teacherId='test-teacher')=>lesson.fetch('https://quota.internal/verify-class',{method:'POST',body:JSON.stringify({hash,teacherId,ipId:'test-ip'})});
-  assert.equal((await verify('hash-one')).status,200);
-  assert.equal((await verify('hash-one','rotated')).status,401);
-  await lesson.fetch('https://quota.internal/issue-class',{method:'POST',body:JSON.stringify({hash:'hash-two',teacherId:'test-teacher'})});
-  assert.equal((await verify('hash-one')).status,401);assert.equal((await verify('hash-two')).status,200);
-  console.log('PASS: actual Durable Object 30-way class-code issuance capped at 10, verification, replacement and teacher-credential rotation.');
-} finally { await mf.dispose(); }
+import {Miniflare,convertV4MiniflareOptions} from 'miniflare';
+const mf=new Miniflare(convertV4MiniflareOptions({workers:[{name:'poc',modules:true,scriptPath:'proxy/work/worker/index.js',compatibilityDate:'2026-10-25',bindings:{AI_ENABLED:'false',ALLOWED_ORIGINS:'http://127.0.0.1:5173'},durableObjects:{QUOTA:{className:'QuotaCoordinator',useSQLite:true}}}]}));
+try{const health=await mf.dispatchFetch('https://proxy.test/api/health',{headers:{Origin:'http://127.0.0.1:5173'}});assert.equal(health.status,200);assert.deepEqual(await health.json(),{status:'ok',aiEnabled:false});assert.equal((await mf.dispatchFetch('https://proxy.test/api/health')).status,403);assert.equal((await mf.dispatchFetch('https://proxy.test/api/stage-guidance',{method:'POST',headers:{Origin:'http://127.0.0.1:5173'}})).status,503);assert.equal((await mf.dispatchFetch('https://proxy.test/api/class-code',{method:'POST',headers:{Origin:'http://127.0.0.1:5173'}})).status,404);
+ const {QUOTA}=await mf.getBindings('poc'),stub=QUOTA.get(QUOTA.idFromName('test-public-atomic'));const statuses=await Promise.all(Array.from({length:50},(_,i)=>stub.fetch('https://quota.internal/reserve',{method:'POST',body:JSON.stringify({limits:{classMinute:60,ipMinute:120,day:7,month:10},classId:'public',ipId:`ip-${i}`})}).then(r=>r.status)));assert.equal(statuses.filter(s=>s===200).length,7);assert.equal(statuses.filter(s=>s===429).length,43);const fresh=QUOTA.get(QUOTA.idFromName('test-public-atomic'));assert.equal((await fresh.fetch('https://quota.internal/reserve',{method:'POST',body:JSON.stringify({limits:{classMinute:60,ipMinute:120,day:7,month:10},classId:'public',ipId:'another'})})).status,429);console.log('PASS: public routes, retired class-code route and atomic 50-way quota reservation (7 accepted, 43 rejected). No provider request/key used.');}
+finally{await mf.dispose();}

@@ -14,9 +14,9 @@ describe('echo sound and model timing',()=>{
     vi.stubGlobal('AudioContext',Context);
   });
   afterEach(()=>{vi.unstubAllGlobals();vi.useRealTimers();});
-  it('keeps the real 2d/343 delay and uses a constant slower scale for both sound and animation',()=>{
-    expect(echoDelay(5)*1000).toBeCloseTo(29.1545);expect(echoDemoSeconds(5)).toBeCloseTo(echoDelay(5)*30);
-    expect(echoDemoSeconds(10)).toBeCloseTo(echoDemoSeconds(5)*2);
+  it('uses real round-trip delay at larger distances and a clear minimum separation nearby',()=>{
+    expect(echoDelay(5)*1000).toBeCloseTo(29.1545);expect(echoDemoSeconds(5)).toBeCloseTo(.55);
+    expect(echoDemoSeconds(350)).toBeCloseTo(echoDelay(350));expect(echoDemoSeconds(600)).toBeCloseTo(echoDelay(600));
   });
   it('schedules the same return time for both materials with a weaker curtain return',async()=>{
     for(const surface of ['hard','soft'] as const){

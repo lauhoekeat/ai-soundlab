@@ -1,72 +1,40 @@
-# Secure setup · AI SoundLab
+# AI SoundLab setup · public session release
 
-The four-mission frontend and secured proxy follow the approved POC. Owner approved public repository visibility for free Pages on 25 October 2026. Node 22 or later and Git are required. Run commands from the repository directory. The app is https://lauhoekeat.github.io/ai-soundlab/ and the hosted proxy is https://ai-soundlab-proxy.ai-soundlab.workers.dev . The original diagnostic remains available with `?diagnostic`.
+The published frontend is [GitHub Pages](https://lauhoekeat.github.io/ai-soundlab/). The secured API is `https://ai-soundlab-proxy.ai-soundlab.workers.dev`. Node 22+ and Cloudflare Wrangler are required for development or deployment. The owner has already configured the local key and authenticated Wrangler.
 
-## 1. Install and validate without a key
+## Local checks
 
 ```powershell
 npm ci
 npm run check
-npm run proxy:dry
+npm run test:runtime
 node scripts/init-local.mjs
-```
-
-The last command exclusively creates ignored `proxy/.env`, with random class access code and IP-hash salt. It never overwrites an existing file and prints no values. AI starts disabled. This server env is deliberately outside Vite's root env loading. Do not create `VITE_OPENAI_API_KEY` or put any provider secret in the root `.env`, frontend, GitHub secrets, issues or chat.
-
-## 2. Add your existing key locally, only after the runtime checks pass
-
-Open `proxy/.env` privately in your editor. Set `OPENAI_API_KEY` to your existing restricted project key, set `AI_ENABLED=true`, preserve the generated `CLASS_CODE` and `IP_HASH_SECRET`, and save. Do not paste the file or key in chat. `git check-ignore proxy/.env` must print `proxy/.env`. Never run commands that print the env file. The only public frontend variable is `VITE_PROXY_URL` (a URL, not a credential).
-
-Open two terminals:
-
-```powershell
-npm run proxy:dev
-```
-
-```powershell
 npm run dev
 ```
 
-Open `http://127.0.0.1:5173/ai-soundlab/`. Open Teacher mode and **Urus kod kelas**. Privately enter the existing server `CLASS_CODE` as the **teacher setup code**, then generate/copy the temporary classroom code for pupils. Never enter the OpenAI key in the app. Pupils use only the generated code under **Kod kelas & persetujuan**. Class code remains in tab memory; do not embed it in source or URL. Tick text-only consent. Test M1 with your own ruler observation, then M4 with a student-labelled safe sound and reason/mitigation. Feedback is live only when returned by the proxy; failures remain explicit. To inspect the original diagnostic, append `?diagnostic`.
+`init-local` creates ignored `proxy/.env` only when absent and never overwrites an existing file. Set `OPENAI_API_KEY` and `AI_ENABLED=true` there privately; keep `IP_HASH_SECRET` random and at least 32 characters. Never paste the key in chat or put it in a `VITE_` variable, source, GitHub, or a browser. `git check-ignore proxy/.env` confirms ignore status. Do not print the env file.
 
-Optional transport check (makes **two paid provider requests**, no automatic retries):
+For local API use, run `npm run proxy:dev` in another terminal. The frontend's `VITE_PROXY_URL` is a public Worker URL, not a secret. All AI calls send bounded written answers only. Audio and names are never sent by app code; tell pupils not to include names or personal details in written answers.
 
-```powershell
-npm run test:live
-```
+## Hosted Worker and Pages
 
-This prints synthetic adult fixture feedback and latency, never the credential. It does not automatically pass science or real-device gates. Keep school/pupil information out of fixtures. Stop both terminals after testing. Rotate the class code if exposed. To disable AI, set `AI_ENABLED=false` and restart the Worker.
+`proxy/wrangler.jsonc` carries the exact allowed origins and caps: 12 public requests/minute, 20/IP/minute, 200/day and 2,000/month. Input is capped at 8 KiB. Model responses are capped and time-limited. IP addresses are HMAC-hashed with a server secret for quota keys; no pupil answer or audio database is used. Quota rejection is visible and makes no OpenAI call. These limits are spend controls, not identity verification.
 
-## 3. Hosted serverless proxy
-
-Cloudflare login is required for deployment. The owner completed sign-in and the protected proxy has been deployed; these steps remain for reproducible setup/maintenance. Do not use an anonymous temporary hosting account for a pupil app. Confirm Workers/Durable Objects plan terms and quotas in your own account.
+The two hosted secrets are `OPENAI_API_KEY` and `IP_HASH_SECRET`. To update them from the ignored local env after verifying the intended Cloudflare account:
 
 ```powershell
-npx wrangler login
+node scripts/upload-proxy-secrets.mjs
+npm run proxy:deploy
 ```
 
-Change `proxy/wrangler.jsonc` `ALLOWED_ORIGINS` to the exact Pages origin `https://lauhoekeat.github.io` (an Origin has no `/ai-soundlab/` path). Retain localhost only while required. Use three separate private prompts to upload server-side secrets:
+The upload script transports secret values to Wrangler's stdin and redacts output. For manual upload, use `npx wrangler secret put OPENAI_API_KEY --config proxy/wrangler.jsonc` and similarly for `IP_HASH_SECRET`; enter values only at Wrangler's private prompt. The retired `CLASS_CODE` secret is unused and can be deleted after verifying the new release. Do not commit secrets.
 
-```powershell
-npx wrangler secret put OPENAI_API_KEY --config proxy/wrangler.jsonc
-npx wrangler secret put CLASS_CODE --config proxy/wrangler.jsonc
-npx wrangler secret put IP_HASH_SECRET --config proxy/wrangler.jsonc
-```
+The public GitHub Actions variable `VITE_PROXY_URL` points to the Worker. Pages source is GitHub Actions; merging a tested change triggers deployment. Before claiming a release is live, confirm the Actions run and load the published URL. `npm run test:live` makes two paid synthetic requests to the hosted API. `node scripts/hosted-security-gate.mjs` checks the hosted boundary without paid requests.
 
-Paste values only into Wrangler's private terminal prompt. Provider key minimum privileges and model/project access must be verified. Set `AI_ENABLED=true` in server vars only after testing. Then `npm run proxy:deploy`. Keep the returned HTTPS Worker URL for the public `VITE_PROXY_URL`. Durable storage holds atomic quota counters and one hashed, expiring classroom credential plus issuance/access limits; no pupil/audio/answer database. Host logs are disabled by config; do not add request-body logging.
+## Classroom use and limits
 
-## 4. GitHub Pages
+Pupils can complete all four simulations and write answers without AI. They may opt in separately to each AI check. They must finish four missions before the five-question assessment opens. Answers and reports remain in memory only and disappear on reload/closing the tab. No login, teacher mode, class code, Evidence Book, IndexedDB write, or export is used in this release. Existing data saved by older releases on a prior device is not read by this release; clear the browser's site data separately if desired.
 
-GitHub Free normally serves Pages from public repositories. Owner has explicitly approved public source for this project; the publication check must still confirm no key in tracked history or frontend bundle. Historical planning-only privacy restrictions are superseded by docs/approvals.md.
+Microphone permission is requested only when a pupil chooses recording. The ruler comparison needs a quiet baseline and a ruler-sound sample; the graph shows microphone signal, not direct ruler movement. Echo's optional recording is replayed locally with a synthetic reflected copy. Sound Travel and Echo show slowed models; displayed model times are explanatory, not instrument measurements. The AI reviews text, never listens to recordings or identifies their source. Practice scores are not official PBD judgments.
 
-Repository Settings → Pages → Source: GitHub Actions. The repository **Actions variable** `VITE_PROXY_URL` is set to `https://ai-soundlab-proxy.ai-soundlab.workers.dev`. It is a public URL, not a secret. No provider key or class code in GitHub. Merge the tested branch; Actions → Deploy AI SoundLab → Run workflow. The workflow uses Pages environment and OIDC, and runs checks before upload. Site URL: `https://lauhoekeat.github.io/ai-soundlab/`. Check successful workflow status before claiming a new version is live.
-
-Release check: open HTTPS site on teacher laptop and physical mobile; verify class code, consent, two live AI interactions, capture permissions/stop/playback, text-only network requests, quota rejection, IndexedDB reload/export/clear, science teacher signoff and exact competition eligibility/submission instructions. Record evidence in docs/2026-10-25/POC-REPORT.md. Do not call a diagnostic site competition-ready.
-
-## 5. Trial-data cleanup and fallback
-
-No names/login. Record objects, not people. Audio is memory-only and disappears on reload/exit or Delete audio. IndexedDB keeps anonymous text until Clear all records; exported JSON files must be deleted separately. AI requires internet and a working proxy. If unavailable, retain answers and use a visibly labelled teacher example; never present it as AI feedback. Full offline assets and multi-device class aggregation are outside this POC.
-
-## Teacher-access update (0.2.1)
-
-`CLASS_CODE` is now the private teacher setup credential. Keep the existing value; no new OpenAI secret or migration is required. POST `/api/class-code` accepts only an authenticated teacher and an empty JSON object (128-byte streamed cap). It issues a random ten-character classroom code, valid for two hours, with at most ten replacements per UTC hour. A replacement immediately invalidates the previous code. The worker stores only its SHA-256 hash, expiry and a setup-credential fingerprint; rotating the setup credential invalidates existing classroom access. Pupil credentials cannot issue codes. Classroom-code guessing is limited separately (20/IP/minute, 120 globally/minute, 10000/day and 100000/month); feedback retains the original global/class/IP paid-request caps. No code is put into frontend source or browser storage. Keep the setup value private; use only generated codes for new lessons.
+For a release check, test on a laptop and a physical phone: permissions, stop/playback, leaving-page microphone cleanup, both Travel listener drag and keyboard movement, Echo hard/soft trials, optional echo recording, stage AI, five-question assessment, and quota/error states. Obtain Science-teacher review of the current rubric; prior approval applied to an older feedback bank.
