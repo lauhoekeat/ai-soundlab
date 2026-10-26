@@ -30,3 +30,7 @@ The authored bilingual AI feedback bank is revised for the same age group. Techn
 - Screenshots saved to the parent workspace outputs as year4-questions-desktop.png and year4-questions-mobile.png. Browser plugin was not listed; existing CUA in-app browser controls were used without a CLI fallback. Production publication/check evidence is recorded in the linked PR and Actions run.
 
 Pupil comprehension and the revised wording have not been trialled with a Year 4 class. Earlier teacher/device approval remains historical; no new physical-device or pupil-trial pass is invented.
+
+## Published verification
+
+PR #24 merged after both CI checks passed. Pages run 40252252766 succeeded for source 0c867ee. A fresh production browser tab confirmed the new BM vibration question, three optional writing-help blocks and the new English detective observation question. No blank page, framework overlay, browser errors or warnings were observed. The public BM M1 screenshot was saved as parent outputs/published-year4-questions.png before restoring normal viewport and leaving the live tab ready in BM M1. The app remains at https://lauhoekeat.github.io/ai-soundlab/ .
