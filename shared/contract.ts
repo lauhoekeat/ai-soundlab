@@ -3,7 +3,7 @@ export type Language = 'bm' | 'en';
 export interface FeedbackInput { mission: Mission; language: Language; observation: string; explanation: string; mitigation: string; }
 export interface FeedbackResult { feedback: string; source: 'openai'; promptVersion: string; generationMode: 'ai-selected-curriculum-feedback'; concept: string; }
 export const MAX_BODY_BYTES = 8192;
-export const PROMPT_VERSION = 'sound-science-v4';
+export const PROMPT_VERSION = 'sound-science-v5';
 export function parseInput(value: unknown): FeedbackInput {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('invalid_schema');
   const v = value as Record<string, unknown>;

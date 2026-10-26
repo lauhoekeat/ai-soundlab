@@ -1,11 +1,11 @@
 import type { Language } from '../../shared/contract';
-import type { MissionId } from './model';
 export const TEXT = {
   bm: {
     teacher:'Mod guru', student:'Mod murid', notebook:'Buku Bukti', language:'Bahasa', menu:'Pilih misi',
     setupInvalid:'Kod persediaan guru tidak sah. Semak kod peribadi anda atau hubungi pentadbir.', classSetup:'Urus kod kelas', setupHelp:'Sediakan akses panduan AI untuk kelas anda. Kod kelas sah selama dua jam.', teacherCode:'Kod persediaan guru', teacherCodeHelp:'Gunakan kod persediaan peribadi yang diberikan semasa pemasangan. Hubungi pentadbir jika tiada kod. Jangan kongsikan kod ini kepada murid.', codeGenerate:'Jana kod kelas', codeReplace:'Ganti kod kelas', codeReplaceHelp:'Kod baharu menggantikan kod kelas sebelumnya. Had: 10 kod sejam.', codeBusy:'Menjana kod…', shareCode:'Kod untuk dikongsi kepada murid', validUntil:'Sah sehingga', copyCode:'Salin kod', codeCopied:'Kod disalin', copyManually:'Pilih dan salin kod secara manual.', codeExpired:'Kod tamat', codeExpiredHelp:'Jana kod baharu untuk meneruskan panduan AI.', codeTimeout:'Kod belum dapat dijana. Semak internet dan cuba lagi.',
     importAudio:'Pilih fail bunyi', importHelp:'Dengar fail pada peranti ini sahaja. Maksimum 10 MB, 60 saat. Tentukan sumber melalui pemerhatian anda.', importInvalid:'Fail tidak dapat dimainkan. Cuba fail audio lain, maksimum 10 MB dan 60 saat.', importBusy:'Membaca bunyi…', imported:'Fail bunyi sedia didengar', signalDetail:'Tentang graf ini', signalHelp:'Graf menunjukkan perubahan isyarat bunyi pada peranti ini. Ini bukan ukuran tahap bahaya bunyi.',
-    prediction:'Ramalan', reason:'Sebab saya', observation:'Pemerhatian', explanation:'Penjelasan', yes:'Ya', no:'Tidak', unsure:'Tidak pasti',
+    prediction:'Ramalan', reason:'Mengapakah kamu fikir begitu?', observation:'Pemerhatian', explanation:'Penjelasan', yes:'Ya', no:'Tidak', unsure:'Tidak pasti',
+    starterLead:'Bantuan menulis (pilihan):', stepsTitle:'Cuba langkah ini', classifyHelp:'Berfaedah bermaksud membantu. Memudaratkan bermaksud memberi kesan buruk, seperti mengganggu tumpuan.', mitigationHelp:'Terangkan bagaimana cara itu dapat membantu orang yang diganggu.', mitigationStarter:'Saya cadangkan ____. Cara ini membantu kerana ____.', aiNeedVibration:'Tulis perkara yang kamu lihat atau dengar. Kemudian terangkan bagaimana pembaris menghasilkan bunyi.',
     observeLabel:'Apakah yang anda perhatikan?', explainLabel:'Terangkan pemerhatian anda menggunakan idea sains.',
     save:'Simpan bukti', saved:'Bukti disimpan pada peranti ini.', notSaved:'Belum disimpan', evidence:'bukti', of:'daripada',
     completeFirst:'Lengkapkan ramalan, sebab, aktiviti, pemerhatian dan penjelasan dahulu.',
@@ -15,10 +15,10 @@ export const TEXT = {
     aiEmpty:'Tulis pemerhatian dan penjelasan anda, kemudian minta satu panduan untuk difikirkan.',
     aiAsk:'Dapatkan panduan AI', aiBusy:'AI sedang menyemak…', aiCode:'Kod kelas', aiCodeHelp:'Dapatkan kod daripada guru.',
     consent:'Saya bersetuju menghantar teks jawapan sahaja untuk panduan AI.', privacy:'Jangan tulis nama, sekolah atau maklumat peribadi. Audio kekal pada peranti. Guru menyemak panduan AI.',
-    aiNeed:'Lengkapkan pemerhatian, penjelasan dan cadangan Misi 4 sebelum meminta panduan.', aiUnavailable:'Panduan AI belum tersedia. Jawapan anda masih ada; teruskan siasatan bersama guru.',
+    aiNeed:'Tulis bunyi pilihan kamu, pilih kesannya dan berikan sebab. Kemudian cadangkan satu cara mengurangkan gangguan.', aiUnavailable:'Panduan AI belum tersedia. Jawapan anda masih ada; teruskan siasatan bersama guru.',
     reflect:'Fikir semula dan baiki penjelasan anda. Simpan semula untuk mengemas kini bukti.',
-    source:'Label sumber & konteks anda', classify:'Bagaimanakah bunyi ini memberi kesan?', useful:'Berfaedah', harmful:'Memudaratkan', both:'Kedua-duanya',
-    mitigation:'Cadangan mengurangkan gangguan & sebab', noAudio:'AI tidak menerima atau mengenal pasti rakaman ini. Label sumber ditentukan oleh anda.',
+    source:'Apakah bunyi pilihan kamu?', classify:'Untuk bunyi pilihan kamu, pilih kesannya.', useful:'Berfaedah', harmful:'Memudaratkan', both:'Kedua-duanya',
+    mitigation:'Apakah satu cara untuk mengurangkan gangguan bunyi ini?', noAudio:'Namakan bunyi berdasarkan pemerhatian kamu. AI menyemak jawapan bertulis sahaja.',
     record:'Benarkan mikrofon', stop:'Henti rakaman', waiting:'Menunggu kebenaran mikrofon…', recording:'Mikrofon aktif · maksimum 5 saat', idle:'Mikrofon belum aktif', last:'Rakaman terakhir · mikrofon tidak aktif',
     localAudio:'Rakaman pada peranti', noAudioUpload:'Audio kekal pada peranti ini.', deleteAudio:'Padam audio', relative:'Isyarat bunyi', notSPL:'Graf ini bukan ukuran tahap bahaya bunyi.', quiet:'Rakam keadaan senyap', sound:'Rakam bunyi objek',
     waveAlt:'Graf amplitud relatif mengikut masa', timeAxis:'Masa → · amplitud relatif ↕', audioDenied:'Mikrofon tidak tersedia atau tidak dibenarkan. Cuba semula atau gunakan pemerhatian fizikal.',
@@ -36,13 +36,14 @@ export const TEXT = {
     badgeHelp:'Kumpulkan satu bintang bagi setiap siasatan yang lengkap. Guru akan menyemak penjelasan anda.',
     recordsHelp:'Tanpa nama. Tiada audio atau kod kelas dalam eksport.', allDone:'Empat bukti dikumpulkan!', continue:'Teruskan siasatan',
     intro:'Sains Tahun 4 · Bunyi 6.1', status:'Status siasatan', unsupportedStorage:'Bukti belum dapat disimpan. Cuba eksport sebelum keluar.',
-    predictionPlaceholder:'Tulis sebab ramalan anda…', responsePlaceholder:'Gunakan pemerhatian anda sendiri…', savedAt:'Disimpan',
+    predictionPlaceholder:'Saya fikir begitu kerana ____.', responsePlaceholder:'Tulis perkara yang kamu sendiri lihat atau dengar…', savedAt:'Disimpan',
   },
   en: {
     teacher:'Teacher mode', student:'Student mode', notebook:'Evidence Book', language:'Language', menu:'Choose mission',
     setupInvalid:'The teacher setup code is invalid. Check your private code or contact your administrator.', classSetup:'Manage class code', setupHelp:'Give your class access to AI guidance. Class codes last for two hours.', teacherCode:'Teacher setup code', teacherCodeHelp:'Use the private setup code supplied during installation. Contact your administrator if you do not have it. Do not share it with pupils.', codeGenerate:'Generate class code', codeReplace:'Replace class code', codeReplaceHelp:'A new code replaces the previous class code. Limit: 10 codes per hour.', codeBusy:'Creating code…', shareCode:'Code to share with pupils', validUntil:'Valid until', copyCode:'Copy code', codeCopied:'Code copied', copyManually:'Select and copy the code manually.', codeExpired:'Code expired', codeExpiredHelp:'Generate a new code to continue AI guidance.', codeTimeout:'The code could not be created. Check your connection and try again.',
     importAudio:'Choose sound file', importHelp:'Listen to a file on this device only. Maximum 10 MB, 60 seconds. Identify its source using your observations.', importInvalid:'This file could not be played. Try another audio file, up to 10 MB and 60 seconds.', importBusy:'Reading sound…', imported:'Sound file ready to play', signalDetail:'About this graph', signalHelp:'The graph shows changes in the sound signal on this device. It does not measure whether a sound is dangerous.',
-    prediction:'Prediction', reason:'My reason', observation:'Observation', explanation:'Explanation', yes:'Yes', no:'No', unsure:'Not sure',
+    prediction:'Prediction', reason:'Why do you think so?', observation:'Observation', explanation:'Explanation', yes:'Yes', no:'No', unsure:'Not sure',
+    starterLead:'Writing help (optional):', stepsTitle:'Try these steps', classifyHelp:'Useful means it helps someone. Harmful means it has a bad effect, such as disturbing concentration.', mitigationHelp:'Explain how your idea could help the people being disturbed.', mitigationStarter:'I suggest ____. This helps because ____.', aiNeedVibration:'Write what you saw or heard. Then explain how the ruler makes a sound.',
     observeLabel:'What did you observe?', explainLabel:'Explain your observation using science ideas.',
     save:'Save evidence', saved:'Evidence saved on this device.', notSaved:'Not saved yet', evidence:'evidence', of:'of',
     completeFirst:'Complete your prediction, reason, activity, observation and explanation first.',
@@ -52,10 +53,10 @@ export const TEXT = {
     aiEmpty:'Write your observation and explanation, then ask for one idea to think about.',
     aiAsk:'Get AI guidance', aiBusy:'AI is reviewing…', aiCode:'Class code', aiCodeHelp:'Ask your teacher for the code.',
     consent:'I agree to send only my written answers for AI guidance.', privacy:'Do not include names, school or personal information. Audio stays on the device. Your teacher reviews AI guidance.',
-    aiNeed:'Complete your observation, explanation and Mission 4 proposal before asking for guidance.', aiUnavailable:'AI guidance is unavailable. Your answers are preserved; continue investigating with your teacher.',
+    aiNeed:'Describe your chosen sound, choose its effect and give a reason. Then suggest one way to reduce the disturbance.', aiUnavailable:'AI guidance is unavailable. Your answers are preserved; continue investigating with your teacher.',
     reflect:'Think again and revise your explanation. Save again to update your evidence.',
-    source:'Your source label & context', classify:'What effect does this sound have?', useful:'Useful', harmful:'Harmful', both:'Both',
-    mitigation:'Noise-reduction proposal & reason', noAudio:'AI has not received or identified this recording. You provide the source label.',
+    source:'Which sound did you choose?', classify:'For your chosen sound, choose its effect.', useful:'Useful', harmful:'Harmful', both:'Both',
+    mitigation:'What is one way to reduce the disturbance from this sound?', noAudio:'Name the sound using your own observations. AI only reviews your written answers.',
     record:'Allow microphone', stop:'Stop recording', waiting:'Waiting for microphone permission…', recording:'Microphone active · 5 seconds maximum', idle:'Microphone not active', last:'Last recording · microphone not active',
     localAudio:'Recording on this device', noAudioUpload:'Audio stays on this device.', deleteAudio:'Delete audio', relative:'Sound signal', notSPL:'This graph does not measure whether a sound is dangerous.', quiet:'Record quiet baseline', sound:'Record object sound',
     waveAlt:'Graph of relative amplitude over time', timeAxis:'Time → · relative amplitude ↕', audioDenied:'Microphone unavailable or denied. Retry or use a physical observation.',
@@ -73,21 +74,8 @@ export const TEXT = {
     badgeHelp:'Collect one star for each complete investigation. Your teacher will review your explanation.',
     recordsHelp:'No names. No audio or class code in exports.', allDone:'Four pieces of evidence collected!', continue:'Keep investigating',
     intro:'Year 4 Science · Sound 6.1', status:'Investigation status', unsupportedStorage:'Evidence could not be saved. Try exporting before leaving.',
-    predictionPlaceholder:'Write the reason for your prediction…', responsePlaceholder:'Use your own observations…', savedAt:'Saved',
+    predictionPlaceholder:'I think so because ____.', responsePlaceholder:'Write what you saw or heard yourself…', savedAt:'Saved',
   },
 } as const;
 export function text(language: Language) { return TEXT[language]; }
-export const MISSION_COPY: Record<Language, Record<MissionId, { title:string; question:string; instruction:string; predict:string; explain:string; fact:string }>> = {
-  bm: {
-    vibration:{title:'Kenali Getaran',question:'Apakah yang menghasilkan bunyi?',instruction:'Petik pembaris perlahan-lahan. Perhatikan apa yang bergetar.',predict:'Adakah pembaris yang dipetik akan menghasilkan bunyi?',explain:'Apakah yang bergetar dan bagaimana bunyi dihasilkan?',fact:'Bunyi dihasilkan oleh getaran. Apabila pembaris bergetar, udara di sekelilingnya turut bergetar. Bunyi bergerak melalui udara ke telinga kita.'},
-    travel:{title:'Bunyi Bergerak',question:'Ke manakah bunyi bergerak?',instruction:'Susun pendengar. Uji ramalan anda dalam model bunyi.',predict:'Adakah pendengar di semua arah menerima bunyi?',explain:'Terangkan arah bunyi dan kesan jarak pada masa tiba.',fact:'Dalam model sumber ringkas, bunyi bergerak ke semua arah melalui medium.'},
-    echo:{title:'Cabaran Gema',question:'Bolehkah bunyi dipantulkan?',instruction:'Bandingkan dinding keras dengan langsir lembut.',predict:'Adakah kedua-dua permukaan menghasilkan pantulan yang sama?',explain:'Terangkan perbezaan pantulan dan beri contoh dalam kehidupan harian.',fact:'Gema ialah bunyi pantulan yang didengar semula secara berasingan apabila kelewatannya mencukupi.'},
-    detective:{title:'Detektif Bunyi AI',question:'Terokai bunyi di sekeliling anda',instruction:'Dengar bunyi yang selamat. Fikirkan kesannya dan cadangkan perubahan.',predict:'Bolehkah bunyi yang berguna juga mengganggu?',explain:'Mengapakah bunyi ini berfaedah, memudaratkan atau kedua-duanya?',fact:'Kesan bunyi bergantung pada konteks. Cadangan boleh mengubah punca, laluan atau penerima bunyi.'},
-  },
-  en: {
-    vibration:{title:'Discover Vibration',question:'What produces sound?',instruction:'Gently pluck a ruler. Observe what vibrates.',predict:'Will the plucked ruler produce a sound?',explain:'What vibrates and how is the sound produced?',fact:'Sound is produced by vibration. As the ruler vibrates, the surrounding air vibrates too. Sound travels through the air to our ears.'},
-    travel:{title:'Sound Travels',question:'Where does sound travel?',instruction:'Position the listeners. Test your prediction in the sound model.',predict:'Will listeners in every direction receive the sound?',explain:'Explain the direction of sound and how distance affects arrival time.',fact:'In a simple source model, sound travels in all directions through a medium.'},
-    echo:{title:'Echo Challenge',question:'Can sound be reflected?',instruction:'Compare a hard wall with a soft curtain.',predict:'Will both surfaces produce the same reflection?',explain:'Explain the reflection difference and give an everyday example.',fact:'An echo is reflected sound heard separately when there is enough delay.'},
-    detective:{title:'AI Sound Detective',question:'Explore the sounds around you',instruction:'Listen to a safe sound. Consider its effects and propose a change.',predict:'Can a useful sound also be disturbing?',explain:'Why is this sound useful, harmful or both?',fact:'A sound’s effect depends on context. A proposal can address the source, path or listener.'},
-  },
-};
+export { MISSION_COPY } from './questions';

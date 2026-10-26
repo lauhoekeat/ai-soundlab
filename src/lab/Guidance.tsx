@@ -15,7 +15,7 @@ export function Guidance({mission,language,work,code,setCode,onFeedback}:Props) 
   const result=work.feedbackLanguage===language?work.feedback:null;
   async function ask() {
     if(!supported)return;
-    if(!work.observation.trim()||!work.explanation.trim()||mission==='detective'&&(!work.classification||!work.mitigation.trim())){setMessage(t.aiNeed);return;}
+    if(!work.observation.trim()||!work.explanation.trim()||mission==='detective'&&(!work.classification||!work.mitigation.trim())){setMessage(mission==='detective'?t.aiNeed:t.aiNeedVibration);return;}
     const controller=new AbortController();abort.current=controller;setBusy(true);setMessage('');let timedOut=false;const timeout=setTimeout(()=>{timedOut=true;controller.abort();},25000);
     const classification=work.classification==='both'?t.both:work.classification==='useful'?t.useful:t.harmful;
     try {const feedback=await getFeedback({mission:mission as 'vibration'|'detective',language,observation:work.observation,explanation:mission==='detective'?`${classification}: ${work.explanation}`.slice(0,600):work.explanation,mitigation:work.mitigation},code,controller.signal);if(mounted.current&&!controller.signal.aborted)onFeedback(feedback);}

@@ -45,3 +45,7 @@ After a group finishes, export if required and clear that mode's evidence with t
 ## Competition and validation limits
 
 Owner reported the teacher device and a physical phone passed POC audio checks, and Science review was approved. Exact devices/browser versions and a pupil pilot were not supplied. Recheck the final deployed interface on intended devices before the event. Confirm organizer eligibility for a music teacher entering a Science resource and the exact submission deadline; neither registration nor eligibility confirmation was performed by this agent. The BM mapping uses the inspected KPM-authored 2018 DSKP, with school applicability approved via owner-reported review.
+
+## Clearer pupil questions (0.2.2)
+
+Each mission now has two action steps, specific observation prompts and optional writing starters in BM/EN. Ask pupils to answer from their own investigation; the blanks are writing help, not extra required answers. Starters never fill the answer automatically. In M1, compare the moving ruler with the ruler after its movement stops. In M2, compare equal distances and one farther listener. In M3, keep distance fixed while comparing wall and curtain. In M4, identify who is helped/disturbed before suggesting one change. AI follow-up wording is simplified in feedback v5. See YEAR4-QUESTIONS.md for the changes and verification limits.
