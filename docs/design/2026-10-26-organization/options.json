@@ -1,0 +1,37 @@
+{
+  "status": "awaiting_user_selection",
+  "set": "2026-10-26 organization review",
+  "order_rule": "actual displayed Image Gen result order; not the earlier 25 October set",
+  "options": [
+    {
+      "displayed_option": 1,
+      "file": "direction-1.png",
+      "generation": "exec-afc22c3d-6195-4df7-a624-f6e3cc7b0ce8.png",
+      "direction": "guided-investigation",
+      "native_size": [
+        1487,
+        1058
+      ]
+    },
+    {
+      "displayed_option": 2,
+      "file": "direction-2.png",
+      "generation": "exec-5ed67883-f26c-4b9f-bd02-51edce250222.png",
+      "direction": "experiment-workbench",
+      "native_size": [
+        1487,
+        1058
+      ]
+    },
+    {
+      "displayed_option": 3,
+      "file": "direction-3.png",
+      "generation": "exec-b91646b9-ff81-4d4e-b54e-59b869579d58.png",
+      "direction": "folding-notebook",
+      "native_size": [
+        1487,
+        1058
+      ]
+    }
+  ]
+}
